@@ -76,7 +76,6 @@ class ="fill-gray-700 hidden md:block"
 	y={labelYPosition}
 	text-anchor={textAnchor}
 	dominant-baseline="middle"
-
 >
 	{label}
 </text>
