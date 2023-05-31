@@ -9,7 +9,7 @@
 <section bind:clientWidth={width}
 	class="flex flex-col items-center font-normal px-4 text-sm w-full "
 >
-	<p>
+	<p class="p-2">
 		Hi, I'm Harry, and I like to play the piano.
 	</p>
 </section>
