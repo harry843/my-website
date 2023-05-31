@@ -12,7 +12,4 @@
 	<p>
 		Hi, I'm Harry, and I like to play the piano.
 	</p>
-	<svg class="border border-red-500" width={width}>
-		
-	</svg>
 </section>
