@@ -12,8 +12,6 @@
 		open = false;
 	};
 
-	console.log(open);
-
 </script>
 
 <nav
@@ -21,7 +19,7 @@
 >
 	<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 		<a href="/" class="flex items-center">
-			<img src="HK_thumbnail.png" class="h-12 mr-4" alt="Harry Kelleher" />
+			<img src="/HK_thumbnail.png" class="h-12 mr-4" alt="Harry Kelleher" />
 			<span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
 				>Harry Kelleher</span
 			>

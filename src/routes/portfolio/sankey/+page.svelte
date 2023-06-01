@@ -24,8 +24,6 @@
 		.nodeSort(null)
 		.size([vizWidth, vizHeight])(data);
 
-	console.log('Links', data.links);
-	console.log('Node Values:', nodevalues.data);
 </script>
 
 <svelte:head>

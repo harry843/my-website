@@ -50,7 +50,6 @@
 	on:click={() => {
 		clickStore.update((state) => {
 			state.node = !state.node;
-			console.log('nodestate', state);
 			return state;
 		});
 		nodeTooltipData.update((state) => {
@@ -61,7 +60,6 @@
 	on:keydown={() => {
 		clickStore.update((state) => {
 			state.node = !state.node;
-			console.log('nodestate', state);
 			return state;
 		});
 		nodeTooltipData.update((state) => {
@@ -71,7 +69,7 @@
 	}}
 />
 <text
-class ="fill-gray-700 hidden md:block"
+class ="fill-gray-800 hidden md:block"
 	x={labelXPosition}
 	y={labelYPosition}
 	text-anchor={textAnchor}

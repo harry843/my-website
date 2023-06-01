@@ -5,20 +5,19 @@
 	import classNames from 'classnames';
 
 	const nodes = nodevalues.data;
-	console.log(nodes);
 </script>
 
 <div
 	class={classNames(
-		'absolute bg-gray-100 text-gray-700 text-xs shadow-lg space-y-2 p-3 rounded-md -translate-x-1/2 pointer-events-none',
+		'absolute bg-gray-100 text-gray-800 text-xs shadow-lg space-y-2 p-3 rounded-md -translate-x-1/2 pointer-events-none',
 		{
 			hidden: !$clickStore.node
 		}
 	)}
 >
-	<h1 class="font-semibold text-sm">{nodes[$nodeTooltipData.index].name}</h1>
+	<h2 class="font-semibold text-sm">{nodes[$nodeTooltipData.index].name}</h2>
 	<div>
-		<p>{formatTooltipValue(nodes[$nodeTooltipData.index].nodeSum)} patients</p>
-		<p>{nodes[$nodeTooltipData.index].percent}% of total</p>
+		<p class="pb-1"><span class="font-medium">{formatTooltipValue(nodes[$nodeTooltipData.index].nodeSum)}</span> patients</p>
+		<p><span class="font-medium">{nodes[$nodeTooltipData.index].percent}%</span> of total</p>
 	</div>
 </div>
