@@ -3,11 +3,11 @@
 </svelte:head>
 
 <script>
-	import Bio from '../../component/Bio/Bio.svelte';
-	import Education from '../../component/Education/Education.svelte';
-	import Experience from '../../component/Experience/Experience.svelte';
-	import Header from '../../component/Header/Header.svelte';
-	import Skills from '../../component/Skills/Skills.svelte';
+	import Bio from '../../component/CV/Bio/Bio.svelte';
+	import Education from '../../component/CV/Education/Education.svelte';
+	import Experience from '../../component/CV/Experience/Experience.svelte';
+	import Header from '../../component/CV/Header/Header.svelte';
+	import Skills from '../../component/CV/Skills/Skills.svelte';
 
 </script>
 

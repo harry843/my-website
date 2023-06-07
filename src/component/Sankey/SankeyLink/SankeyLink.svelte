@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { sankeyLinkHorizontal } from 'd3-sankey';
-	import { hoverStore, linkTooltipData, activeNode } from '../../stores';
-	import type { TransformedLink } from '../../types/portfolio';
+	import { hoverStore, linkTooltipData, activeNode } from '../../../stores';
+	import type { TransformedLink } from '../../../types/portfolio';
 	import classNames from 'classnames';
 
 	export let link: TransformedLink;
@@ -38,6 +38,7 @@
 			return state;
 		});
 		linkTooltipData.update((state) => {
+			state.index = link.source.index;
 			state.source = link.source.name;
 			state.target = link.target.name;
 			state.value = link.value;
@@ -54,6 +55,7 @@
 			return state;
 		});
 		linkTooltipData.update((state) => {
+			state.index = undefined;
 			state.source = undefined;
 			state.target = undefined;
 			state.value = undefined;

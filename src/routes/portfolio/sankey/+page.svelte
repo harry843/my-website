@@ -1,13 +1,14 @@
 <script lang="ts">
-
 	import { sankey } from 'd3-sankey';
 	import data from './sankey_data.json';
-	import SankeyLinkGradient from '../../../component/SankeyLink/SankeyLinkGradient/SankeyLinkGradient.svelte';
-	import SankeyLink from '../../../component/SankeyLink/SankeyLink.svelte';
-	import SankeyNode from '../../../component/SankeyNode/SankeyNode.svelte';
-	import SankeyLinkTooltip from '../../../component/SankeyLink/SankeyLinkTooltip/SankeyLinkTooltip.svelte';
-	import SankeyNodeTooltip from '../../../component/SankeyNode/SankeyNodeTooltip/SankeyNodeTooltip.svelte';
+	import SankeyLinkGradient from '../../../component/Sankey/SankeyLink/SankeyLinkGradient/SankeyLinkGradient.svelte';
+	import SankeyLink from '../../../component/Sankey/SankeyLink/SankeyLink.svelte';
+	import SankeyNode from '../../../component/Sankey/SankeyNode/SankeyNode.svelte';
+	import SankeyLinkTooltip from '../../../component/Sankey/SankeyLink/SankeyLinkTooltip/SankeyLinkTooltip.svelte';
+	import SankeyNodeTooltip from '../../../component/Sankey/SankeyNode/SankeyNodeTooltip/SankeyNodeTooltip.svelte';
 	import MobileBanner from '../../../component/Banner/MobileBanner.svelte';
+	import SankeyLayers from '../../../component/Sankey/SankeyLayers/SankeyLayers.svelte';
+	import SankeyArrow from '../../../component/Sankey/SankeyArrow/SankeyArrow.svelte';
 
 	let width = 0;
 	let innerWidth = 0;
@@ -32,32 +33,11 @@
 
 <svelte:window bind:innerWidth />
 
-<div class="relative p-0 md:py-4 md:px-8">
+<div class="relative p-0 sm:py-4 md:px-8">
 	{#if width > 0 && width < 490}
-	<MobileBanner />
+		<MobileBanner />
 	{/if}
-	<div class="flex justify-between px-24 py-6 sm:pt-2 font-medium">
-		<div
-			class="text-xs md:text-base px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center -translate-x-[82px] md:-translate-x-[69px]"
-		>
-			NHS111
-		</div>
-		<div
-			class="text-xs md:text-base px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center -translate-x-[10px] md:-translate-x-[20px]"
-		>
-			ED
-		</div>
-		<div
-			class="text-xs md:text-base px-2 md:px-4 border-r-[12px] md:border-r-0 md:border-l-[16px] border-gray-200 text-center translate-x-4 md:translate-x-[81px]"
-		>
-			Necessary
-		</div>
-		<div
-			class="text-xs md:text-base px-2 md:px-4 border-r-[12px] md:border-r-0 md:border-l-[16px] border-gray-200 text-center translate-x-[82px] md:translate-x-[75px]"
-		>
-			Hospital
-		</div>
-	</div>
+	<SankeyLayers />
 	<section
 		bind:clientWidth={width}
 		class="relative flex flex-col items-center font-normal text-sm h-full w-full"
@@ -87,17 +67,6 @@
 		<SankeyNodeTooltip {paddingX} {paddingY} {nodeWidth} />
 	</section>
 	{#if innerWidth > 767}
-		<div class="absolute right-6 top-10 md:top-14">
-			<div class="relative" style="height: {height}px">
-				<div class="h-full w-0.5 bg-gray-600" />
-				<div
-					class="absolute w-0 h-0 border-gray-600 -top-1 -left-[4px]"
-					style="border-left: 5px solid transparent;
-				border-right: 5px solid transparent;
-				border-bottom: 6px solid black;"
-				/>
-				<div class="absolute top-1/2 right-0 -translate-x-1/2">Acuity</div>
-			</div>
-		</div>
+		<SankeyArrow {height} />
 	{/if}
 </div>

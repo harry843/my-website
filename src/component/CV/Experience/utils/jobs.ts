@@ -1,4 +1,4 @@
-import type { Jobs } from "../../../types/cv";
+import type { Jobs } from "../../../../types/cv";
 
 
 export const jobs: Jobs = [

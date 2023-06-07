@@ -1,5 +1,5 @@
 export interface TransformedLink {
-	index: number | undefined;
+	index: number;
 	source: any;
 	target: any ;
 	value: number | undefined;

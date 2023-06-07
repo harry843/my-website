@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { rgb } from 'd3';
-	import { hoverStore, activeNode, nodeTooltipData } from '../../stores';
-	import type { TransformedNode } from '../../types/portfolio';
+	import { hoverStore, activeNode, nodeTooltipData } from '../../../stores';
+
 	import classNames from 'classnames';
+	import type { TransformedNode } from '../../../types/portfolio';
 
 	export let node: TransformedNode;
 	export let nodeWidth: number;

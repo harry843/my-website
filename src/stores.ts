@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 import type { TransformedLink, TransformedNode } from './types/portfolio';
 
 export const linkTooltipData = writable<Partial<TransformedLink>>({
+	index: 0,
 	source: undefined,
 	target: undefined,
 	value: undefined,

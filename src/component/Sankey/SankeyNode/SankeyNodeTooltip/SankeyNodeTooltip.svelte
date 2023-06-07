@@ -1,9 +1,9 @@
 <script lang="ts">
-	import nodevalues from '../../../routes/portfolio/sankey/nodevalues.json';
-	import { formatTooltipValue } from '../../../routes/portfolio/sankey/utils';
-	import { hoverStore, nodeTooltipData } from '../../../stores';
+	import nodevalues from '../../../../routes/portfolio/sankey/nodevalues.json';
+	import { formatTooltipValue } from '../../../../routes/portfolio/sankey/utils';
+	import { hoverStore, nodeTooltipData } from '../../../../stores';
 	import classNames from 'classnames';
-	import type { TransformedNode } from '../../../types/portfolio';
+	import type { TransformedNode } from '../../../../types/portfolio';
 	import SankeyNodeTooltipDonut from './SankeyNodeTooltipDonut/SankeyNodeTooltipDonut.svelte';
 
 	export let paddingX: number;
@@ -18,10 +18,9 @@
 		switch ($nodeTooltipData.fixedLayer) {
 			case 3:
 			case 2:
-				return $nodeTooltipData.x0 + paddingX - nodeTooltipPadding;
-				break;
+				return ($nodeTooltipData.x0 || 0) + paddingX - nodeTooltipPadding;
 			default:
-				return $nodeTooltipData.x0 + paddingX + nodeWidth + nodeTooltipPadding;
+				return ($nodeTooltipData.x0 || 0) + paddingX + nodeWidth + nodeTooltipPadding;
 		}
 	};
 
@@ -58,18 +57,18 @@
 <div
 	class={classNames('absolute text-xs w-44 md:w-72 shadow-lg space-y-1/2 pointer-events-none', {
 		hidden: !$hoverStore.node,
-		'transform -translate-x-full': $nodeTooltipData.fixedLayer > 1
+		'transform -translate-x-full': ($nodeTooltipData.fixedLayer || 0) > 1
 	})}
 	style="
 		left: {getNodeTooltipXPositionFromNodeLayer($nodeTooltipData)}px;
-		top: {$nodeTooltipData.y0 + paddingY}px;
+		top: {($nodeTooltipData.y0 || 0) + paddingY}px;
 		background: {$nodeTooltipData.colour?.toLowerCase()};
 		color: {getContrastYIQ($nodeTooltipData.colour ? $nodeTooltipData.colour?.toLowerCase() : 'black')}"
 >
-	<h2 class="font-semibold text-sm px-3 pb-1">{nodes[$nodeTooltipData.index].name}</h2>
+	<h2 class="font-semibold text-sm px-3 pb-1">{nodes[($nodeTooltipData.index || 0)].name}</h2>
 	<div class="bg-gray-50 px-3 py-1 text-black">
 		<p class="pb-1">
-			<span class="font-medium">{formatTooltipValue(nodes[$nodeTooltipData.index].nodeSum)}</span>
+			<span class="font-medium">{formatTooltipValue(nodes[($nodeTooltipData.index || 0)].nodeSum)}</span>
 			{getNodeTooltipText($nodeTooltipData)}
 		</p>
 		<p />

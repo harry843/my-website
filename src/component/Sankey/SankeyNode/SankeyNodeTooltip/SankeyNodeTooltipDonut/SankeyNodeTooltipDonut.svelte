@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { nodeTooltipData } from '../../../../stores';
+	import { nodeTooltipData } from '../../../../../stores';
 
 	export let nodes: any;
 
@@ -35,9 +35,9 @@
 				class="fill-current text-transparent transform translate-x-1/2 translate-y-1/2"
 				r="16"
 				fill="transparent"
-				stroke-dasharray={nodes[$nodeTooltipData.index].percent +
+				stroke-dasharray={nodes[($nodeTooltipData.index || 0)].percent +
 					',' +
-					(100 - nodes[$nodeTooltipData.index].percent)}
+					(100 - nodes[($nodeTooltipData.index || 0)].percent)}
 				stroke-dashoffset="25"
 				stroke-width="8"
 				stroke={$nodeTooltipData.colour}
@@ -47,9 +47,9 @@
 	<div class="ml-2 whitespace-wrap text-gray-700">
 		<div>
 			Accounting for <span class="font-medium text-gray-800"
-				>{nodes[$nodeTooltipData.index].percent}%</span
+				>{nodes[($nodeTooltipData.index || 0)].percent}%</span
 			>
-			of {getDonutConditionalText($nodeTooltipData.fixedLayer)}
+			of {getDonutConditionalText(($nodeTooltipData.index || 0))}
 		</div>
 		<div />
 	</div>
