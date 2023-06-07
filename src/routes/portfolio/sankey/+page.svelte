@@ -12,8 +12,8 @@
 
 	const height = 600;
 	const nodeWidth = 20;
-	$: paddingX = innerWidth > 768 ? 110 : 10;
-	$: paddingY = innerWidth > 768 ? 0 : 20;
+	$: paddingX = innerWidth > 767 ? 110 : 10;
+	$: paddingY = innerWidth > 767 ? 0 : 20;
 
 	$: vizWidth = width - paddingX * 2;
 	$: vizHeight = height - paddingY * 2;
@@ -22,7 +22,6 @@
 		.nodePadding(30)
 		.nodeSort(null)
 		.size([vizWidth, vizHeight])(data);
-
 </script>
 
 <svelte:head>
@@ -34,22 +33,22 @@
 <div class="relative p-0 md:py-4 md:px-8">
 	<div class="flex justify-between px-24 pt-2 pb-6 font-medium">
 		<div
-			class="px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center -translate-x-full md:-translate-x-[69px]"
+			class="text-xs md:text-base px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center -translate-x-full md:-translate-x-[69px]"
 		>
 			NHS111
 		</div>
 		<div
-			class="px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center -translate-x-1 md:-translate-x-[20px]"
+			class="text-xs md:text-base px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center -translate-x-1 md:-translate-x-[20px]"
 		>
 			ED
 		</div>
 		<div
-			class="px-2 md:px-4  border-r-[12px] md:border-r-0 md:border-l-[16px] border-gray-200 text-center translate-x-4 md:translate-x-[81px]"
+			class="text-xs md:text-base px-2 md:px-4 border-r-[12px] md:border-r-0 md:border-l-[16px] border-gray-200 text-center translate-x-4 md:translate-x-[81px]"
 		>
 			Necessary
 		</div>
 		<div
-			class="px-2 md:px-4 border-r-[12px] md:border-r-0 md:border-l-[16px] border-gray-200 text-center translate-x-[82px] md:translate-x-[75px]"
+			class="text-xs md:text-base px-2 md:px-4 border-r-[12px] md:border-r-0 md:border-l-[16px] border-gray-200 text-center translate-x-[82px] md:translate-x-[75px]"
 		>
 			Hospital
 		</div>
@@ -82,18 +81,18 @@
 		<SankeyLinkTooltip {paddingY} />
 		<SankeyNodeTooltip {paddingX} {paddingY} {nodeWidth} />
 	</section>
-	{#if innerWidth > 768}
-	<div bind:clientWidth={width} class="absolute right-6 top-10 md:top-14">
-		<div class="relative" style="height: {height}px">
-			<div class="h-full w-0.5 bg-gray-600" />
-			<div
-				class="absolute w-0 h-0 border-gray-600 -top-1 -left-[4px]"
-				style="border-left: 5px solid transparent;
+	{#if innerWidth > 767}
+		<div class="absolute right-6 top-10 md:top-14">
+			<div class="relative" style="height: {height}px">
+				<div class="h-full w-0.5 bg-gray-600" />
+				<div
+					class="absolute w-0 h-0 border-gray-600 -top-1 -left-[4px]"
+					style="border-left: 5px solid transparent;
 				border-right: 5px solid transparent;
 				border-bottom: 6px solid black;"
-			/>
-			<div class="absolute top-1/2 right-0 -translate-x-1/2">Acuity</div>
+				/>
+				<div class="absolute top-1/2 right-0 -translate-x-1/2">Acuity</div>
+			</div>
 		</div>
-	</div>
 	{/if}
 </div>
