@@ -71,7 +71,7 @@
 </script>
 
 <rect
-class={classNames('cursor-pointer opacity-90', {
+class={classNames('cursor-pointer opacity-90 focus:outline-none', {
 	'opacity-100': nodeIsActive,
 })}
 	fill={node.colour}

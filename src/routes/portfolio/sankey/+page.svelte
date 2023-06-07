@@ -1,4 +1,5 @@
 <script lang="ts">
+
 	import { sankey } from 'd3-sankey';
 	import data from './sankey_data.json';
 	import SankeyLinkGradient from '../../../component/SankeyLink/SankeyLinkGradient/SankeyLinkGradient.svelte';
@@ -6,6 +7,7 @@
 	import SankeyNode from '../../../component/SankeyNode/SankeyNode.svelte';
 	import SankeyLinkTooltip from '../../../component/SankeyLink/SankeyLinkTooltip/SankeyLinkTooltip.svelte';
 	import SankeyNodeTooltip from '../../../component/SankeyNode/SankeyNodeTooltip/SankeyNodeTooltip.svelte';
+	import MobileBanner from '../../../component/Banner/MobileBanner.svelte';
 
 	let width = 0;
 	let innerWidth = 0;
@@ -31,14 +33,17 @@
 <svelte:window bind:innerWidth />
 
 <div class="relative p-0 md:py-4 md:px-8">
-	<div class="flex justify-between px-24 pt-2 pb-6 font-medium">
+	{#if width > 0 && width < 490}
+	<MobileBanner />
+	{/if}
+	<div class="flex justify-between px-24 py-6 sm:pt-2 font-medium">
 		<div
-			class="text-xs md:text-base px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center -translate-x-full md:-translate-x-[69px]"
+			class="text-xs md:text-base px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center -translate-x-[82px] md:-translate-x-[69px]"
 		>
 			NHS111
 		</div>
 		<div
-			class="text-xs md:text-base px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center -translate-x-1 md:-translate-x-[20px]"
+			class="text-xs md:text-base px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center -translate-x-[10px] md:-translate-x-[20px]"
 		>
 			ED
 		</div>
