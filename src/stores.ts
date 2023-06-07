@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { TransformedLink } from './types/portfolio';
+import type { TransformedLink, TransformedNode } from './types/portfolio';
 
 export const linkTooltipData = writable<Partial<TransformedLink>>({
 	source: undefined,
@@ -10,6 +10,29 @@ export const linkTooltipData = writable<Partial<TransformedLink>>({
 	y0: undefined,
 	y1: undefined
 });
-export const nodeTooltipData = writable({ index: 0 });
-export const hoverStore = writable({ link: false });
+export const nodeTooltipData = writable<Partial<TransformedNode>>({
+	index: 0,
+	name: undefined,
+	fixedLayer: undefined,
+	x0: undefined,
+	y0: undefined,
+	colour: undefined
+});
+export const activeNode = writable({active : undefined});
+
+export const addActiveNode = writable((node: number) => {
+		(state: any) => ({
+			activeNodes: [...state.activeNodes, node]
+		});
+	}
+);
+
+export const removeActiveNode = writable((node: number) => {
+		(state: any) => ({
+			activeNodes: state.activeNodes.filter((nodeName: number) => nodeName !== node)
+		});
+	}
+);
+
+export const hoverStore = writable({ link: false, node: false });
 export const clickStore = writable({ node: false });

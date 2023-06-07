@@ -1,0 +1,56 @@
+<script lang="ts">
+	import { nodeTooltipData } from '../../../../stores';
+
+	export let nodes: any;
+
+	function getDonutConditionalText(layer: number) {
+		if (layer === 0) {
+			return 'NHS111 calls';
+		} else if (layer === 1) {
+			return 'attended secondary services';
+		} else if (layer === 2) {
+			return 'acuity';
+		} else {
+			return 'admitted';
+		}
+	}
+</script>
+
+<div class="flex items-center pt-2 bg-gray-50">
+	<div>
+		<svg class="w-12 h-12">
+			<circle
+				class="fill-current text-transparent transform translate-x-1/2 translate-y-1/2 opacity-30"
+				r="16"
+				fill="transparent"
+				stroke-dashoffset="25"
+				stroke-width="6"
+				stroke={$nodeTooltipData.colour}
+			/>
+			<circle
+				r="14"
+				class="fill-current text-gray-200 transform translate-x-1/2 translate-y-1/2 opacity-50"
+			/>
+			<circle
+				class="fill-current text-transparent transform translate-x-1/2 translate-y-1/2"
+				r="16"
+				fill="transparent"
+				stroke-dasharray={nodes[$nodeTooltipData.index].percent +
+					',' +
+					(100 - nodes[$nodeTooltipData.index].percent)}
+				stroke-dashoffset="25"
+				stroke-width="8"
+				stroke={$nodeTooltipData.colour}
+			/>
+		</svg>
+	</div>
+	<div class="ml-2 whitespace-wrap text-gray-700">
+		<div>
+			Accounting for <span class="font-medium text-gray-800"
+				>{nodes[$nodeTooltipData.index].percent}%</span
+			>
+			of {getDonutConditionalText($nodeTooltipData.fixedLayer)}
+		</div>
+		<div />
+	</div>
+</div>

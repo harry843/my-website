@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { sankeyLinkHorizontal } from 'd3-sankey';
-	import { hoverStore, linkTooltipData } from '../../stores';
+	import { hoverStore, linkTooltipData, activeNode } from '../../stores';
 	import type { TransformedLink } from '../../types/portfolio';
+	import classNames from 'classnames';
 
 	export let link: TransformedLink;
 	let hovered = false;
@@ -15,15 +16,22 @@
 	const handleMouseOut = () => {
 		hovered = false;
 	};
+
+	$: linkIsActive = $activeNode.active == link.source.index;
+	$: nodeIsSelected = $activeNode.active != undefined;
 </script>
 
 <path
 	fill="none"
-	class="outline-none"
+	class={classNames("outline-none cursor-pointer", {
+		'opacity-100': linkIsActive && hovered,
+		'opacity-70': linkIsActive || hovered,
+		'opacity-50': !linkIsActive && !nodeIsSelected,
+		'opacity-5': nodeIsSelected && !linkIsActive
+	})}
 	stroke={strokeGradient}
 	d={sankeyLinkHorizontal()(link)}
 	stroke-width={link.width ? Math.max(1, link.width) : undefined}
-	opacity={hovered ? 0.89 : 0.65}
 	on:mouseenter={() => {
 		hoverStore.update((state) => {
 			state.link = true;
