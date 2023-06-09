@@ -55,23 +55,28 @@
 </script>
 
 <div
-	class={classNames('absolute text-xs w-44 md:w-72 shadow-lg space-y-1/2 pointer-events-none', {
-		hidden: !$hoverStore.node,
-		'transform -translate-x-full': ($nodeTooltipData.fixedLayer || 0) > 1
-	})}
+	class={classNames(
+		'absolute text-xs w-44 md:w-72 shadow-lg space-y-1/2 pointer-events-none rounded-sm',
+		{
+			hidden: !$hoverStore.node,
+			'transform -translate-x-full': ($nodeTooltipData.fixedLayer || 0) > 1
+		}
+	)}
 	style="
 		left: {getNodeTooltipXPositionFromNodeLayer($nodeTooltipData)}px;
 		top: {($nodeTooltipData.y0 || 0) + paddingY}px;
 		background: {$nodeTooltipData.colour?.toLowerCase()};
-		color: {getContrastYIQ($nodeTooltipData.colour ? $nodeTooltipData.colour?.toLowerCase() : 'black')}"
+		color: {getContrastYIQ($nodeTooltipData.colour ? $nodeTooltipData.colour?.toLowerCase() : 'black')};
+		"
 >
-	<h2 class="font-semibold text-sm px-3 pb-1">{nodes[($nodeTooltipData.index || 0)].name}</h2>
-	<div class="bg-gray-50 px-3 py-1 text-black">
-		<p class="pb-1">
-			<span class="font-medium">{formatTooltipValue(nodes[($nodeTooltipData.index || 0)].nodeSum)}</span>
-			{getNodeTooltipText($nodeTooltipData)}
+	<h2 class="font-semibold text-sm px-4 py-2">{nodes[$nodeTooltipData.index || 0].name}</h2>
+	<div class="bg-gray-50 py-2 px-4 space-y-2 text-gray-700">
+		<p>
+			<span class="font-medium text-black"
+				>{formatTooltipValue(nodes[$nodeTooltipData.index || 0].nodeSum)}</span
+			>
+			<span class="text-gray-700">{getNodeTooltipText($nodeTooltipData)}</span>
 		</p>
-		<p />
+		<SankeyNodeTooltipDonut {nodes} />
 	</div>
-	<SankeyNodeTooltipDonut {nodes} />
 </div>

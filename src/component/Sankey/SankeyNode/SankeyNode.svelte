@@ -55,7 +55,7 @@
 	};
 
 	$: nodeIsActive = $activeNode.active == node.index;
-	
+
 	const handleNodeClick = () => {
 		return nodeIsActive ? removeActiveNode() : addActiveNode(node.index);
 	};
@@ -72,13 +72,13 @@
 </script>
 
 <rect
-class={classNames('cursor-pointer opacity-90 focus:outline-none', {
-	'opacity-100': nodeIsActive,
-})}
+	class={classNames('cursor-pointer opacity-90 focus:outline-none', {
+		'opacity-100': nodeIsActive
+	})}
 	fill={node.colour}
-	stroke={darkerColor}
+	stroke="white"
 	stroke-width="1"
-	rx="3"
+	rx="1"
 	x={node.x0}
 	y={node.y0}
 	width={nodeWidth}
@@ -121,7 +121,7 @@ class={classNames('cursor-pointer opacity-90 focus:outline-none', {
 	on:blur={() => nodeHandleMouseOut()}
 />
 <text
-	class={classNames("fill-gray-800 hidden md:block", {'font-semibold': nodeIsActive})}
+	class={classNames('fill-gray-800 hidden md:block', { 'font-semibold': nodeIsActive })}
 	x={labelXPosition}
 	y={labelYPosition}
 	text-anchor={textAnchor}

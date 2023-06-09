@@ -1,14 +1,16 @@
 <script lang="ts">
-	import { getDonutColour, getDonutConditionalText } from '../../../../../routes/portfolio/sankey/utils';
+	import {
+		getDonutColour,
+		getDonutConditionalText
+	} from '../../../../../routes/portfolio/sankey/utils';
 	import { nodeTooltipData } from '../../../../../stores';
 
 	export let nodes: any;
-
 </script>
 
-<div class="flex items-center pt-2 bg-gray-50">
+<div class="flex items-center bg-gray-50">
 	<div>
-		<svg class="w-12 h-12">
+		<svg class="w-11 h-11 -translate-x-0.5">
 			<circle
 				class="fill-current text-transparent transform translate-x-1/2 translate-y-1/2 opacity-30"
 				r="16"
@@ -25,9 +27,9 @@
 				class="fill-current text-transparent transform translate-x-1/2 translate-y-1/2"
 				r="16"
 				fill="transparent"
-				stroke-dasharray={nodes[($nodeTooltipData.index || 0)].percent +
+				stroke-dasharray={nodes[$nodeTooltipData.index || 0].percent +
 					',' +
-					(100 - nodes[($nodeTooltipData.index || 0)].percent)}
+					(100 - nodes[$nodeTooltipData.index || 0].percent)}
 				stroke-dashoffset="25"
 				stroke-width="8"
 				stroke={getDonutColour($nodeTooltipData.colour)}
@@ -36,10 +38,10 @@
 	</div>
 	<div class="ml-2 whitespace-wrap text-gray-700">
 		<div>
-			Accounting for <span class="font-medium text-gray-800"
-				>{nodes[($nodeTooltipData.index || 0)].percent}%</span
+			Accounting for <span class="font-medium text-black"
+				>{nodes[$nodeTooltipData.index || 0].percent}%</span
 			>
-			of {getDonutConditionalText(($nodeTooltipData.index || 0))}
+			of {getDonutConditionalText($nodeTooltipData.index || 0)}
 		</div>
 		<div />
 	</div>
