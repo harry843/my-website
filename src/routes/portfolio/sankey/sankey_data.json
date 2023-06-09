@@ -2,67 +2,67 @@
 	"nodes": [
 		{
 			"name": "Ambulance",
-			"colour": "#EA3811",
+			"colour": "#ef4444",
 			"index": 0,
 			"fixedLayer": 0
 		},
 		{
 			"name": "Type 1 Emergency Department",
-			"colour": "#ffb000",
+			"colour": "#fb923c",
 			"index": 1,
 			"fixedLayer": 1
 		},
 		{
 			"name": "Emergency Department",
-			"colour": "#FEF121",
+			"colour": "#fde047",
 			"index": 2,
 			"fixedLayer": 0
 		},
 		{
 			"name": "Primary Care",
-			"colour": "#2C21FE",
+			"colour": "#4f46e5",
 			"index": 3,
 			"fixedLayer": 0
 		},
 		{
 			"name": "Other",
-			"colour": "#32FE21",
+			"colour": "#5eead4",
 			"index": 4,
 			"fixedLayer": 0
 		},
 		{
 			"name": "Types 2-4 Emergency Department",
-			"colour": "#BB00DD",
+			"colour": "#ec4899",
 			"index": 5,
 			"fixedLayer": 1
 		},
 		{
 			"name": "No attendance",
-			"colour": "#C4C4C4",
+			"colour": "#d1d5db",
 			"index": 6,
 			"fixedLayer": 1
 		},
 		{
 			"name": "Necessary",
-			"colour": "#EA3811",
+			"colour": "#f43f5e",
 			"index": 7,
 			"fixedLayer": 2
 		},
 		{
 			"name": "Admission",
-			"colour": "#EA3811",
+			"colour": "#8b5cf6",
 			"index": 8,
 			"fixedLayer": 3
 		},
 		{
 			"name": "No admission",
-			"colour": "#C4C4C4",
+			"colour": "#d1d5db",
 			"index": 9,
 			"fixedLayer": 3
 		},
 		{
 			"name": "Low acuity",
-			"colour": "#C4C4C4",
+			"colour": "#d1d5db",
 			"index": 10,
 			"fixedLayer": 2
 		}
