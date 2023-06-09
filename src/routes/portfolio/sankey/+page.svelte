@@ -38,7 +38,7 @@
 		<MobileBanner />
 	{/if}
 	<h1
-		class="text-xl [@media(min-width:818px)]:text-2xl font-medium py-2 px-3 border-gray-100 border-b"
+		class="text-xl [@media(min-width:818px)]:text-2xl font-medium pb-2 px-3 border-gray-100 border-b"
 	>
 		Visualising patient flow through NHS Services following a 111 call
 	</h1>
@@ -82,4 +82,5 @@
 	{#if innerWidth > 767}
 		<SankeyArrow {height} />
 	{/if}
+	<div class="text-center text-xs md:text-right md:-translate-y-4 md:-translate-x-4">*This viz uses test data and does not represent real world events.</div>
 </div>

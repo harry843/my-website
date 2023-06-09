@@ -66,13 +66,11 @@ export 	function getDonutColour(colour: string | undefined) {
 }
 
 export function getDonutConditionalText(layer: number) {
-    if (layer === 0) {
+    if (layer === 0 || layer == 1) {
         return 'NHS111 calls';
-    } else if (layer === 1) {
-        return 'attended secondary services';
     } else if (layer === 2) {
-        return 'acuity';
+        return 'attendances at a Type 1 Emergency Department';
     } else {
-        return 'admitted';
+        return 'necessary attendances at a Type 1 Emergency Department';
     }
 }

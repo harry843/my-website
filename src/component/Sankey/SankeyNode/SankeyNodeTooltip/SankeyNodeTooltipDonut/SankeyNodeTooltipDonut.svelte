@@ -41,7 +41,7 @@
 			Accounting for <span class="font-medium text-black"
 				>{nodes[$nodeTooltipData.index || 0].percent}%</span
 			>
-			of {getDonutConditionalText($nodeTooltipData.index || 0)}
+			of {getDonutConditionalText($nodeTooltipData.fixedLayer || 0)}
 		</div>
 		<div />
 	</div>
