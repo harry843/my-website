@@ -55,3 +55,24 @@ export const getLinkTooltipText = ($linkTooltipData: Partial<TransformedLink>) =
         return `callers had a necessary Type 1 Emergency Department attendance, but were not admitted to hospital`;
     }
 };
+
+export 	function getDonutColour(colour: string | undefined) {
+    if (colour === "#FEF121") {
+        return "#C7BA0A"
+    }
+    else {
+        return colour
+    }
+}
+
+export function getDonutConditionalText(layer: number) {
+    if (layer === 0) {
+        return 'NHS111 calls';
+    } else if (layer === 1) {
+        return 'attended secondary services';
+    } else if (layer === 2) {
+        return 'acuity';
+    } else {
+        return 'admitted';
+    }
+}

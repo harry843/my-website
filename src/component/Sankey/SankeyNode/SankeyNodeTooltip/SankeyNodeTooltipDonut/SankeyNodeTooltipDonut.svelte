@@ -1,19 +1,9 @@
 <script lang="ts">
+	import { getDonutColour, getDonutConditionalText } from '../../../../../routes/portfolio/sankey/utils';
 	import { nodeTooltipData } from '../../../../../stores';
 
 	export let nodes: any;
 
-	function getDonutConditionalText(layer: number) {
-		if (layer === 0) {
-			return 'NHS111 calls';
-		} else if (layer === 1) {
-			return 'attended secondary services';
-		} else if (layer === 2) {
-			return 'acuity';
-		} else {
-			return 'admitted';
-		}
-	}
 </script>
 
 <div class="flex items-center pt-2 bg-gray-50">
@@ -25,7 +15,7 @@
 				fill="transparent"
 				stroke-dashoffset="25"
 				stroke-width="6"
-				stroke={$nodeTooltipData.colour}
+				stroke={getDonutColour($nodeTooltipData.colour)}
 			/>
 			<circle
 				r="14"
@@ -40,7 +30,7 @@
 					(100 - nodes[($nodeTooltipData.index || 0)].percent)}
 				stroke-dashoffset="25"
 				stroke-width="8"
-				stroke={$nodeTooltipData.colour}
+				stroke={getDonutColour($nodeTooltipData.colour)}
 			/>
 		</svg>
 	</div>

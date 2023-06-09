@@ -1,7 +1,7 @@
 <script lang='ts'>
     export let height : number;
 </script>
-<div class="absolute right-6 top-10 md:top-14">
+<div class="absolute right-6 top-10 md:top-14 translate-y-24">
     <div class="relative" style="height: {height}px">
         <div class="h-full w-0.5 bg-gray-600" />
         <div

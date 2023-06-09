@@ -1,4 +1,4 @@
-<div class="flex justify-between xs:px-24 px-3 py-6 sm:pt-2 font-medium">
+<div class="flex justify-between xs:px-24 px-3 py-6 pt-4 md:pt-8 font-medium">
     <div
         class="text-xs md:text-base px-2 md:px-4 border-l-[12px] md:border-l-0 md:border-r-[16px] border-gray-200 text-center xs:-translate-x-[82px] md:-translate-x-[69px]"
     >

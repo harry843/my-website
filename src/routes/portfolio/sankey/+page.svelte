@@ -34,10 +34,19 @@
 <svelte:window bind:innerWidth />
 
 <div class="relative p-0 sm:py-4 md:px-8">
-	{#if width > 0 && width < 490}
+	{#if width > 0 && width < 491}
 		<MobileBanner />
 	{/if}
+	<h1 class="text-xl [@media(min-width:818px)]:text-2xl font-medium p-2 pl-3 md:pl-10 md:pt-4 border-gray-100 border-b-2">
+		Visualising patient flow through NHS Services following a 111 call
+	</h1>
+	{#if innerWidth > 767}
+	<p class="pt-2 pl-8">Hover over the chart nodes and links to find out more! Select a node to focus on one pathway.</p>
+	{/if}
 	<SankeyLayers />
+	{#if innerWidth < 768 && width > 0}
+	<p class="pt-2">Select the chart nodes and links to find out more!</p>
+	{/if}
 	<section
 		bind:clientWidth={width}
 		class="relative flex flex-col items-center font-normal text-sm h-full w-full"
