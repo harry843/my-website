@@ -43,13 +43,13 @@
 		Visualising patient flow through NHS Services following a 111 call
 	</h1>
 	{#if innerWidth > 767}
-		<p class="px-3 py-1">
+		<h2 class="px-3 py-1 text-gray-600">
 			Hover over the chart nodes and links to find out more! Select a node to focus on one pathway.
-		</p>
+		</h2>
 	{/if}
 	<SankeyLayers />
 	{#if innerWidth < 768 && width > 0}
-		<p class="px-3 py-1">Select the chart nodes and links to find out more!</p>
+		<p class="px-3 py-1 text-gray-600">Select the chart nodes and links to find out more!</p>
 	{/if}
 	<section
 		bind:clientWidth={width}
