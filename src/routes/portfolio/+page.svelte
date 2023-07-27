@@ -21,7 +21,7 @@
 			skills: ['d3.js', 'Svelte']
 		},
 		{
-			title: 'COVID-19 Vaccine Trials',
+			title: 'Covid Vaccine Trials',
 			description: "Dashboard showing the number of people signed up for the COVID-19 vaccine studies volunteer service across the UK.",
 			image: 'covid-vaccine-volunteers.png',
 			url: '/portfolio/covid-vaccine',
@@ -57,7 +57,7 @@
 					<img src={`/${project.image}`} alt={project.title} />
 				</div>
 				<div class="p-4 space-y-2">
-					<div class="flex justify-between items-center">
+					<div class="flex flex-col sm:flex-row md:flex-col lg:flex-row lg:items-center xl:flex-col xl:items-start mxl:flex-row mxl:items-start sm:items-center md:items-start justify-between gap-y-2">
 						<h1 class="font-medium text-base">{project.title}</h1>
 						<div class="flex gap-x-2">
 							{#each project.skills as skill}
