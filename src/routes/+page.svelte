@@ -1,10 +1,10 @@
 <script lang="ts">
 	let width;
 	const text = [
-		{name:'BI developer.', image:'HK_thumbnail.png'},
-		{name:'nerd?', image:'HK_Naruto.png'},
-		{name:'musician?', image:'HK_Music.jpg'},
-		{name:'enough?', image:'HK_Ken.png'}
+		{name:'BI developer.', image:'HK_thumbnail.png', alt: "Harry's profile picture"},
+		{name:'nerd?', image:'HK_Naruto.png', alt:"Harry as a cartoon"},
+		{name:'musician?', image:'HK_Music.jpg', alt:"Harry creating music"},
+		{name:'enough?', image:'HK_Ken.png', alt:"Am I Kenough?"}
 	];
 	let counter: number = 0;
 	let cycles: number = 0;
@@ -65,7 +65,7 @@
 	{/if}
 
 	<div class="py-8">
-		<img src={text[counter].image} alt="Harry as Ken" width="400" height="400" style="border-radius: 50%" />
+		<img src={text[counter].image} alt={text[counter].alt} width="400" height="400" style="border-radius: 50%" />
 	</div>
 
 </section>
