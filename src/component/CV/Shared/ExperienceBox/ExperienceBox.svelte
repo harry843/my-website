@@ -4,6 +4,7 @@
 	import ExperienceBullets from './ExperienceBullet/ExperienceBullet.svelte';
 	import ExperienceDates from './ExperienceDates/ExperienceDates.svelte';
 	import ExperienceLocations from './ExperienceLocations/ExperienceLocations.svelte';
+	export let withArrow = false;
 	export let imageColorClass: string;
 	export let image: string;
 	export let title: string;
@@ -17,7 +18,7 @@
 <div
 	class="flex max-h-max w-full flex-col gap-y-2 rounded-xl border border-gray-100 p-4 text-xs text-gray-600"
 >
-	<ExperienceBoxHeader {imageColorClass} {image} {title} {employer} {employer_url} />
+	<ExperienceBoxHeader {imageColorClass} {image} {title} {employer} {employer_url} {withArrow}/>
 	<ExperienceBullets {bullets} />
 	<div class="flex flex-col xs:flex-row justify-between">
 		<ExperienceDates {timeframe} />
