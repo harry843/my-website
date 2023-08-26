@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as d3 from 'd3';
+	import RadarChart from '../component/RadarChart/RadarChart.svelte';
 
 	let width;
 	const text = [
@@ -51,39 +52,6 @@
 			: "Hi, I'm a ";
 
 	$: k = counter === text.length - 1 ? '𝓚' : '';
-
-	const data = [
-		{
-			Name: 'Harry',
-			'Data Viz': 9,
-			Leadership: 16,
-			Storytelling: 12,
-			'Project Management': 12,
-			'Data Pipelines': 18,
-			Coding: 15
-		}
-	];
-
-	let radar;
-	let radarWidth = 400;
-	let radarHeight = 400;
-	let svg = d3.select('#radar').append('svg').attr('width', radarWidth).attr('height', radarHeight);
-
-	let radialScale = d3.scaleLinear().domain([0, 10]).range([0, 250]);
-	let ticks = [2, 4, 6, 8, 10];
-
-	svg
-		.selectAll('circle')
-		.data(ticks)
-		.join((enter) =>
-			enter
-				.append('circle')
-				.attr('cx', radarWidth / 2)
-				.attr('cy', radarHeight / 2)
-				.attr('fill', 'none')
-				.attr('stroke', 'gray')
-				.attr('r', (d) => radialScale(d))
-		);
 </script>
 
 <svelte:head>
@@ -104,16 +72,21 @@
 		<p class="py-4">I build dashboards to help grow your business.</p>
 	{/if}
 
-		<div class="py-8">
-			<img
-				src={text[counter].image}
-				alt={text[counter].alt}
-				width="400"
-				height="400"
-				style="border-radius: 50%"
-			/>
+	{#if cycles != 1}
+	<div class="py-8">
+		<img
+			src={text[counter].image}
+			alt={text[counter].alt}
+			width="400"
+			height="400"
+			style="border-radius: 50%"
+		/>
+	</div>
+	{/if}
+
+	{#if cycles === 1}
+		<div>
+			<RadarChart />
 		</div>
-
-		<div id="radar" class="items-center" bind:this={radar} />
-
+	{/if}
 </section>

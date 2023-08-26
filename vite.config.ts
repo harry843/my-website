@@ -7,7 +7,8 @@ const config: UserConfig = {
 		fs: {
 		  allow: ['..']
 		}
-	  }
+	  },
+	  
 };
 
 export default config;
