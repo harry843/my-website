@@ -1,8 +1,9 @@
 <script lang="ts">
-	import * as d3 from 'd3';
 	import RadarChart from '../component/RadarChart/RadarChart.svelte';
 
-	let width;
+	let width: number = 0;
+	let innerWidth: number = 0
+
 	const text = [
 		{ name: 'BI developer.', image: 'HK_thumbnail.png', alt: "Harry's profile picture" },
 		{ name: 'nerd?', image: 'HK_Naruto.png', alt: 'Harry as a cartoon' },
@@ -58,8 +59,10 @@
 	<title>Harry Kelleher</title>
 </svelte:head>
 
+<svelte:window bind:innerWidth />
+
+
 <section
-	bind:clientWidth={width}
 	class="container flex flex-col items-center font-normal px-4 py-2 text-lg w-full"
 >
 	<p>
@@ -83,10 +86,16 @@
 		/>
 	</div>
 	{/if}
+</section>
+<section
+	bind:clientWidth={width}
+	class="container flex flex-col items-center justify-center font-normal px-4 py-2 text-lg w-full" >
 
-	{#if cycles === 1}
-		<div>
-			<RadarChart />
-		</div>
-	{/if}
+{#if width > 0 && innerWidth > 0 && cycles===1}
+
+	<RadarChart {width} {innerWidth} />
+{/if}
+
+
+
 </section>
