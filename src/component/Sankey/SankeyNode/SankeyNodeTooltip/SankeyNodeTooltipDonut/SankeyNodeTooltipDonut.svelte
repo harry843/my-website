@@ -3,7 +3,7 @@
 		getDonutColour,
 		getDonutConditionalText
 	} from '../../../../../routes/portfolio/sankey/utils';
-	import { nodeTooltipData } from '../../../../../stores';
+	import { nodeTooltipData } from '../../../../../stores/stores';
 
 	export let nodes: any;
 </script>

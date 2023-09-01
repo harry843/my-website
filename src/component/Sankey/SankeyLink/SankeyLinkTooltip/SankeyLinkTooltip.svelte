@@ -3,7 +3,7 @@
 		formatTooltipValue,
 		getLinkTooltipText
 	} from '../../../../routes/portfolio/sankey/utils';
-	import { hoverStore, linkTooltipData } from '../../../../stores';
+	import { hoverStore, linkTooltipData } from '../../../../stores/stores';
 	import nodevalues from '../../../../routes/portfolio/sankey/nodevalues.json';
 	import classNames from 'classnames';
 	import type { TransformedLink } from '../../../../types/portfolio';

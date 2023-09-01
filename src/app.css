@@ -15,3 +15,28 @@
 		margin: 0.5rem 0;
 	}
 }
+
+.path {
+	stroke-dasharray: 1200;
+	stroke-dashoffset: 1200;
+	pointer-events: none;
+	animation: animateDash 3s linear forwards;
+  }
+  
+  .path-base {
+	fill-opacity: 0;
+	animation: animateFillOpacity 2.0s linear forwards;
+	animation-delay: 1.5s;
+  }
+  
+  @keyframes animateDash {
+	to {
+	  stroke-dashoffset: 0;
+	}
+  }
+  
+  @keyframes animateFillOpacity {
+	to {
+	  fill-opacity: 0.7;
+	}
+  }

@@ -8,7 +8,7 @@
 			description: "Weekly tracker of eight habits I've commited to in 2023, each connected to a broader goal I want to achieve.",
 			image: 'habit-tracker.png',
 			url: '/portfolio/habit-tracker',
-			isExternal: true,
+			isExternal: false,
 			skills: ['Tableau', 'Data Viz']
 		},
 		{
@@ -35,7 +35,15 @@
 			url: '/portfolio/digital-services',
 			isExternal: false,
 			skills: ['Tableau', 'Data Viz']
-		}
+		},
+		{
+			title: 'Dog CRUD App',
+			description: "React app demonstrating the four key operations an application should perform – Create, Read, Update, and Delete",
+			image: 'dog-crud-app.png',
+			url: 'https://dog-crud-application.vercel.app/',
+			isExternal: true,
+			skills: ['React', 'Next.js']
+		},
 	];
 </script>
 

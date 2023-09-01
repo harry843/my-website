@@ -1,7 +1,7 @@
 <script lang="ts">
 	import nodevalues from '../../../../routes/portfolio/sankey/nodevalues.json';
 	import { formatTooltipValue } from '../../../../routes/portfolio/sankey/utils';
-	import { hoverStore, nodeTooltipData } from '../../../../stores';
+	import { hoverStore, nodeTooltipData } from '../../../../stores/stores';
 	import classNames from 'classnames';
 	import type { TransformedNode } from '../../../../types/portfolio';
 	import SankeyNodeTooltipDonut from './SankeyNodeTooltipDonut/SankeyNodeTooltipDonut.svelte';

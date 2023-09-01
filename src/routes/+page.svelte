@@ -1,8 +1,8 @@
 <script lang="ts">
 	import RadarChart from '../component/RadarChart/RadarChart.svelte';
+	import { first_visit } from '../stores/home';
 
 	let width: number = 0;
-	let innerWidth: number = 0
 
 	const text = [
 		{ name: 'BI developer.', image: 'HK_thumbnail.png', alt: "Harry's profile picture" },
@@ -20,7 +20,9 @@
 		if (counter === 0) {
 			cycles++;
 			if (cycles === maxCycles) {
+				first_visit.set('false');
 				clearInterval(interval);
+				console.log(first_visit);
 			}
 		}
 	}
@@ -45,12 +47,7 @@
 			? 'text-indigo-600 font-medium'
 			: 'text-orange-600 font-medium';
 
-	$: def =
-		cycles === maxCycles
-			? "Well, I'm definitely a "
-			: counter === text.length - 1
-			? 'I am '
-			: "Hi, I'm a ";
+	$: def = counter === text.length - 1 ? 'I am ' : "Hi, I'm a ";
 
 	$: k = counter === text.length - 1 ? '𝓚' : '';
 </script>
@@ -59,43 +56,42 @@
 	<title>Harry Kelleher</title>
 </svelte:head>
 
-<svelte:window bind:innerWidth />
+<section class="flex flex-col items-center font-normal px-4 py-2 text-lg w-full">
 
+	{#if $first_visit === 'true'}
+		<p>
+			{def}<span class="text-3xl text-pink-600 font-medium">{k}</span><span
+				id="changeText"
+				class={textStyle}>{text[counter].name}</span
+			>
+		</p>
+		{#if cycles === 1}
+			<p class="pt-4">I build dashboards to help grow your business.</p>
+		{/if}
 
-<section
-	class="container flex flex-col items-center font-normal px-4 py-2 text-lg w-full"
->
-	<p>
-		{def}<span class="text-3xl text-pink-600 font-medium">{k}</span><span
-			id="changeText"
-			class={textStyle}>{text[counter].name}</span
-		>
-	</p>
-	{#if cycles === 1}
-		<p class="py-4">I build dashboards to help grow your business.</p>
-	{/if}
-
-	{#if cycles != 1}
-	<div class="py-8">
-		<img
-			src={text[counter].image}
-			alt={text[counter].alt}
-			width="400"
-			height="400"
-			style="border-radius: 50%"
-		/>
-	</div>
+		{#if cycles != 1}
+			<div class="py-8">
+				<img
+					src={text[counter].image}
+					alt={text[counter].alt}
+					width="400"
+					height="400"
+					style="border-radius: 50%"
+				/>
+			</div>
+		{/if}
 	{/if}
 </section>
-<section
-	bind:clientWidth={width}
-	class="container flex flex-col items-center justify-center font-normal px-4 py-2 text-lg w-full" >
+<section bind:clientWidth={width} class="flex flex-col items-center border-gray-100">
+	{#if width > 0 && $first_visit === 'false'}
+		<p>
+			I'm a <span class=" text-indigo-600 font-medium"
+				>Data Visualisation Developer.</span
+			>
+		</p>
 
-{#if width > 0 && innerWidth > 0 && cycles===1}
+		<p class="pt-4">I create data products to help grow your business.</p>
 
-	<RadarChart {width} {innerWidth} />
-{/if}
-
-
-
+		<RadarChart {width} />
+	{/if}
 </section>

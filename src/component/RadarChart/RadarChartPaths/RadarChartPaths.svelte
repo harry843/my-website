@@ -15,14 +15,13 @@
 
 	const d = lineGenerator(pathCoords);
     const strokeClass = getStrokeClass(color)
-    console.log('line coords', d)
-    console.log(strokeClass)
+
 </script>
 
 <g>
     {#if d}
 	<path d={d} fill="url('#myGradient')" class={`path-base`}/>
-	<path d={d} fill-opacity={0} class={`${strokeClass} path`}/>
+	<path d={d} fill-opacity={0} stroke-width="1" class={`${strokeClass} path`}/>
 
     {/if}
 </g>

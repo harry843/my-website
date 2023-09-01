@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { rgb } from 'd3';
-	import { hoverStore, activeNode, nodeTooltipData } from '../../../stores';
+	import { hoverStore, activeNode, nodeTooltipData } from '../../../stores/stores';
 
 	import classNames from 'classnames';
 	import type { TransformedNode } from '../../../types/portfolio';

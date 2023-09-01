@@ -2,9 +2,19 @@
 
 const defaultTheme = require('tailwindcss/defaultTheme');
 
+const safeList = [
+	"stroke-indigo-400",
+	"stroke-pink-400",
+	"stroke-yellow-400",
+	"stroke-yellow-500",
+	"stroke-blue-500",
+	"stroke-rose-500",
+	"stroke-indigo-500",'stroke-teal-500'
+  ];
+
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
-  safelist: [
+  safelist: [...safeList,
     'hover:text-location',
     'hover:text-linkedin',
     'hover:text-website',

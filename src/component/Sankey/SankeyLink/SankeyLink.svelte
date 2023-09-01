@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { sankeyLinkHorizontal } from 'd3-sankey';
-	import { hoverStore, linkTooltipData, activeNode } from '../../../stores';
+	import { hoverStore, linkTooltipData, activeNode } from '../../../stores/stores';
 	import type { TransformedLink } from '../../../types/portfolio';
 	import classNames from 'classnames';
 
