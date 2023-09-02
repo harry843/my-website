@@ -9,7 +9,7 @@
 	const verticesArray = [...Array(nVertices).keys()];
 	const levels = [0, 2, 4, 6, 8, 10];
 
-	const diagonalData = levels.map((level) => {
+	$: diagonalData = levels.map((level) => {
 		const coords = [];
 		for (let i = 0; i < nVertices; i += 1) {
 			const coordinate = angleToCoord(radarDim, nVertices, i, level, domainArray, rangeArray);
@@ -18,7 +18,7 @@
 		return coords;
 	});
 
-	const diagonalCoords = diagonalData.map((levelArray) =>
+	$: diagonalCoords = diagonalData.map((levelArray) =>
 		levelArray.map((levelCoord, i) => [
 			levelCoord,
 			i < levelArray.length - 1 ? levelArray[i + 1] : levelArray[0]
