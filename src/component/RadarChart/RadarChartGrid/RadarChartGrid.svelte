@@ -3,8 +3,8 @@
 
 	export let nVertices: number;
 	export let radarDim: number;
-	export let domainArray: [number, number];
-	export let rangeArray: [number, number];
+	export let domainArray: number[];
+	export let rangeArray: number[];
 
 	const verticesArray = [...Array(nVertices).keys()];
 	const levels = [0, 2, 4, 6, 8, 10];

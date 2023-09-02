@@ -6,11 +6,7 @@
 	import { getTraitCoords } from './utils/utils';
 
 	export let width: number;
-
-	width = width;
-
 	const domainArray: [number, number] = [0, 10];
-	let rangeArray: [number, number] = [0, width / 2 - 80];
 
 	const traits = [
 		{ name: 'Data Viz', score: 10 },
@@ -20,6 +16,7 @@
 		{ name: 'Data Pipelines', score: 8 },
 		{ name: 'Coding', score: 8 }
 	];
+	const nVertices = traits.length;
 
 	const colors = [
 		{ name: 'rose', hex: '#f43f5e' },
@@ -28,14 +25,12 @@
 		{ name: 'teal', hex: '#14b8a6' }
 	];
 
+	$: rangeArray = [0, width / 2 - 80];
 	$: color = colors[Math.floor(Math.random() * colors.length)];
-
-	const nVertices = traits.length;
-
 	$: pathCoords = getTraitCoords(traits, width, nVertices, domainArray, rangeArray);
 </script>
 
-<svg {width} height={width} class="border border-red-500">
+<svg {width} height={width}>
 	<defs>
 		<radialGradient id="myGradient">
 			<stop offset="20%" stop-color={color.hex} stop-opacity={0} />
