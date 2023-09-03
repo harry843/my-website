@@ -3,7 +3,7 @@ import { writable } from 'svelte/store';
 
 const defaultValue = 'true';
 const initialValue = browser
-	? window.sessionStorage.getItem('one_cycle') ?? defaultValue
+	? window.sessionStorage.getItem('firstVisit') ?? defaultValue
 	: defaultValue;
 
 export const firstVisit = writable<string>(initialValue);
