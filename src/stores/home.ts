@@ -3,15 +3,15 @@ import { writable } from 'svelte/store';
 
 const defaultValue = 'true';
 const initialValue = browser
-	? window.sessionStorage.getItem('one_cycle') ?? defaultValue
+	? window.sessionStorage.getItem('firstVisit') ?? defaultValue
 	: defaultValue;
 
-export const first_visit = writable<string>(initialValue);
+export const firstVisit = writable<string>(initialValue);
 
-first_visit.subscribe((value) => {
+firstVisit.subscribe((value) => {
 	if (browser) {
-		window.sessionStorage.setItem('first_visit', value);
+		window.sessionStorage.setItem('firstVisit', value);
 	}
 });
 
-export { first_visit as default };
+export { firstVisit as default };

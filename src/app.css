@@ -17,16 +17,16 @@
 }
 
 .path {
-	stroke-dasharray: 1200;
-	stroke-dashoffset: 1200;
+	stroke-dasharray: 1450;
+	stroke-dashoffset: 1450;
 	pointer-events: none;
-	animation: animateDash 3s linear forwards;
+	animation: animateDash 2.5s linear forwards;
   }
   
   .path-base {
 	fill-opacity: 0;
 	animation: animateFillOpacity 2.0s linear forwards;
-	animation-delay: 1.5s;
+	animation-delay: 2.35s;
   }
   
   @keyframes animateDash {

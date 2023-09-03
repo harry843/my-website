@@ -1,6 +1,6 @@
 <script lang="ts">
 	import RadarChart from '../component/RadarChart/RadarChart.svelte';
-	import { first_visit } from '../stores/home';
+	import { firstVisit } from '../stores/home';
 
 	let width: number = 0;
 
@@ -20,9 +20,9 @@
 		if (counter === 0) {
 			cycles++;
 			if (cycles === maxCycles) {
-				first_visit.set('false');
+				firstVisit.set('false');
 				clearInterval(interval);
-				console.log(first_visit);
+				console.log(firstVisit);
 			}
 		}
 	}
@@ -56,19 +56,14 @@
 	<title>Harry Kelleher</title>
 </svelte:head>
 
-<section class="flex flex-col items-center font-normal px-4 py-2 text-lg w-full">
-
-	{#if $first_visit === 'true'}
+{#if $firstVisit === 'true'}
+	<section class="flex flex-col items-center font-normal px-4 py-2 text-lg w-full">
 		<p>
 			{def}<span class="text-3xl text-pink-600 font-medium">{k}</span><span
 				id="changeText"
 				class={textStyle}>{text[counter].name}</span
 			>
 		</p>
-		{#if cycles === 1}
-			<p class="pt-4">I build dashboards to help grow your business.</p>
-		{/if}
-
 		{#if cycles != 1}
 			<div class="py-8">
 				<img
@@ -80,18 +75,19 @@
 				/>
 			</div>
 		{/if}
-	{/if}
-</section>
-<section bind:clientWidth={width} class="flex flex-col items-center border-gray-100">
-	{#if width > 0 && $first_visit === 'false'}
-		<p>
-			I'm a <span class=" text-indigo-600 font-medium"
-				>Data Visualisation Developer.</span
-			>
-		</p>
-
-		<p class="pt-4">I create data products to help grow your business.</p>
-
-		<RadarChart {width} />
-	{/if}
-</section>
+	</section>
+{:else}
+	<section class="flex flex-col md:flex-row-reverse">
+		<div class="space-y-4 md:p-8 w-full md:w-1/2">
+			<p>
+				I'm a <span class=" text-indigo-600 font-medium">Data Visualisation Developer.</span>
+			</p>
+			<p>I create data products to help grow your business.</p>
+		</div>
+		<div class="w-full md:w-1/2" bind:clientWidth={width}>
+			{#if width > 0}
+				<RadarChart {width} />
+			{/if}
+		</div>
+	</section>
+{/if}

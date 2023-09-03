@@ -7,10 +7,10 @@
 	}[];
 	export let radarDim: number;
 	export let nVertices: number;
-	export let domainArray: [number, number];
-	export let rangeArray: [number, number];
+	export let domainArray: number[];
+	export let rangeArray: number[];
 
-	const labelsData = traits.map(({ name }, i) => {
+	$: labelsData = traits.map(({ name }, i) => {
 		const coordinate = angleToCoord(radarDim, nVertices, i, 10.65, domainArray, rangeArray);
 		const isFirstXHalf = coordinate[0] < radarDim / 2;
 		const textAnchor =
