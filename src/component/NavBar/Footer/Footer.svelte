@@ -22,7 +22,7 @@
 	];
 </script>
 
-<footer class="flex items-center justify-center">
+<footer class="fa">
 	{#each contactInfo as { name, link, icon }}
 		<div class="fa-{name}">
 			<a href={link} target="_blank" rel="noopener noreferrer"><svelte:component this={icon} /></a>
