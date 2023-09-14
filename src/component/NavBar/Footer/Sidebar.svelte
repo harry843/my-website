@@ -22,10 +22,10 @@
 	];
 </script>
 
-<footer class="fa">
+<aside class="fa">
 	{#each contactInfo as { name, link, icon }}
 		<div class="fa-{name}">
 			<a href={link} target="_blank" rel="noopener noreferrer"><svelte:component this={icon} /></a>
 		</div>
 	{/each}
-</footer>
+</aside >

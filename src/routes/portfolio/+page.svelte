@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
+	import Image from '../../component/Image/Image.svelte';
 
 	let width;
-	const projects = [
+
+	$: projects = [
 		{
 			title: 'Habit Tracker',
 			description:
@@ -9,7 +11,8 @@
 			image: 'habit-tracker.png',
 			url: '/portfolio/habit-tracker',
 			isExternal: false,
-			skills: ['Tableau', 'Data Viz']
+			skills: ['Tableau', 'Data Viz'],
+			loaded: false
 		},
 		{
 			title: 'Patient Flow',
@@ -18,7 +21,8 @@
 			image: 'sankey.png',
 			url: '/portfolio/sankey',
 			isExternal: false,
-			skills: ['d3.js', 'Svelte']
+			skills: ['d3.js', 'Svelte'],
+			loaded: false
 		},
 		{
 			title: 'Covid Vaccine Trials',
@@ -27,7 +31,8 @@
 			image: 'covid-vaccine-volunteers.png',
 			url: '/portfolio/covid-vaccine',
 			isExternal: false,
-			skills: ['Tableau', 'Data Viz']
+			skills: ['Tableau', 'Data Viz'],
+			loaded: false
 		},
 		{
 			title: 'NHS Digital Services',
@@ -36,7 +41,8 @@
 			image: 'digital-services.png',
 			url: '/portfolio/digital-services',
 			isExternal: false,
-			skills: ['Tableau', 'Data Viz']
+			skills: ['Tableau', 'Data Viz'],
+			loaded: false
 		},
 		{
 			title: 'Dog CRUD App',
@@ -45,9 +51,11 @@
 			image: 'dog-crud-app.png',
 			url: 'https://dog-crud-application.vercel.app/',
 			isExternal: true,
-			skills: ['React', 'Next.js']
+			skills: ['React', 'Next.js'],
+			loaded: false
 		}
 	];
+
 </script>
 
 <svelte:head>
@@ -62,10 +70,10 @@
 				href={project.url}
 				target={project.isExternal ? '_blank' : null}
 				rel="noreferrer"
-				class="border rounded-sm shadow-sm hover:shadow-md"
+				class="border min-h-[360px] flex flex-col justify-between rounded-sm shadow-sm hover:shadow-md"
 			>
-				<div class="border-b flex items-center">
-					<img src={`/${project.image}`} alt={project.title} />
+				<div class="border-b flex flex-grow items-center">
+					<Image src={`/${project.image}`} alt={project.title} />
 				</div>
 				<div class="p-4 space-y-2">
 					<div

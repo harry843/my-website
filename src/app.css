@@ -18,13 +18,15 @@
 
 .fa {
 	display: flex;
+	flex-direction: column;
+	position: sticky;
 	height: 2.5rem; /* Corresponds to h-10 in Tailwind CSS */
-	width: 80%; /* Corresponds to w-full in Tailwind CSS */
-	margin: 0 auto;
 	padding-top: 1.5rem;
-	border-top-width: 2px; /* Corresponds to border-t-2 in Tailwind CSS */
-	align-items: center; /* Corresponds to items-center in Tailwind CSS */
-	justify-content: center; /* Corresponds to justify-center in Tailwind CSS */
+	align-items: flex-end; /* Horizontally right-aligned */
+	justify-content: center; /* Vertically centered */
+	gap: 1rem;
+	top: 0; /* Stick to the top of the containing element */
+	z-index: 1; /* Ensure it appears above other content */
   }
 
 .fa-tableau {

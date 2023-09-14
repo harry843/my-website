@@ -1,13 +1,14 @@
 <script lang="ts">
 	import '../app.css';
-	import Footer from '../component/NavBar/Footer/Footer.svelte';
+	import Sidebar from '../component/NavBar/Footer/Sidebar.svelte';
 	import NavBar from '../component/NavBar/NavBar.svelte';
 	
 </script>
 
 <NavBar />
-<section class="flex flex-col min-h-screen justify-between px-2 xs:px-4 md:px-16 lg:px-32 xl:px-44 2xl:px-56 mt-20 py-4">
+<section class="min-h-screen justify-between px-2 xs:px-4 md:px-16 lg:px-32 xl:px-44 2xl:px-56 mt-20 py-4">
 	<slot />
+	<Sidebar />
 </section>
 
-<Footer />
+
