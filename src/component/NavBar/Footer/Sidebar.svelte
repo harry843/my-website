@@ -25,7 +25,7 @@
 	];
 </script>
 
-<div class="sticky flex flex-col items-center pt-6 self-start gap-8 top-1/2 w-0 transform -translate-y-3/4 -translate-x-1/4 lg:translate-x-3/4 z-10 bg-red-500">
+<div class="fixed flex right-8 flex-col items-center pt-6 self-start gap-8 top-1/2 w-0 transform -translate-y-3/4 -translate-x-1/4 lg:translate-x-3/4 z-10 bg-red-500">
 	{#each contactInfo as { link, className, icon }}
 		<div class={classNames("no-underline rounded-full", className)} >
 			<a href={link} target="_blank" rel="noopener noreferrer"><svelte:component this={icon} /></a>
