@@ -77,8 +77,8 @@
 		{/if}
 	</section>
 {:else}
-	<section class="flex flex-col md:flex-row-reverse">
-		<div class="space-y-4 md:p-8 w-full md:w-1/2">
+	<section class="">
+		<div class="flex flex-col md:flex-row-reverse space-y-4 md:p-8 w-full md:w-1/2">
 			<p>
 				I'm a <span class=" text-indigo-600 font-medium">Data Visualisation Developer.</span>
 			</p>

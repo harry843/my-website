@@ -21,27 +21,39 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 5rem; /* Corresponds to h-10 in Tailwind CSS */
 	padding-top: 1.5rem;
 	justify-content: center; /* Vertically centered */
 	align-self: flex-start;
 	gap: 2rem;
 	top: 50%; /* Stick to the top of the containing element */
-	right: 30px;
-	transform: translateY(-75%);
+	transform: translateY(-75%) translateX(75%);
 	z-index: 1; /* Ensure it appears above other content */
   }
 
-.sticky-sidebar-tableau {
-	
-	padding-left: 2.25rem;
-	padding-right: 2.25rem;
-	padding-bottom: 0.6rem;
+  @media (max-width: 1023x) {
+	.sticky-sidebar {
+	transform: translateY(75%) translateX(-100%);
+	padding-right: 3rem;
+	background-color: red;
+	align-self: 2rem;
+	top: 0;
+  }
+}
+
+.sticky-sidebar-icon {
 	width: 30px;
 	margin: 0 3px;
 	text-align: center;
 	text-decoration: none;
 	border-radius: 50%;
+}
+
+.sticky-sidebar-tableau {
+	
+	padding-left: 2.25rem;
+	padding-right: 1.90rem;
+	padding-bottom: 0.6rem;
+	
 	filter: grayscale(1);
 }
 
@@ -49,38 +61,20 @@
 	
 	padding-left: 2.25rem;
 	padding-right:2.25rem;
-	padding-bottom: 0.6rem;
-	width: 30px;
-	margin: 0 3px;
-	text-align: center;
-	text-decoration: none;
-	border-radius: 50%;
 	filter: grayscale(1);
 }
 
 .sticky-sidebar-github {
 	
 	padding-left: 2.25rem;
-	padding-right:2.25rem;
-	padding-bottom: 0.6rem;
-	width: 30px;
-	margin: 0 3px;
-	text-align: center;
-	text-decoration: none;
-	border-radius: 50%;
+	padding-right:1.85rem;
+	padding-bottom: 0.25rem;
 }
 
 .sticky-sidebar-email {
 	
 	padding-left: 2.25rem;
 	padding-right:2.25rem;
-	padding-bottom: 0.6rem;
-	width: 30px;
-	margin: 0 3px;
-	text-align: center;
-	text-decoration: none;
-	
-	border-radius: 50%;
 }
 
 .sticky-sidebar-tableau:hover {
@@ -98,25 +92,6 @@
 .sticky-sidebar-email:hover path {
 	fill: #db4437;
 }
-
-@media (max-width: 480px) {
-	.fa-tableau {
-	  padding-left: 1.5rem;
-	  padding-right: 1.5rem;
-	}
-	.fa-linkedin {
-	  padding-left: 1.5rem;
-	  padding-right: 1.5rem;
-	}
-	.fa-github {
-	  padding-left: 1.5rem;
-	  padding-right: 1.5rem;
-	}
-	.fa-email {
-	  padding-left: 1.5rem;
-	  padding-right: 1.5rem;
-	}
-  }
 
 .path {
 	stroke-dasharray: 1450;
