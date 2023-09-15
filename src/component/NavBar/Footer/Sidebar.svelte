@@ -22,10 +22,10 @@
 	];
 </script>
 
-<aside class="fa">
+<div class="sticky-sidebar">
 	{#each contactInfo as { name, link, icon }}
-		<div class="fa-{name}">
+		<div class="sticky-sidebar-{name}">
 			<a href={link} target="_blank" rel="noopener noreferrer"><svelte:component this={icon} /></a>
 		</div>
 	{/each}
-</aside >
+	</div >

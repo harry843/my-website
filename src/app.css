@@ -16,20 +16,23 @@
 	}
 }
 
-.fa {
+.sticky-sidebar {
+	position: sticky;
 	display: flex;
 	flex-direction: column;
-	position: sticky;
-	height: 2.5rem; /* Corresponds to h-10 in Tailwind CSS */
+	align-items: center;
+	width: 5rem; /* Corresponds to h-10 in Tailwind CSS */
 	padding-top: 1.5rem;
-	align-items: flex-end; /* Horizontally right-aligned */
 	justify-content: center; /* Vertically centered */
-	gap: 1rem;
-	top: 0; /* Stick to the top of the containing element */
+	align-self: flex-start;
+	gap: 2rem;
+	top: 50%; /* Stick to the top of the containing element */
+	right: 30px;
+	transform: translateY(-75%);
 	z-index: 1; /* Ensure it appears above other content */
   }
 
-.fa-tableau {
+.sticky-sidebar-tableau {
 	
 	padding-left: 2.25rem;
 	padding-right: 2.25rem;
@@ -42,7 +45,7 @@
 	filter: grayscale(1);
 }
 
-.fa-linkedin {
+.sticky-sidebar-linkedin {
 	
 	padding-left: 2.25rem;
 	padding-right:2.25rem;
@@ -55,7 +58,7 @@
 	filter: grayscale(1);
 }
 
-.fa-github {
+.sticky-sidebar-github {
 	
 	padding-left: 2.25rem;
 	padding-right:2.25rem;
@@ -67,7 +70,7 @@
 	border-radius: 50%;
 }
 
-.fa-email {
+.sticky-sidebar-email {
 	
 	padding-left: 2.25rem;
 	padding-right:2.25rem;
@@ -80,19 +83,19 @@
 	border-radius: 50%;
 }
 
-.fa-tableau:hover {
+.sticky-sidebar-tableau:hover {
 	filter: grayscale(0);
 }
 
-.fa-linkedin:hover {
+.sticky-sidebar-linkedin:hover {
 	filter: grayscale(0);
 }
 
-.fa-github:hover path {
+.sticky-sidebar-github:hover path {
 	fill: #171515;
 }
 
-.fa-email:hover path {
+.sticky-sidebar-email:hover path {
 	fill: #db4437;
 }
 
