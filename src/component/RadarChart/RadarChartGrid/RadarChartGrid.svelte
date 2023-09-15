@@ -34,7 +34,7 @@
 				y1={lineCoords[vertice][0][1]}
 				x2={lineCoords[vertice][1][0]}
 				y2={lineCoords[vertice][1][1]}
-				class="stroke-gray-400 opacity-50"
+				class="stroke-gray-300 opacity-50"
 			/>
 		{/each}
 	{/each}
