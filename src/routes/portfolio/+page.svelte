@@ -55,7 +55,6 @@
 			loaded: false
 		}
 	];
-
 </script>
 
 <svelte:head>
@@ -70,19 +69,17 @@
 				href={project.url}
 				target={project.isExternal ? '_blank' : null}
 				rel="noreferrer"
-				class="border min-h-[360px] flex flex-col justify-between rounded-sm shadow-sm hover:shadow-md"
+				class="border flex flex-col divide-y rounded-sm shadow-sm hover:shadow-md"
 			>
-				<div class="border-b flex flex-grow items-center">
-					<Image src={`/${project.image}`} alt={project.title} />
-				</div>
+				<Image src={`/${project.image}`} alt={project.title} />
 				<div class="p-4 space-y-2">
 					<div
-						class="flex flex-col sm:flex-row md:flex-col lg:flex-row lg:items-center xl:flex-col xl:items-start mxl:flex-row mxl:items-start sm:items-center md:items-start justify-between gap-y-2"
+						class="flex flex-col xs:flex-row md:flex-col lg:flex-row lg:items-center xl:flex-col xl:items-start mxl:flex-row mxl:items-start sm:items-center md:items-start justify-between gap-y-2"
 					>
 						<h1 class="font-medium text-base">{project.title}</h1>
 						<div class="flex gap-x-2">
 							{#each project.skills as skill}
-								<span class="rounded-full px-4 py-1 bg-indigo-600 text-white text-xs">{skill}</span>
+								<span class="rounded-full px-4 py-1 font-medium bg-indigo-600 text-white text-xs">{skill}</span>
 							{/each}
 						</div>
 					</div>

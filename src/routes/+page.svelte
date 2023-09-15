@@ -77,17 +77,17 @@
 		{/if}
 	</section>
 {:else}
-	<section class="">
-		<div class="flex flex-col md:flex-row-reverse space-y-4 md:p-8 w-full md:w-1/2">
-			<p>
-				I'm a <span class=" text-indigo-600 font-medium">Data Visualisation Developer.</span>
-			</p>
-			<p>I create data products to help grow your business.</p>
-		</div>
+	<section class="flex flex-col-reverse md:flex-row">
 		<div class="w-full md:w-1/2" bind:clientWidth={width}>
 			{#if width > 0}
 				<RadarChart {width} />
 			{/if}
+		</div>
+		<div class="space-y-4 md:p-8 w-full md:w-1/2">
+			<p>
+				I'm a <span class=" text-indigo-600 font-medium">Data Visualisation Developer.</span>
+			</p>
+			<p>I create data products to help grow your business.</p>
 		</div>
 	</section>
 {/if}

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Loading from '../Loading/Loading.svelte';
 	import { fade } from 'svelte/transition';
 	export let src: string;
 	export let alt: string;
@@ -25,19 +24,9 @@
 </script>
 
 {#if loaded}
-	<div class="loaded-image" in:fade>
-		<img {src} {alt} style="opacity: 1;" />
-	</div>
+	<img {src} {alt} style="opacity: 1;" class="object-contain h-[250px]" />
 {:else if failed}
 	<img src="https://icon-library.com/images/not-found-icon/not-found-icon-20.jpg" alt="Not Found" />
 {:else if loading}
-	<Loading />
+	<div class="bg-gray-50 animate-pulse h-[250px]" />
 {/if}
-
-<style>
-	/* CSS to reveal the image when it's loaded */
-	loaded-image {
-		opacity: 0;
-		transition: opacity 0.75s ease-in-out;
-	}
-</style>

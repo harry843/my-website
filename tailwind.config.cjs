@@ -3,24 +3,26 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 const safeList = [
-	"stroke-indigo-400",
-	"stroke-pink-400",
-	"stroke-yellow-400",
-	"stroke-yellow-500",
-	"stroke-blue-500",
-	"stroke-rose-500",
-	"stroke-indigo-500",'stroke-teal-500'
-  ];
+	'stroke-indigo-400',
+	'stroke-pink-400',
+	'stroke-yellow-400',
+	'stroke-yellow-500',
+	'stroke-blue-500',
+	'stroke-rose-500',
+	'stroke-indigo-500',
+	'stroke-teal-500'
+];
 
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
-  safelist: [...safeList,
-    'hover:text-location',
-    'hover:text-linkedin',
-    'hover:text-website',
-    'hover:text-github',
-    'hover:text-email'
-  ],
+	safelist: [
+		...safeList,
+		'hover:text-location',
+		'hover:text-linkedin',
+		'hover:text-website',
+		'hover:text-github',
+		'hover:text-email'
+	],
 	theme: {
 		extend: {
 			screens: {
@@ -48,6 +50,19 @@ module.exports = {
 				email: '#e11d48',
 
 				...defaultTheme.colors
+			},
+			keyframes: {
+				'fade-in': {
+					'0%': {
+						opacity: '0'
+					},
+					'100%': {
+						opacity: '1'
+					}
+				}
+			},
+			animation: {
+				'fade-in': 'fade-in 0.5s ease-out'
 			}
 		},
 		variants: {

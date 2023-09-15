@@ -11,25 +11,41 @@
 			contact: 'LinkedIn',
 			link: 'https://www.linkedin.com/in/harry-kelleher/',
 			icon: LinkedIn,
-			className: 'pl-[2.25rem] pr-[2rem] grayscale hover:grayscale-0'
+			className: 'grayscale hover:grayscale-0'
 		},
 		{
 			name: 'tableau',
 			contact: 'Tableau',
 			link: 'https://public.tableau.com/app/profile/harry.kelleher',
 			icon: Tableau,
-			className: 'pl-[2.25rem] pr-[2rem] pb-[0.6rem] grayscale hover:grayscale-0',
+			className: 'grayscale hover:grayscale-0'
 		},
-		{ name: 'github', contact: 'GitHub', link: 'https://github.com/harry843', icon: GitHub, className: 'pl-[2.15rem] pr-[1.85rem] pb-[0.25rem] hover:fill-gray-700'},
-		{ name: 'email', contact: 'Email', link: 'mailto:kelleherharry@gmail.com', icon: Email, className: 'pl-[2.05rem] pr-[1.85rem] hover:fill-red-600' }
+		{
+			name: 'github',
+			contact: 'GitHub',
+			link: 'https://github.com/harry843',
+			icon: GitHub,
+			className: 'hover:fill-gray-700'
+		},
+		{
+			name: 'email',
+			contact: 'Email',
+			link: 'mailto:kelleherharry@gmail.com',
+			icon: Email,
+			className: 'hover:fill-red-600'
+		}
 	];
 </script>
 
-<div class="sticky flex flex-col items-center pt-6 self-start gap-8 top-1/2 w-0 transform -translate-y-3/4 -translate-x-1/4 lg:translate-x-3/4 z-10 bg-red-500">
-	{#each contactInfo as { link, className, icon }}
-		<div class={classNames("no-underline rounded-full", className)} >
-			<a href={link} target="_blank" rel="noopener noreferrer"><svelte:component this={icon} /></a>
-		</div>
-	{/each}
-	</div >
-
+<div class="flex justify-center">
+	<div
+		class="fixed flex justify-center md:right-2 md:flex-col items-center gap-6 md:gap-8 bottom-0 -translate-y-2 md:bottom-1/2 transform md:translate-y-1/2 z-10"
+	>
+		{#each contactInfo as { link, className, icon }}
+			<div class={classNames('no-underline rounded-full', className)}>
+				<a href={link} target="_blank" rel="noopener noreferrer"><svelte:component this={icon} /></a
+				>
+			</div>
+		{/each}
+	</div>
+</div>
