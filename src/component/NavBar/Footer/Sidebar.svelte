@@ -39,7 +39,7 @@
 
 <div class="flex justify-center">
 	<div
-		class="fixed flex justify-center md:right-2 md:flex-col items-center gap-6 md:gap-8 bottom-0 -translate-y-2 md:bottom-1/2 transform md:translate-y-1/2 z-10"
+		class="fixed flex justify-center md:right-7 md:flex-col items-center gap-6 md:gap-9 bottom-0 -translate-y-2 md:bottom-1/2 transform md:translate-y-1/2 z-10"
 	>
 		{#each contactInfo as { link, className, icon }}
 			<div class={classNames('no-underline rounded-full', className)}>

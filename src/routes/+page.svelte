@@ -78,7 +78,7 @@
 	</section>
 {:else}
 	<section class="flex flex-col-reverse md:flex-row">
-		<div class="w-full md:w-1/2" bind:clientWidth={width}>
+		<div class="w-full xs:w-11/12 xs:translate-x-7 sm:w-3/4 sm:translate-x-20 md:w-1/2 md:translate-x-0" bind:clientWidth={width}>
 			{#if width > 0}
 				<RadarChart {width} />
 			{/if}
