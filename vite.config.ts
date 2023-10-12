@@ -1,14 +1,13 @@
-import { sveltekit } from '@sveltejs/kit/vite';
-import type { UserConfig } from 'vite';
+import { sveltekit } from '@sveltejs/kit/vite'
+import path from 'path';
+import houdini from 'houdini/vite'
+import { defineConfig } from 'vite'
 
-const config: UserConfig = {
-	plugins: [sveltekit()],
-	server: {
-		fs: {
-		  allow: ['..']
-		}
-	  },
-	  
-};
-
-export default config;
+export default defineConfig({
+	plugins: [houdini(), sveltekit()],
+	resolve: {
+        alias: {
+            $houdini: path.resolve('.', '$houdini'),
+        },
+    },
+});

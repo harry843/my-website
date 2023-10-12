@@ -1,0 +1,12 @@
+query GetAllPost {
+	allPost {
+		title
+		tags
+		contentRaw
+		mainImage {
+			asset {
+				url
+			}
+		}
+	}
+}
