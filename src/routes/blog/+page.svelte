@@ -24,16 +24,24 @@
 {:else}
 	{#if $GetAllPost.data?.allPost}
 		{#each $GetAllPost.data?.allPost as post}
-			<div class="p-2 text-lg font-medium pb-4">
+		<a href={"blog/"+post.slug?.current} >
+			<div class="p-2 text-lg font-medium pb-2">
 				{post.title}
 			</div>
+			{#if post.mainImage}
+			<div class="p-4">
+				<img src={post.mainImage?.image?.asset?.url+"?h=240&fit=max"} alt={post.mainImage.alt}>
+			</div>
+			{/if}
 			{#if post.tags}
-			<div class="flex gap-x-2">
+			<div class="flex justify-center gap-x-2">
 				{#each post.tags as tag}
 						<span class="rounded-full px-4 py-1 font-medium bg-indigo-600 text-white text-xs">{tag}</span>
 				{/each}
 			</div>
+			<br>
 			{/if}
+		</a>
 		{/each}
 	{/if}
 	{/if}

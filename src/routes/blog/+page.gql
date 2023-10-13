@@ -1,12 +1,18 @@
 query GetAllPost {
 	allPost {
 		title
+		slug {
+			current
+		}
 		tags
 		contentRaw
 		mainImage {
-			asset {
-				url
+			image {
+				asset {
+					url
+				}
 			}
+			alt
 		}
 	}
 }
