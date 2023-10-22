@@ -11,7 +11,7 @@
 	<h1 class="text-xl font-medium">{$GetPostBySlug.data?.allPost[0].title}</h1>
 
 	<br />
-	{#if $GetPostBySlug.data?.allPost[0].contentRaw != null}
+	{#if $GetPostBySlug.data?.allPost[0].contentRaw}
 			<PortableText class="" value={$GetPostBySlug.data?.allPost[0].contentRaw} />
 	{/if}
 </div>

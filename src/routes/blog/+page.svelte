@@ -22,7 +22,7 @@
   <!-- Display an error message if there was an error -->
   <div class="text-red-500">An error occurred while fetching data. Please try again later.</div>
 {:else}
-	{#if $GetAllPost.data?.allPost}
+	{#if $GetAllPost.data?.allPost && $GetAllPost.data?.allPost!=undefined}
 		{#each $GetAllPost.data?.allPost as post}
 		<a href={"blog/"+post.slug?.current} >
 			<div class="p-2 text-lg font-medium pb-2">
