@@ -51,6 +51,12 @@ module.exports = {
 
 				...defaultTheme.colors
 			},
+			fontFamily: {
+				customParagraph: ['Roboto'],
+				customHeading: ['Roboto Slab'],
+				customQuote: ['Heebo']
+			}
+			,
 			keyframes: {
 				'fade-in': {
 					'0%': {
