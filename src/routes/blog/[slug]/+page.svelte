@@ -3,9 +3,9 @@
 	import CustomParagraph from '../../../component/PortableText/CustomParagraph.svelte';
 	import CustomUrl from '../../../component/PortableText/CustomURL.svelte';
 	import CustomBullet from '../../../component/PortableText/CustomBullet.svelte';
-	import CustomQuote from '../../../component/PortableText/CustomQuote.svelte';
+	import BlockQuote from '../../../component/PortableText/BlockQuote.svelte';
 	import CustomListItem from '../../../component/PortableText/CustomListItem.svelte';
-	import Quote from '../../../component/PortableText/Quote.svelte';
+	import CustomQuote from '../../../component/PortableText/CustomQuote.svelte';
 	import type { PageData } from './$houdini';
 	import { PortableText } from '@portabletext/svelte';
 
@@ -34,17 +34,17 @@
 	{#if blog?.contentRaw}
 		<PortableText
 			components={{
+				types: {
+					quote: CustomQuote
+				},
 				block: {
 					normal: CustomParagraph,
-					blockquote: CustomQuote,
+					blockquote: BlockQuote,
 					h1: CustomHeading,
 					h2: CustomHeading,
 					h3: CustomHeading,
 					h4: CustomHeading,
 					h5: CustomHeading
-				},
-				quote: {
-					quote: Quote
 				},
 
 				marks: {
@@ -61,11 +61,5 @@
 			onMissingComponent={false}
 		/>
 		<br />
-		{#each blog?.contentRaw.filter((x) => x._type == 'quote') as quote}
-			<Quote>
-				<blockquote slot="text">{quote.text}</blockquote>
-				<figcaption slot="author">{quote.author}</figcaption>
-			</Quote>
-		{/each}
 	{/if}
 </div>

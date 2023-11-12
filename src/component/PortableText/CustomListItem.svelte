@@ -1,1 +1,1 @@
-<li class="py-10"><slot /></li>
+<li class="py-2"><slot /></li>
