@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let portableText;
 	$: quote = portableText?.value
+	//$: console.log(quote);
 </script>
 <br>
 <figure
@@ -10,7 +11,7 @@
 		<slot name="text">{quote.text}</slot>
 	</blockquote>
 
-	<figcaption class="text-right not-italic text-base">
+	<figcaption class="text-right not-italic text-base pt-2">
 		<slot name="author">{quote.author}</slot>
 	</figcaption>
 </figure>

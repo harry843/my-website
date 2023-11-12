@@ -6,6 +6,7 @@
 	import BlockQuote from '../../../component/PortableText/BlockQuote.svelte';
 	import CustomListItem from '../../../component/PortableText/CustomListItem.svelte';
 	import CustomQuote from '../../../component/PortableText/CustomQuote.svelte';
+	import CustomImage from '../../../component/PortableText/CustomImage.svelte';
 	import type { PageData } from './$houdini';
 	import { PortableText } from '@portabletext/svelte';
 
@@ -14,7 +15,7 @@
 	$: ({ GetPostBySlug } = data);
 
 	$: blog = $GetPostBySlug.data?.allPost[0];
-	// $: blog ? console.log('blog', blog.contentRaw.filter(x => x._type == 'quote')) : null
+	//$: blog ? console.log('imageWithAlt', blog.mainImage.caption) : null
 </script>
 
 <svelte:head>
@@ -25,17 +26,22 @@
 	{#if blog?.title}
 		<h1 class="text-3xl font-semibold font-customHeading pb-6">{blog?.title}</h1>
 	{/if}
+
 	{#if blog?.mainImage}
 		<div class="py-4">
 			<img src={blog?.mainImage?.image?.asset?.url + '?fit=max'} alt={blog?.mainImage.alt} />
 		</div>
+	{/if}
+	{#if blog?.mainImage?.caption}
+		<div><p class="py-2 text-center text-sm">{blog?.mainImage?.caption}</p></div>
 	{/if}
 
 	{#if blog?.contentRaw}
 		<PortableText
 			components={{
 				types: {
-					quote: CustomQuote
+					quote: CustomQuote,
+					imageWithAlt: CustomImage
 				},
 				block: {
 					normal: CustomParagraph,
