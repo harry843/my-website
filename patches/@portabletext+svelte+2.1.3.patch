@@ -1,7 +1,7 @@
 diff --git a/node_modules/@portabletext/svelte/dist/defaultComponents/DefaultListItem.svelte b/node_modules/@portabletext/svelte/dist/defaultComponents/DefaultListItem.svelte
-index b80337d..fa8ff2b 100644
+index b80337d..ba8a9c4 100644
 --- a/node_modules/@portabletext/svelte/dist/defaultComponents/DefaultListItem.svelte
 +++ b/node_modules/@portabletext/svelte/dist/defaultComponents/DefaultListItem.svelte
 @@ -1 +1 @@
 -<li><slot /></li>
-+<li class="py-10"><slot /></li>
++<li class="py-2"><slot /></li>
