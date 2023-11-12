@@ -14,7 +14,6 @@
 
 {#if value.href}
   <a class="text-blue-600 underline" href={value.href} rel="noreferrer" target={newWindow ? '_blank' : undefined}>
-    <!-- Marks receive children which you can render with Svelte's slots -->
     <slot />
   </a>
 {:else}

@@ -2,15 +2,12 @@
 	import type { BlockComponentProps } from '@portabletext/svelte';
 	export let portableText: BlockComponentProps;
 
-	//$: ({ indexInParent, global, value } = portableText);
-	//$: ({ ptBlocks } = global);
-	//$: ({ portableText.value.style } = value);
-
 	const headers = portableText.value.style;
 	const precededByHeading = headers ? ['h1', 'h2', 'h3'].includes(headers) : undefined;
 
 	$: anchorId = headers ? `heading-${portableText.value._key}` : undefined;
-	// console.log(headers, precededByHeading);
+	//console.log(headers)
+
 </script>
 
 <!-- If preceded by heading, have a higher margin top -->

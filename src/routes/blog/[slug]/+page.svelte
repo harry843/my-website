@@ -4,15 +4,17 @@
 	import CustomUrl from '../../../component/PortableText/CustomURL.svelte';
 	import CustomBullet from '../../../component/PortableText/CustomBullet.svelte';
 	import CustomQuote from '../../../component/PortableText/CustomQuote.svelte';
+	import CustomListItem from '../../../component/PortableText/CustomListItem.svelte';
+	import Quote from '../../../component/PortableText/Quote.svelte';
 	import type { PageData } from './$houdini';
 	import { PortableText } from '@portabletext/svelte';
-	import CustomListItem from '../../../component/PortableText/CustomListItem.svelte';
 
 	export let data: PageData;
 
 	$: ({ GetPostBySlug } = data);
 
 	$: blog = $GetPostBySlug.data?.allPost[0];
+	// $: blog ? console.log('blog', blog.contentRaw.filter(x => x._type == 'quote')) : null
 </script>
 
 <svelte:head>
@@ -30,7 +32,6 @@
 	{/if}
 
 	{#if blog?.contentRaw}
-		<!-- @ts-ignore -->
 		<PortableText
 			components={{
 				block: {
@@ -43,7 +44,7 @@
 					h5: CustomHeading
 				},
 				quote: {
-					quote: CustomQuote
+					quote: Quote
 				},
 
 				marks: {
@@ -59,5 +60,12 @@
 			value={blog?.contentRaw}
 			onMissingComponent={false}
 		/>
+		<br />
+		{#each blog?.contentRaw.filter((x) => x._type == 'quote') as quote}
+			<Quote>
+				<blockquote slot="text">{quote.text}</blockquote>
+				<figcaption slot="author">{quote.author}</figcaption>
+			</Quote>
+		{/each}
 	{/if}
 </div>
