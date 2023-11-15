@@ -19,6 +19,10 @@
 	}
 }
 
+html {
+	scroll-padding-top: 75px;
+}
+
 .sticky-sidebar {
 	position: sticky;
 	display: flex;
@@ -31,16 +35,16 @@
 	top: 50%; /* Stick to the top of the containing element */
 	transform: translateY(-75%) translateX(75%);
 	z-index: 1; /* Ensure it appears above other content */
-  }
+}
 
-  @media (max-width: 1023x) {
+@media (max-width: 1023x) {
 	.sticky-sidebar {
-	transform: translateY(75%) translateX(-100%);
-	padding-right: 3rem;
-	background-color: red;
-	align-self: 2rem;
-	top: 0;
-  }
+		transform: translateY(75%) translateX(-100%);
+		padding-right: 3rem;
+		background-color: red;
+		align-self: 2rem;
+		top: 0;
+	}
 }
 
 .sticky-sidebar-icon {
@@ -52,32 +56,28 @@
 }
 
 .sticky-sidebar-tableau {
-	
 	padding-left: 2.25rem;
-	padding-right: 1.90rem;
+	padding-right: 1.9rem;
 	padding-bottom: 0.6rem;
-	
+
 	filter: grayscale(1);
 }
 
 .sticky-sidebar-linkedin {
-	
 	padding-left: 2.25rem;
-	padding-right:2.25rem;
+	padding-right: 2.25rem;
 	filter: grayscale(1);
 }
 
 .sticky-sidebar-github {
-	
 	padding-left: 2.25rem;
-	padding-right:1.85rem;
+	padding-right: 1.85rem;
 	padding-bottom: 0.25rem;
 }
 
 .sticky-sidebar-email {
-	
 	padding-left: 2.25rem;
-	padding-right:2.25rem;
+	padding-right: 2.25rem;
 }
 
 .sticky-sidebar-tableau:hover {
