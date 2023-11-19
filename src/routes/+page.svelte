@@ -1,5 +1,6 @@
 <script lang="ts">
 	import RadarChart from '../component/RadarChart/RadarChart.svelte';
+	import Image from '../component/Image/Image.svelte'
 	import { firstVisit } from '../stores/home';
 
 	let width: number = 0;
@@ -66,7 +67,7 @@
 		</p>
 		{#if cycles != 1}
 			<div class="py-8">
-				<img
+				<Image
 					src={text[counter].image}
 					alt={text[counter].alt}
 					width="400"

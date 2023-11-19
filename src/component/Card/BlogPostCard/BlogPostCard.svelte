@@ -1,0 +1,98 @@
+<script lang="ts">
+	import Card from '../Card.svelte';
+	import Tag from '../../Tag/Tag.svelte';
+
+	export let title: string;
+	export let coverImage: string | undefined = undefined;
+    export let altText: string | undefined = undefined;
+	export let excerpt: string;
+	export let slug: string;
+	export let tags: string[] | undefined;
+	export let readingTime: string | undefined = undefined;
+
+</script>
+
+<Card
+	href="/{slug}"
+	target="_self"
+	additionalClass=""
+>
+	<div class="object-cover" slot="image">
+
+        
+			<img src={coverImage} alt={altText} />
+	
+            
+</div>
+	<div class="flex flex-col gap-0 items-start" slot="content">
+		<p class="flex items-center justify-between w-full text-xl font-bold font-customHeading">
+			{title}
+		</p>
+		{#if readingTime}
+			<div class="text-1.2rem text-slate-600">{readingTime}</div>
+		{/if}
+		{#if excerpt}
+			<p class="mt-5 text-sm text-justify font-customParagraph">
+				{excerpt}
+			</p>
+		{/if}
+	</div>
+	<div class="" slot="footer">
+		{#if tags?.length}
+			<div class="flex items-center gap-5 flex-wrap font-customParagraph">
+				{#each tags as tag}
+					<Tag>{tag}</Tag>
+				{/each}
+			</div>
+		{/if}
+	</div>
+</Card>
+
+<!-- <style lang="scss">
+	.content {
+		display: flex;
+		flex-direction: column;
+		gap: 0px;
+		align-items: flex-start;
+	}
+
+	.title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		font-size: 1.2rem;
+		font-family: var(--font--title);
+		font-weight: 700;
+	}
+
+	.tags {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		flex-wrap: wrap;
+	}
+
+	.note {
+		font-size: 0.8rem;
+		color: rgba(var(--color--text-rgb), 0.8);
+	}
+
+	.text {
+		margin-top: 5px;
+		font-size: 0.9rem;
+		text-align: justify;
+	}
+
+	.footer {
+		margin-top: 20px;
+	}
+
+	:global(.blog-post-card .image img) {
+		object-fit: cover;
+	}
+
+	:global(.blog-post-card.no-image > .image) {
+		display: none;
+	}
+</style> -->

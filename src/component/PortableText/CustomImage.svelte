@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Image from '../Image/Image.svelte';
 	export let portableText;
 	const urlStem = 'https://cdn.sanity.io/images/g2pdrwyj/production/';
 

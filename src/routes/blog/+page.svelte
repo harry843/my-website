@@ -1,10 +1,13 @@
 <script lang="ts">
 	let width;
+	import Image from '../../component/Image/Image.svelte';
+	import BlogPostCard from '../../component/Card/BlogPostCard/BlogPostCard.svelte';
 	import type { PageData } from './$houdini';
 
 	export let data: PageData;
 
 	$: ({ GetAllPost } = data);
+	$: imageUrlParams = '?fm=webp&max-h=350&max-w=700';
 </script>
 
 <svelte:head>
@@ -21,9 +24,9 @@
 		<!-- Display an error message if there was an error -->
 		<div class="text-red-500">An error occurred while fetching data. Please try again later.</div>
 	{:else if $GetAllPost.data?.allPost && $GetAllPost.data?.allPost != undefined}
-		<div class="">
-			{#each $GetAllPost.data?.allPost as post}
-				<a href={'blog/' + post.slug?.current}>
+		{#each $GetAllPost.data?.allPost as post}
+			<div class="w-5/6 py-4 rounded-md">
+				<!-- <a href={'blog/' + post.slug?.current}>
 					<div class="p-2 text-lg font-medium pb-2">
 						{post.title}
 					</div>
@@ -41,9 +44,18 @@
 						<div class="p-4">
 							<img src={post.mainImage?.image?.asset?.url + '?fit=max'} alt={post.mainImage.alt} />
 						</div>
-					{/if}
-				</a>
-			{/each}
-		</div>
+					{/if} -->
+				<BlogPostCard
+					slug={'blog/' + post.slug?.current}
+					title={post.title}
+					coverImage={post.mainImage.image.asset.url + imageUrlParams}
+					altText={post.mainImage.alt}
+					excerpt="This is blog post taken from my series, under the hood."
+					tags={post.tags}
+					readingTime="7-mins"
+				/>
+				<!-- </a> -->
+			</div>
+		{/each}
 	{/if}
 </section>

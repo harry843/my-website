@@ -71,7 +71,7 @@
 				rel="noreferrer"
 				class="border flex flex-col divide-y rounded-sm shadow-sm hover:shadow-md"
 			>
-				<Image src={`/${project.image}`} alt={project.title} />
+				<Image src={`${project.image}`} alt={project.title} />
 				<div class="p-4 space-y-2">
 					<div
 						class="flex flex-col xs:flex-row md:flex-col lg:flex-row lg:items-center xl:flex-col xl:items-start mxl:flex-row mxl:items-start sm:items-center md:items-start justify-between gap-y-2"
