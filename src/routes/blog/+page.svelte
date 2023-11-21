@@ -1,5 +1,5 @@
 <script lang="ts">
-	let width;
+	$: width = 0;
 	import Image from '../../component/Image/Image.svelte';
 	import BlogPostCard from '../../component/Card/BlogPostCard/BlogPostCard.svelte';
 	import averageReadingTime from '../../component/Card/BlogPostCard/averageReadingTime';
