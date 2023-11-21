@@ -4,6 +4,7 @@ query GetAllPost {
 		slug {
 			current
 		}
+		feature
 		tags
 		contentRaw
 		mainImage {

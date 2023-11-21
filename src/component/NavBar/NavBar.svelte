@@ -20,7 +20,7 @@
 	<div class="px-2 xs:px-4 md:px-16 lg:px-32 xl:px-44 2xl:px-56 flex flex-wrap items-center justify-between mx-auto py-2">
 		<a href="/" class="flex items-center">
 			<img src="/HK_thumbnail.png" class="h-12 mr-4" alt="Harry Kelleher" />
-			<span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+			<span class="self-center text-2xl font-semibold whitespace-nowrap font-customHeading dark:text-white"
 				>Harry Kelleher</span
 			>
 		</a>

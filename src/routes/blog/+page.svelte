@@ -2,60 +2,41 @@
 	let width;
 	import Image from '../../component/Image/Image.svelte';
 	import BlogPostCard from '../../component/Card/BlogPostCard/BlogPostCard.svelte';
+	import averageReadingTime from '../../component/Card/BlogPostCard/averageReadingTime';
 	import type { PageData } from './$houdini';
 
 	export let data: PageData;
 
 	$: ({ GetAllPost } = data);
-	$: imageUrlParams = '?fm=webp&max-h=350&max-w=700';
+	$: imageUrlParams = '?fm=webp&max-h=300&max-w=500&min-h=240&min-w=400';
 </script>
 
 <svelte:head>
 	<title>Blog | Harry Kelleher</title>
 </svelte:head>
 
-<section
-	bind:clientWidth={width}
-	class="flex flex-col items-center font-normal px-4 text-sm w-full"
->
-	<p class="p-2">Hi, I'm Harry. Check out my latest blog posts listed below.</p>
-
+<section bind:clientWidth={width} class="px-4 w-full">
+	<h1 class="font-customHeading font-semibold items-start text-left text-3xl">Blog Posts</h1>
+	<section class="flex flex-col items-center text-sm">
 	{#if $GetAllPost.errors}
-		<!-- Display an error message if there was an error -->
+		<!-- Display error message if there was an error -->
 		<div class="text-red-500">An error occurred while fetching data. Please try again later.</div>
 	{:else if $GetAllPost.data?.allPost && $GetAllPost.data?.allPost != undefined}
-		{#each $GetAllPost.data?.allPost as post}
-			<div class="w-5/6 py-4 rounded-md">
-				<!-- <a href={'blog/' + post.slug?.current}>
-					<div class="p-2 text-lg font-medium pb-2">
-						{post.title}
-					</div>
-					{#if post.tags}
-						<div class="flex justify-center gap-x-2">
-							{#each post.tags as tag}
-								<span class="rounded-full px-4 py-1 font-medium bg-indigo-600 text-white text-xs"
-									>{tag}</span
-								>
-							{/each}
-						</div>
-						<br />
-					{/if}
-					{#if post.mainImage}
-						<div class="p-4">
-							<img src={post.mainImage?.image?.asset?.url + '?fit=max'} alt={post.mainImage.alt} />
-						</div>
-					{/if} -->
+		<div class="w-5/6 grid grid-cols-2 space-y-6 gap-x-6 py-3 rounded-md">
+			{#each $GetAllPost.data?.allPost as post, index}
 				<BlogPostCard
 					slug={'blog/' + post.slug?.current}
 					title={post.title}
 					coverImage={post.mainImage.image.asset.url + imageUrlParams}
 					altText={post.mainImage.alt}
-					excerpt="This is blog post taken from my series, under the hood."
+					excerpt={post.feature}
 					tags={post.tags}
-					readingTime="7-mins"
+					readingTime={averageReadingTime(post.contentRaw)}
+					additionalClass={index === 0 ? 'col-span-full' : 'col-span-full md:col-span-1'}
+					{index}
 				/>
-				<!-- </a> -->
-			</div>
-		{/each}
+			{/each}
+		</div>
 	{/if}
+	</section>
 </section>

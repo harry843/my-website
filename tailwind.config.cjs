@@ -52,6 +52,7 @@ module.exports = {
 				...defaultTheme.colors
 			},
 			fontFamily: {
+				poppins: ['Poppins'],
 				customParagraph: ['Roboto'],
 				customHeading: ['Roboto Slab'],
 				customQuote: ['Heebo']
