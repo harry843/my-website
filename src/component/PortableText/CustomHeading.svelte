@@ -13,11 +13,11 @@
 <!-- If preceded by heading, have a higher margin top -->
 <div class="relative {precededByHeading ? 'mt-10 mb-6' : 'mt-2'}" id={anchorId}>
 	{#if portableText.value.style === 'h1'}
-		<h1 class="text-4xl font-customHeading pb-6"><slot /></h1>
+		<h1 class="text-4xl pb-6"><slot /></h1>
 	{:else if portableText.value.style === 'h2'}
-		<h2 class="text-3xl font-customHeading"><slot /></h2>
+		<h2 class="text-3xl"><slot /></h2>
 	{:else if portableText.value.style === 'h3'}
-		<h3 class="text-xl font-customHeading font-bold">
+		<h3 class="text-xl font-bold">
 			<slot />
 			<a href="#{anchorId}" aria-hidden="true"
 			tabIndex={-1}>
@@ -26,10 +26,10 @@
 			</a>
 		</h3>
 	{:else if portableText.value.style === 'h4'}
-		<h4 class="text-xl font-medium font-customHeading text-gray-600 pt-6"><slot /></h4>
+		<h4 class="text-xl font-medium text-gray-600 pt-6"><slot /></h4>
 	{:else}
 		<br />
-		<h5 class="text-xl font-medium font-customHeading"><slot /></h5>
+		<h5 class="text-xl font-medium"><slot /></h5>
 		<br />
 	{/if}
 </div>

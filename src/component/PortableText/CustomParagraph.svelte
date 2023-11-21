@@ -1,2 +1,2 @@
-<p class="font-customParagraph text-lg py-1"><slot /></p>
+<p class="text-lg py-1"><slot /></p>
 

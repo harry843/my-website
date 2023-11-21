@@ -4,42 +4,36 @@
 
 	export let title: string;
 	export let coverImage: string | undefined = undefined;
-    export let altText: string | undefined = undefined;
+	export let altText: string | undefined = undefined;
 	export let excerpt: string;
 	export let slug: string;
 	export let tags: string[] | undefined;
 	export let readingTime: string | undefined = undefined;
-
+	export let additionalClass: string | undefined = undefined;
+	export let index: number | undefined = undefined
 </script>
 
-<Card
-	href="/{slug}"
-	target="_self"
-	additionalClass=""
->
-	<div class="object-cover" slot="image">
-
-        
-			<img src={coverImage} alt={altText} />
+<Card href="/{slug}" target="_self" {additionalClass} {index}>
 	
-            
-</div>
-	<div class="flex flex-col gap-0 items-start" slot="content">
-		<p class="flex items-center justify-between w-full text-xl font-bold font-customHeading">
+	<div class="" slot="image">
+		<img class="{index === 0 ? "" : "max-h-[240px]"}"src={coverImage} alt={altText} />
+	</div>
+	<div class="gap-0 items-start" slot="content">
+		<h1 class="flex items-center justify-between w-full text-2xl font-semibold">
 			{title}
-		</p>
+		</h1>
 		{#if readingTime}
-			<div class="text-1.2rem text-slate-600">{readingTime}</div>
+			<div class="text-sm text-slate-600">{readingTime}</div>
 		{/if}
 		{#if excerpt}
-			<p class="mt-5 text-sm text-justify font-customParagraph">
+			<p class="mt-5 text-base text-justify">
 				{excerpt}
 			</p>
 		{/if}
 	</div>
 	<div class="" slot="footer">
 		{#if tags?.length}
-			<div class="flex items-center gap-5 flex-wrap font-customParagraph">
+			<div class="flex items-center gap-5 flex-wrap">
 				{#each tags as tag}
 					<Tag>{tag}</Tag>
 				{/each}

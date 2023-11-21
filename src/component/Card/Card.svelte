@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let additionalClass: string | undefined = undefined;
 	export let href: string | undefined = undefined;
+	export let index: number | undefined = undefined;
 	const isExternalLink = !!href && /^((http|https):\/\/)/.test(href);
 	export let target: '_self' | '_blank' = isExternalLink ? '_blank' : '_self';
 	export let rel = isExternalLink ? 'noopener noreferrer' : undefined;
@@ -15,18 +16,18 @@
 
 <svelte:element
 	this={tag}
-	class="bg-gray-50 shadow-slate-200 rounded-md transition-all duration-400 relative overflow-hidden w-full flex flex-col lg:flex-row flex-wrap hover:shadow-lg {additionalClass}"
+	class="rounded-md border border-gray-100 transition-all duration-400 relative w-full hover:shadow-lg {additionalClass}"
 	{...linkProps}
 	data-sveltekit-preload-data
 	{...$$restProps}
 >		
-
+<div class={index === 0 ? "grid grid-cols-1 lg:grid-cols-2 lg:place-items-center lg:gap-x-3 p-1 md:p-3" : "p-1 md:p-3"}>
 {#if $$slots.image}
-			<div class="relative flex flex-1 max-w-[50%,330px] max-h-300px">
+			<div class={index === 0 ? "" : "grid grid-cols-1 place-items-center"} >
 				<slot name="image" />
 			</div>
 		{/if}
-	<div class="flex flex-col justify-between gap-10 px-20 py-20 flex-1/2">
+	<div class="flex flex-col justify-between gap-10 px-2 lg:px-3 xl:px-6 py-6 flex-1/2">
 
 		<div class="flex flex-col flex-1">
 			<slot name="content" />
@@ -37,6 +38,7 @@
 			</div>
 		{/if}
 	</div>
+</div>
 
 </svelte:element>
 

@@ -1,1 +1,2 @@
-export 	const routes = [{label: 'Home',slug:''}, {label:'Portfolio', slug:'portfolio'}, {label:'CV', slug:'cv'},{label:'Piano', slug:'piano'},{label:'Blog', slug:'blog'}];
+export 	const routes = [{label: 'Home',slug:''}, {label:'Portfolio', slug:'portfolio'}, {label:'Blog', slug:'blog'},{label:'CV', slug:'cv'}];
+// {label:'Piano', slug:'piano'},
