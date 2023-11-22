@@ -2,13 +2,13 @@
 	import Card from '../Card.svelte';
 	import Tag from '../../Tag/Tag.svelte';
 
-	export let title: string;
+	export let title: string | null = null;
 	export let coverImage: string | undefined = undefined;
-	export let altText: string | undefined = undefined;
-	export let excerpt: string;
+	export let altText: string | null | undefined = undefined;
+	export let excerpt: string | null = null;
 	export let slug: string;
-	export let tags: string[] | undefined;
-	export let readingTime: string | undefined = undefined;
+	export let tags: (string | null)[] | null | undefined = null;
+	export let readingTime: string | null = null;
 	export let additionalClass: string | undefined = undefined;
 	export let index: number | undefined = undefined
 </script>

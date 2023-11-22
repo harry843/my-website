@@ -1,6 +1,5 @@
 <script lang="ts">
 	$: width = 0;
-	import Image from '../../component/Image/Image.svelte';
 	import BlogPostCard from '../../component/Card/BlogPostCard/BlogPostCard.svelte';
 	import averageReadingTime from '../../component/Card/BlogPostCard/averageReadingTime';
 	import type { PageData } from './$houdini';
@@ -27,11 +26,11 @@
 				<BlogPostCard
 					slug={'blog/' + post.slug?.current}
 					title={post.title}
-					coverImage={post.mainImage.image.asset.url + imageUrlParams}
-					altText={post.mainImage.alt}
+					coverImage={post.mainImage?.image?.asset?.url + imageUrlParams}
+					altText={post.mainImage?.alt}
 					excerpt={post.feature}
-					tags={post.tags}
-					readingTime={averageReadingTime(post.contentRaw)}
+					tags={post?.tags}
+					readingTime={averageReadingTime(post?.contentRaw)}
 					additionalClass={index === 0 ? 'col-span-full' : 'col-span-full md:col-span-1'}
 					{index}
 				/>
