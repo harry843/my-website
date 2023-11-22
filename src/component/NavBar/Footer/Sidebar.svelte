@@ -7,9 +7,8 @@
 
 	export let outerWidth: number | undefined = undefined;
 
-	let width;
 	$: currentYear = new Date().getFullYear()
-	$: myName = outerWidth < 425 && outerWidth !== undefined ? '' : 'Harry Kelleher'
+	$: myName = outerWidth !== undefined && outerWidth < 425 ? '' : 'Harry Kelleher'
 
 	const contactInfo = [
 		{
@@ -45,7 +44,7 @@
 
 
 	
-	  {#if outerWidth > 767 && outerWidth !== undefined}
+	  {#if outerWidth !== undefined && outerWidth > 767}
 	  <div class="flex justify-center">
 		<div class="fixed flex justify-center md:right-7 md:flex-col items-center gap-6 md:gap-9 bottom-0 -translate-y-2 md:bottom-1/2 transform md:translate-y-1/2 z-10">
 			{#each contactInfo as { link, className, icon }}
@@ -59,15 +58,15 @@
 	</div>
 		{:else}
 		<footer bind:clientWidth={outerWidth}>
-			<div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+			<div class="w-full max-w-screen-xl mx-auto p-4 xxs:py-8">
 				<div class="flex items-center justify-between px-0 xxs:px-2">
-					<a href="https://harrykelleher.com/" class="flex items-start xs:items-center mb-0 space-x-3 rtl:space-x-reverse grayscale">
+					<a href="https://harrykelleher.com/" class="flex items-start xs:items-center mb-0 space-x-3 rtl:space-x-reverse grayscale hover:grayscale-0">
 						<img src="/HK_thumbnail.png" class="h-8" alt="Harry Kelleher" />
 						<span class="self-center text-base font-medium whitespace-nowrap">{myName}</span>
 					</a>
 					<div class="flex items-center space-x-6 ">
-					{#each contactInfo as { link, icon }}
-					<div class="grayscale ">
+					{#each contactInfo as { link, className, icon }}
+					<div class={classNames('no-underline rounded-full', className)}>
 					  <a href={link} target="_blank" rel="noopener noreferrer">
 						<svelte:component this={icon} />
 					  </a>
