@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onDestroy } from 'svelte';
 	import RadarChartGrid from './RadarChartGrid/RadarChartGrid.svelte';
 	import RadarChartLabels from './RadarChartLabels/RadarChartLabels.svelte';
 	import RadarChartPaths from './RadarChartPaths/RadarChartPaths.svelte';

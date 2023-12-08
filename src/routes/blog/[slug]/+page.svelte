@@ -31,7 +31,7 @@
 	{/if}
 
 	<div class="flex flex-row justify-center items-center">
-		<img src="/HK_thumbnail.png" class="h-12 mr-2" alt="Harry Kelleher" />
+		<img src="/HK_profile2.jpg" class="h-14 mr-2 rounded-full" alt="Harry Kelleher" />
 
 		<div class="flex flex-col justify-center text-center gap-y-1 font-customParagraph">
 			<div class="text-sm text-opacity-80 ">by Harry Kelleher</div>

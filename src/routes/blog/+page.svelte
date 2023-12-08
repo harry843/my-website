@@ -14,14 +14,13 @@
 	<title>Blog | Harry Kelleher</title>
 </svelte:head>
 
-<section bind:clientWidth={width} class="px-4 w-full">
-	<h1 class="font-customHeading font-semibold items-start text-left text-3xl">Blog Posts</h1>
-	<section class="flex flex-col items-center text-sm">
+<section bind:clientWidth={width} class="px-4 flex flex-col items-center text-sm">
 	{#if $GetAllPost.errors}
 		<!-- Display error message if there was an error -->
 		<div class="text-red-500">An error occurred while fetching data. Please try again later.</div>
 	{:else if $GetAllPost.data?.allPost && $GetAllPost.data?.allPost != undefined}
 		<div class="w-5/6 grid grid-cols-2 space-y-6 gap-x-6 py-3 rounded-md">
+			<h1 class="font-customHeading font-semibold text-left text-2xl">Blog Posts</h1>
 			{#each $GetAllPost.data?.allPost as post, index}
 				<BlogPostCard
 					slug={'blog/' + post.slug?.current}
@@ -37,5 +36,4 @@
 			{/each}
 		</div>
 	{/if}
-	</section>
 </section>

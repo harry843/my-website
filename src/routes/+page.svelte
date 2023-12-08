@@ -1,9 +1,12 @@
 <script lang="ts">
 	import RadarChart from '../component/RadarChart/RadarChart.svelte';
-	import Image from '../component/Image/Image.svelte'
+	import Avatar from '../component/Avatar/Avatar.svelte';
+	import AvatarHover from '../component/Avatar/AvatarHover.svelte';
 	import { firstVisit } from '../stores/home';
 
 	let width: number = 0;
+
+	$: bool = true;
 
 	// const text = [
 	// 	{ name: 'BI developer.', image: 'HK_thumbnail.png', alt: "Harry's profile picture" },
@@ -78,17 +81,39 @@
 		{/if}
 	</section>
 {:else} -->
-	<section class="flex flex-col-reverse md:flex-row">
-		<div class="w-full xs:w-11/12 xs:translate-x-7 sm:w-3/4 sm:translate-x-20 md:w-1/2 md:translate-x-0" bind:clientWidth={width}>
-			{#if width > 0}
-				<RadarChart {width} />
+<section class="flex flex-col-reverse md:flex-row">
+	<div
+		class="relative flex flex-col justify-center items-center w-full xs:w-11/12 xs:translate-x-7 sm:w-3/4 sm:translate-x-20 md:w-1/2 md:translate-x-0"
+		bind:clientWidth={width}
+	>
+		{#if width > 0}
+			<RadarChart {width} />
+		{/if}		
+		
+		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+			
+			on:mouseover={() => {
+				bool = false;
+			}}
+			on:mouseleave={() => {
+				bool = true;
+			}}
+			on:focus={() => (bool = false)}
+		>
+			{#if bool}
+				<Avatar />
+			{:else}
+				<AvatarHover />
 			{/if}
 		</div>
-		<div class="space-y-4 md:p-8 w-full md:w-1/2">
-			<p>
-				I'm a <span class=" text-indigo-600 font-medium">Data Visualisation Developer.</span>
-			</p>
-			<p>I create data products to help grow your business.</p>
-		</div>
-	</section>
-<!-- {/if} -->
+	</div>
+	<div class="space-y-4 md:p-8 w-full md:w-1/2">
+		<p>
+			I'm a <span class=" text-indigo-600 font-medium">Data Visualisation Developer.</span>
+		</p>
+		<p>I create data products to help grow your business.</p>
+
+	</div>
+</section>
+
+<!-- {/if} class="flex relative items-center justify-center -translate-y-[500px]" -->

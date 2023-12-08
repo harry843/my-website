@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200px" height="200px" viewBox="0 0 200 200" style="overflow:hidden!important;">
+<svg class="w-20 h-20 xxs:w-24 xxs:h-24 xs:w-32 xs:h-32 sm:w-36 sm:h-36 md:w-24 md:h-24 lg:w-32 lg:h-32 xl:h-44 xl:w-44 2xl:w-52 2xl:h-52" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 200 200" style="overflow:hidden!important;">
   <defs id="SvgjsDefs1007">
     <radialGradient id="SvgjsRadialGradient2907" cx="100" cy="114" r="41" gradientUnits="userSpaceOnUse" class="svga-on-canvas-facehighlight-gradient-single-0">
       <stop id="SvgjsStop2908" stop-opacity="0.5" stop-color="#ffe2d6" offset="0"/>
