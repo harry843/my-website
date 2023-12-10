@@ -1,5 +1,8 @@
 <script lang="ts">
 	import RadarChart from '../component/RadarChart/RadarChart.svelte';
+	import ProjectIcon from '../component/Icons/Projects.svelte';
+	import ExperienceIcon from '../component/Icons/Experience.svelte';
+	import BlogIcon from '../component/Icons/Blog.svelte';
 	import Avatar from '../component/Avatar/Avatar.svelte';
 	import AvatarHover from '../component/Avatar/AvatarHover.svelte';
 	import { firstVisit } from '../stores/home';
@@ -7,6 +10,12 @@
 	let width: number = 0;
 
 	$: bool = true;
+
+	const icons = [
+		{ name: 'Projects', icon: ProjectIcon, slug: '/portfolio' },
+		{ name: 'Blog', icon: BlogIcon, slug: '/blog' },
+		{ name: 'Experience', icon: ExperienceIcon, slug: '/cv' }
+	];
 
 	// const text = [
 	// 	{ name: 'BI developer.', image: 'HK_thumbnail.png', alt: "Harry's profile picture" },
@@ -26,7 +35,6 @@
 	// 		if (cycles === maxCycles) {
 	// 			firstVisit.set('false');
 	// 			clearInterval(interval);
-	// 			console.log(firstVisit);
 	// 		}
 	// 	}
 	// }
@@ -88,32 +96,48 @@
 	>
 		{#if width > 0}
 			<RadarChart {width} />
-		{/if}		
-		
-		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-			
-			on:mouseover={() => {
-				bool = false;
-			}}
-			on:mouseleave={() => {
-				bool = true;
-			}}
-			on:focus={() => (bool = false)}
-		>
-			{#if bool}
-				<Avatar />
-			{:else}
-				<AvatarHover />
-			{/if}
-		</div>
+
+			<div
+				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+				on:mouseover={() => {
+					bool = false;
+				}}
+				on:mouseleave={() => {
+					bool = true;
+				}}
+				on:focus={() => (bool = false)}
+			>
+				{#if bool}
+					<Avatar />
+				{:else}
+					<AvatarHover />
+				{/if}
+			</div>
+		{/if}
 	</div>
 	<div class="space-y-4 md:p-8 w-full md:w-1/2">
 		<p>
-			I'm a <span class=" text-indigo-600 font-medium">Data Visualisation Developer.</span>
+			I'm a <span class=" text-indigo-600 font-medium">Data Visualisation Lead.</span>
 		</p>
 		<p>I create data products to help grow your business.</p>
-
 	</div>
 </section>
-
-<!-- {/if} class="flex relative items-center justify-center -translate-y-[500px]" -->
+<section class="flex items-center">
+	<div class="flex flex-row items-center">
+		{#each icons as { name, icon, slug }}
+			<a href={slug}
+				><button
+					type="button"
+					class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center gap-x-2 inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+				>
+					<svelte:component this={icon} />{name}
+				</button></a
+			>
+		{/each}
+	</div>
+</section>
+<!-- <section class="flex flex-row">
+	<ProjectIcon />
+	<ExperienceIcon />
+	<BlogIcon />
+</section> -->
