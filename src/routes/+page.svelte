@@ -5,18 +5,45 @@
 	import BlogIcon from '../component/Icons/Blog.svelte';
 	import Avatar from '../component/Avatar/Avatar.svelte';
 	import AvatarHover from '../component/Avatar/AvatarHover.svelte';
+	import classNames from 'classnames';
 	import { firstVisit } from '../stores/home';
 
 	let width: number = 0;
 
 	$: bool = true;
 
-	const icons = [
+	$: icons = [
 		{ name: 'Projects', icon: ProjectIcon, slug: '/portfolio' },
 		{ name: 'Blog', icon: BlogIcon, slug: '/blog' },
 		{ name: 'Experience', icon: ExperienceIcon, slug: '/cv' }
 	];
 
+	function generateButtonCss(color) {
+		const colors = {
+			indigo: ['from-indigo-500', 'via-indigo-600', 'to-indigo-700'],
+			rose: ['from-rose-500', 'via-rose-600', 'to-rose-700'],
+			teal: ['from-teal-500', 'via-teal-600', 'to-teal-700'],
+			yellow: ['from-yellow-500', 'via-yellow-600', 'to-yellow-700']
+		};
+
+		const colorValues = colors[color] || colors['indigo'];
+
+		return `flex flex-row gap-x-3 items-center text-white bg-gradient-to-r hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center me-4 mb-2 ${colorValues.join(
+			' '
+		)}`;
+	}
+
+	$: colors = [
+		{ name: 'rose', hex: '#f43f5e' },
+		{ name: 'yellow', hex: '#eab308' },
+		{ name: 'indigo', hex: '#6366f1' },
+		{ name: 'teal', hex: '#14b8a6' }
+	];
+
+	$: color = colors[Math.floor(Math.random() * colors.length)];
+
+	$: buttonCss = generateButtonCss(color.name);
+	$: console.log(buttonCss);
 	// const text = [
 	// 	{ name: 'BI developer.', image: 'HK_thumbnail.png', alt: "Harry's profile picture" },
 	// 	{ name: 'nerd?', image: 'HK_Naruto.png', alt: 'Harry as a cartoon' },
@@ -95,7 +122,7 @@
 		bind:clientWidth={width}
 	>
 		{#if width > 0}
-			<RadarChart {width} />
+			<RadarChart {width} {color} />
 
 			<div
 				class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -115,29 +142,27 @@
 			</div>
 		{/if}
 	</div>
-	<div class="space-y-4 md:p-8 w-full md:w-1/2">
-		<p>
-			I'm a <span class=" text-indigo-600 font-medium">Data Visualisation Lead.</span>
-		</p>
-		<p>I create data products to help grow your business.</p>
+
+	<div
+		class="flex flex-col items-center justify-center space-y-4 md:p-8 w-full md:w-1/2"
+		bind:clientWidth={width}
+	>
+		{#if width > 0}<div class="-translate-y-1/2">
+				<p>
+					I'm a <span class="text-{color.name}-600 font-medium">Data Visualisation Lead.</span>
+				</p>
+				<br />
+				<p>I create data products to help grow your business.</p>
+			</div>
+			<div class="flex flex-row">
+				{#each icons as { name, icon, slug }}
+					<a href={slug}
+						><div class={buttonCss}>
+							<svelte:component this={icon} />{name}
+						</div></a
+					>
+				{/each}
+			</div>{/if}
 	</div>
 </section>
-<section class="flex items-center">
-	<div class="flex flex-row items-center">
-		{#each icons as { name, icon, slug }}
-			<a href={slug}
-				><button
-					type="button"
-					class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center gap-x-2 inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-				>
-					<svelte:component this={icon} />{name}
-				</button></a
-			>
-		{/each}
-	</div>
-</section>
-<!-- <section class="flex flex-row">
-	<ProjectIcon />
-	<ExperienceIcon />
-	<BlogIcon />
-</section> -->
+<section class="flex items-center" />

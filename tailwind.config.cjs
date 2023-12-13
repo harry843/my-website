@@ -10,7 +10,11 @@ const safeList = [
 	'stroke-blue-500',
 	'stroke-rose-500',
 	'stroke-indigo-500',
-	'stroke-teal-500'
+	'stroke-teal-500',
+	'text-teal-600',
+	'text-indigo-600',
+	'text-rose-600',
+	'text-yellow-600',
 ];
 
 module.exports = {

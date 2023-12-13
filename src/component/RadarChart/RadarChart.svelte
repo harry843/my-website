@@ -5,6 +5,7 @@
 	import { getTraitCoords } from './utils/utils';
 
 	export let width: number;
+	export let color: {name:string,hex:string};
 	const domainArray: [number, number] = [0, 10];
 
 	const traits = [
@@ -17,15 +18,8 @@
 	];
 	const nVertices = traits.length;
 
-	const colors = [
-		{ name: 'rose', hex: '#f43f5e' },
-		{ name: 'yellow', hex: '#eab308' },
-		{ name: 'indigo', hex: '#6366f1' },
-		{ name: 'teal', hex: '#14b8a6' }
-	];
-
 	$: rangeArray = [0, width / 2 - 80];
-	$: color = colors[Math.floor(Math.random() * colors.length)];
+	// $: color = colors[Math.floor(Math.random() * colors.length)];
 	$: pathCoords = getTraitCoords(traits, width, nVertices, domainArray, rangeArray);
 </script>
 
