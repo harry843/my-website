@@ -19,7 +19,6 @@
 	const nVertices = traits.length;
 
 	$: rangeArray = [0, width / 2 - 80];
-	// $: color = colors[Math.floor(Math.random() * colors.length)];
 	$: pathCoords = getTraitCoords(traits, width, nVertices, domainArray, rangeArray);
 </script>
 

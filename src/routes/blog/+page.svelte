@@ -1,21 +1,27 @@
 <script lang="ts">
 	$: width = 0;
+	$: height = 0;
 	import BlogPostCard from '../../component/Card/BlogPostCard/BlogPostCard.svelte';
 	import averageReadingTime from '../../component/Card/BlogPostCard/averageReadingTime';
+	import Loading from '../../component/Loading/Loading.svelte';
 	import type { PageData } from './$houdini';
 
 	export let data: PageData;
 
 	$: ({ GetAllPost } = data);
 	$: imageUrlParams = '?fm=webp&max-h=300&max-w=500&min-h=240&min-w=400';
+	$: isLoading = !$GetAllPost || !$GetAllPost.data;
 </script>
 
 <svelte:head>
 	<title>Blog | Harry Kelleher</title>
 </svelte:head>
 
-<section bind:clientWidth={width} class="px-4 flex flex-col items-center text-sm">
-	{#if $GetAllPost.errors}
+<section bind:clientWidth={width} class={isLoading ? "flex h-screen items-center justify-center" : "px-4 flex flex-col items-center justify-center text-sm"}>
+	{#if isLoading}
+				<Loading />
+
+	{:else if $GetAllPost.errors}
 		<!-- Display error message if there was an error -->
 		<div class="text-red-500">An error occurred while fetching data. Please try again later.</div>
 	{:else if $GetAllPost.data?.allPost && $GetAllPost.data?.allPost != undefined}
