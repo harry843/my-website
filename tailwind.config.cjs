@@ -12,9 +12,30 @@ const safeList = [
 	'stroke-indigo-500',
 	'stroke-teal-500',
 	'text-teal-600',
+	'text-teal-700',
 	'text-indigo-600',
 	'text-rose-600',
-	'text-yellow-600',
+	'text-[#b7791f]',
+	'from-indigo-500',
+	'via-indigo-600',
+	'to-indigo-700',
+	'from-rose-500',
+	'via-rose-700',
+	'to-rose-700',
+	'from-teal-500',
+	'via-teal-700',
+	'to-teal-700',
+	'from-yellow-500',
+	'via-yellow-700',
+	'to-yellow-700',
+	'via-indigo-50',
+	'via-rose-50',
+	'via-teal-50',
+	'via-yellow-50',
+	'border-indigo-600',
+	'border-rose-600',
+	'border-teal-600',
+	'border-yellow-600',
 ];
 
 module.exports = {
@@ -30,7 +51,7 @@ module.exports = {
 	theme: {
 		extend: {
 			screens: {
-				xxs: '320px', 
+				xxs: '320px',
 				xs: '490px',
 				mxl: '1436px',
 				...defaultTheme.screens
@@ -60,8 +81,7 @@ module.exports = {
 				customParagraph: ['Roboto'],
 				customHeading: ['Roboto Slab'],
 				customQuote: ['Heebo']
-			}
-			,
+			},
 			keyframes: {
 				'fade-in': {
 					'0%': {

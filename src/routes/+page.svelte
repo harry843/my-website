@@ -13,25 +13,24 @@
 	$: bool = true;
 
 	$: icons = [
+		{ name: 'Experience', icon: ExperienceIcon, slug: '/cv' },
 		{ name: 'Projects', icon: ProjectIcon, slug: '/portfolio' },
 		{ name: 'Blog', icon: BlogIcon, slug: '/blog' },
-		{ name: 'Experience', icon: ExperienceIcon, slug: '/cv' }
+		
 	];
 
-	function generateButtonCss(color) {
-		const colors = {
-			indigo: ['from-indigo-500', 'via-indigo-600', 'to-indigo-700'],
-			rose: ['from-rose-500', 'via-rose-600', 'to-rose-700'],
-			teal: ['from-teal-500', 'via-teal-600', 'to-teal-700'],
-			yellow: ['from-yellow-500', 'via-yellow-600', 'to-yellow-700']
-		};
+	function generateButtonCss(name, color) {
+    const isProject = name === "Projects";
 
-		const colorValues = colors[color] || colors['indigo'];
+    if (isProject) {
+        return `flex flex-row gap-x-3 items-center text-black bg-gradient-to-r hover:bg-gradient-to-br hover:ring-1 font-medium rounded-lg text-base px-5 py-2 text-center me-4 mb-2 from-white via-${color.name}-50 to-white border border-${color.name}-600`;
+    }
+ else {
+            return `flex flex-row gap-x-3 items-center text-white bg-gradient-to-r hover:bg-gradient-to-br hover:ring-1 font-medium rounded-lg text-base px-5 py-2 text-center me-4 mb-2 from-${color.name}-500 via-${color.name}-600 to-${color.name}-700 border border-${color.name}-600`;
+        }
+    }
 
-		return `flex flex-row gap-x-3 items-center text-white bg-gradient-to-r hover:bg-gradient-to-br focus:ring-1 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center me-4 mb-2 ${colorValues.join(
-			' '
-		)}`;
-	}
+
 
 	$: colors = [
 		{ name: 'rose', hex: '#f43f5e' },
@@ -40,10 +39,8 @@
 		{ name: 'teal', hex: '#14b8a6' }
 	];
 
-	$: color = colors[Math.floor(Math.random() * colors.length)];
+	$: color = firstVisit ? { name: 'indigo', hex: '#6366f1' } : colors[Math.floor(Math.random() * colors.length)];
 
-	$: buttonCss = generateButtonCss(color.name);
-	$: console.log(buttonCss);
 	// const text = [
 	// 	{ name: 'BI developer.', image: 'HK_thumbnail.png', alt: "Harry's profile picture" },
 	// 	{ name: 'nerd?', image: 'HK_Naruto.png', alt: 'Harry as a cartoon' },
@@ -149,7 +146,7 @@
 	>
 		{#if width > 0}<div class="-translate-y-1/2">
 				<p>
-					I'm a <span class="text-{color.name}-600 font-medium">Data Visualisation Lead.</span>
+					I'm a <span class="text-{color.name === "yellow" ? "[#b7791f]" : color.name + "-600"} font-medium">Data Visualisation Lead.</span>
 				</p>
 				<br />
 				<p>I create data products to help grow your business.</p>
@@ -157,8 +154,8 @@
 			<div class="flex flex-row">
 				{#each icons as { name, icon, slug }}
 					<a href={slug}
-						><div class={buttonCss}>
-							<svelte:component this={icon} />{name}
+						><div class={generateButtonCss(name, color)}>
+							<svelte:component this={icon}/>{name}
 						</div></a
 					>
 				{/each}
