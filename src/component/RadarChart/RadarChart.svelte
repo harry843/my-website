@@ -11,9 +11,9 @@
 	const traits = [
 		{ name: 'Data Viz', score: 10 },
 		{ name: 'Leadership', score: 8 },
-		{ name: 'Storytelling', score: 7 },
-		{ name: 'Project Management', score: 7 },
-		{ name: 'Data Pipelines', score: 8 },
+		{ name: 'Consultancy', score: 8 },
+		{ name: 'Project Management', score: 7.5 },
+		{ name: 'Data Pipelines', score: 7 },
 		{ name: 'Coding', score: 8 }
 	];
 	const nVertices = traits.length;

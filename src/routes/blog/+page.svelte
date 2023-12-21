@@ -1,6 +1,4 @@
 <script lang="ts">
-	$: width = 0;
-	$: height = 0;
 	import BlogPostCard from '../../component/Card/BlogPostCard/BlogPostCard.svelte';
 	import averageReadingTime from '../../component/Card/BlogPostCard/averageReadingTime';
 	import Loading from '../../component/Loading/Loading.svelte';
@@ -8,6 +6,7 @@
 
 	export let data: PageData;
 
+	$: width = 0;
 	$: ({ GetAllPost } = data);
 	$: imageUrlParams = '?fm=webp&max-h=300&max-w=500&min-h=240&min-w=400';
 	$: isLoading = !$GetAllPost || !$GetAllPost.data;

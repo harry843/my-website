@@ -16,7 +16,7 @@
 
 <svelte:element
 	this={tag}
-	class="rounded-md border border-gray-100 transition-all duration-400 relative w-full hover:shadow-lg {additionalClass}"
+	class="rounded-sm border border-gray-100 transition-all duration-400 relative w-full hover:shadow-lg {additionalClass}"
 	{...linkProps}
 	data-sveltekit-preload-data
 	{...$$restProps}
@@ -41,61 +41,3 @@
 </div>
 
 </svelte:element>
-
-<!-- <style lang="scss">
-	.card {
-		background: var(--color--card-background);
-		box-shadow: var(--card-shadow);
-		color: var(--color--text);
-		border-radius: 10px;
-		transition: all 0.4s ease;
-		position: relative;
-		overflow: hidden;
-		width: 100%;
-
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-
-		text-decoration: none;
-
-		&[href],
-		&[onclick] {
-			cursor: pointer;
-			&:hover {
-				box-shadow: var(--card-shadow-hover);
-				transform: scale(1.01);
-			}
-		}
-	}
-
-	.body {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		gap: 10px;
-		padding: 20px 20px;
-		flex: 1 0 50%;
-
-		.content {
-			display: flex;
-			flex-direction: column;
-			flex: 1;
-		}
-	}
-
-	.image {
-		position: relative;
-		flex: 1 0 max(50%, 330px);
-		// height: min(100%, 300px);
-		min-height: 280px;
-		max-height: 350px;
-	}
-
-	:global(.card [slot='image']) {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		position: absolute;
-	}
-</style> -->
