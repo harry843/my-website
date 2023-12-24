@@ -1,21 +1,21 @@
 export const skills: { categories: string; items: string[]; gridColsClass: string }[] = [
 	{
-		categories: 'Languages',
-		gridColsClass: 'grid-cols-4',
-		items: ['Python', 'SQL', 'R', 'JavaScript', 'Svelte', 'React', 'HTML', 'CSS']
+		categories: 'Coding', 
+		gridColsClass: 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
+		items: ['Python', 'SQL', 'R',  'Svelte', 'React', 'JavaScript', 'HTML', 'CSS']
 	},
 	{
-		categories: 'Tools / Technologies',
-		gridColsClass: 'grid-cols-4',
+		categories: 'Software',
+		gridColsClass: 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
 		items: [
-			'Tableau Server',
+			'Tableau Desktop',
 			'AWS',
-			'VS Code',
-			'Jupyter',
-			'GitHub ',
-			'DataBricks',
+			'Jira / Confluence',
+			'GitHub / GitLab',
+			'Tableau Server',
+			'Google Analytics',
 			'Excel',
-			'Jira / Confluence'
+			'VS Code'			
 		]
 	}
 ];

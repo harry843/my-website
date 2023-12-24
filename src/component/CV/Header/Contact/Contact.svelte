@@ -30,10 +30,10 @@
 </script>
 
 <div
-	class="text-left justify-between p-2 xxs:grid grid-rows-3 grid-flow-col max-h-20 gap-y-0.5 gap-x-2 sm:flex flex-row sm:align-middle sm:gap-x-0.5 content-evenly sm:max-h-fit sm:text-center lg:flex-col lg:justify-start "
+	class="text-left justify-between p-2 grid grid-rows-3 grid-flow-col max-h-20 gap-y-0.5 gap-x-2 sm:flex flex-row sm:align-middle sm:gap-x-0.5 content-evenly sm:max-h-fit sm:text-center lg:flex-col lg:justify-start "
 >
 	{#each contacts as { name, contact, link, icon }}
-		<div class="items-center xxs:flex row-span-1 gap-x-2 xs:flex sm:gap-x-0.5">
+		<div class="flex items-center row-span-1 gap-x-2 sm:gap-x-0.5">
 			<div class="flex justify-center items-center w-4 h-4 pt-0.5 text-gray-600 hover:text-{name}">
 				<a href={link} target="_blank" rel="noopener noreferrer"><svelte:component this={icon} /></a
 				>
