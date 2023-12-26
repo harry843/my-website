@@ -14,7 +14,6 @@
 	}
 
 	$: if ($navigating) onRouteChange();
-
 </script>
 
 <svelte:window bind:outerWidth />
