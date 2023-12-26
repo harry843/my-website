@@ -79,7 +79,7 @@
 						<h1 class="font-medium text-lg">{project.title}</h1>
 						<div class="flex gap-x-2">
 							{#each project.skills as skill}
-								<span class="rounded-md px-4 py-1 font-medium bg-indigo-600 text-white text-xs">{skill}</span>
+								<span class="rounded-md px-4 py-1 font-medium bg-indigo-50 text-indigo-700 text-xs">{skill}</span>
 							{/each}
 						</div>
 					</div>

@@ -18,7 +18,7 @@
 					href={'/'+
 					route.slug}
 					class={classNames('block py-2 px-2  text-gray-800 rounded-lg hover:bg-gray-50 hover:rounded-md', {
-						'md:text-blue-700': route.slug === $page.url.pathname.slice(1)
+						'md:text-indigo-600': route.slug === $page.url.pathname.slice(1)
 					})}
 					aria-current="page">
 					{route.label}</a
