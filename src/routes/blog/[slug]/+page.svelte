@@ -104,7 +104,7 @@
 
 <div
 	id="cusdis_thread"
-	class="bg-red-500 h-full"
+	class="bg-indigo-100 h-96 scale-100"
 	data-host="https://cusdis-comments-4386.vercel.app"
 	data-app-id="6a1a98be-887b-4480-88ed-0cc2e588698a"
 	data-page-id={blog?.title.toLowerCase().replace(/\s/g, '-')}
@@ -113,4 +113,5 @@
 		.replace(/\s/g, '-')}"
 	data-page-title={blog?.title}
 	data-theme="light"
-/>
+>
+</div>
