@@ -1,4 +1,4 @@
-<script lang="ts">
+<script async defer src="https://cusdis.com/js/cusdis.es.js" lang="ts">
 	import CustomHeading from '../../../component/PortableText/CustomHeading.svelte';
 	import CustomParagraph from '../../../component/PortableText/CustomParagraph.svelte';
 	import CustomUrl from '../../../component/PortableText/CustomURL.svelte';
@@ -19,6 +19,7 @@
 	$: ({ GetPostBySlug } = data);
 
 	$: blog = $GetPostBySlug.data?.allPost[0];
+	$: console.log(blog?.title.toLowerCase().replace(/\s/g, "-"))
 </script>
 
 <svelte:head>
@@ -95,3 +96,12 @@
 		<br />
 	{/if}
 </div>
+
+<div id="cusdis_thread"
+  data-host="https://cusdis.com"
+  data-app-id="d5fe91e6-d2cd-4a0b-8016-915216635818"
+  data-page-id={blog?.title.toLowerCase().replace(/\s/g, "-")}
+  data-page-url="https://staging.harrykelleher.com/blog/{blog?.title.toLowerCase().replace(/\s/g, '-')}"
+  data-page-title={blog?.title}
+></div>
+
