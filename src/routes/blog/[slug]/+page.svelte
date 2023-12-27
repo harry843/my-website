@@ -13,7 +13,6 @@
 	import dateformat from 'dateformat';
 	import type { PageData } from './$houdini';
 	import { PortableText } from '@portabletext/svelte';
-	import Comments from '../../../component/Comments/Comments.svelte';
 
 	export let data: PageData;
 
