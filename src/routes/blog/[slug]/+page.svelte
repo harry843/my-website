@@ -13,17 +13,23 @@
 	import dateformat from 'dateformat';
 	import type { PageData } from './$houdini';
 	import { PortableText } from '@portabletext/svelte';
+	import Comments from '../../../component/Comments/Comments.svelte';
 
 	export let data: PageData;
 
 	$: ({ GetPostBySlug } = data);
 
 	$: blog = $GetPostBySlug.data?.allPost[0];
-	$: console.log(blog?.title.toLowerCase().replace(/\s/g, "-"))
+	$: console.log(blog?.title.toLowerCase().replace(/\s/g, '-'));
 </script>
 
 <svelte:head>
 	<title>Blog | {blog?.title}</title>
+	<script
+		async
+		defer
+		src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"
+	></script>
 </svelte:head>
 
 <div class="mx-5 md:mx-[15%] lg:mx-[18%] xl:mx-[22%]">
@@ -35,7 +41,7 @@
 		<img src="/HK_profile2.jpg" class="h-14 mr-2 rounded-full" alt="Harry Kelleher" />
 
 		<div class="flex flex-col justify-center text-center gap-y-1 font-customParagraph">
-			<div class="text-sm text-opacity-80 ">by Harry Kelleher</div>
+			<div class="text-sm text-opacity-80">by Harry Kelleher</div>
 			<div class="text-sm text-opacity-80">
 				{dateformat(blog._createdAt, 'UTC:dd mmm yyyy')} - {averageReadingTime(blog.contentRaw)}
 			</div>
@@ -97,11 +103,15 @@
 	{/if}
 </div>
 
-<div id="cusdis_thread"
-  data-host="https://cusdis.com"
-  data-app-id="d5fe91e6-d2cd-4a0b-8016-915216635818"
-  data-page-id={blog?.title.toLowerCase().replace(/\s/g, "-")}
-  data-page-url="https://staging.harrykelleher.com/blog/{blog?.title.toLowerCase().replace(/\s/g, '-')}"
-  data-page-title={blog?.title}
-></div>
-
+<div
+	id="cusdis_thread"
+	class="bg-red-500 h-full"
+	data-host="https://cusdis-comments-4386.vercel.app"
+	data-app-id="6a1a98be-887b-4480-88ed-0cc2e588698a"
+	data-page-id={blog?.title.toLowerCase().replace(/\s/g, '-')}
+	data-page-url="https://staging.harrykelleher.com/blog/{blog?.title
+		.toLowerCase()
+		.replace(/\s/g, '-')}"
+	data-page-title={blog?.title}
+	data-theme="light"
+/>
