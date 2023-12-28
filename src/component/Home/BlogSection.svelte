@@ -1,7 +1,6 @@
 <script lang="ts">
 	import BlogPostCard from '../../component/Card/BlogPostCard/BlogPostCard.svelte';
 	import averageReadingTime from '../../component/Card/BlogPostCard/averageReadingTime';
-	import Loading from '../../component/Loading/Loading.svelte';
 
 	export let latestPost;
 

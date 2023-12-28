@@ -8,6 +8,7 @@
 	import ProjectSection from '../component/Home/ProjectSection.svelte';
 
 	import type { PageData } from './$houdini';
+	import { isArray } from 'lodash-es';
 
 	export let data: PageData;
 
@@ -38,6 +39,8 @@
 	];
 
 	$: color = onFirstVisit();
+
+	$: console.log('blogisArray?',Array.isArray(latestPost))
 </script>
 
 <svelte:head>

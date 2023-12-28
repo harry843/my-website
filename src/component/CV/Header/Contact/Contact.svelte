@@ -22,7 +22,7 @@
 		{ name: 'github', contact: 'GitHub', link: 'https://github.com/harry843', icon: Github },
 		{
 			name: 'location',
-			contact: 'Remote / Leeds',
+			contact: 'Remote',
 			link: 'https://www.google.com/maps/place/Leeds/@53.8060835,-1.6057716,12z/data=!3m1!4b1!4m5!3m4!1s0x48793e4ada64bd99:0x51adbafd0213dca9!8m2!3d53.8007554!4d-1.5490774',
 			icon: Location
 		}
