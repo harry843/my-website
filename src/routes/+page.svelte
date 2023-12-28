@@ -6,15 +6,29 @@
 	import AboutSection from '../component/Home/AboutSection.svelte';
 	import BlogSection from '../component/Home/BlogSection.svelte';
 	import ProjectSection from '../component/Home/ProjectSection.svelte';
-
+	import { onMount } from 'svelte';
 	import type { PageData } from './$houdini';
-	import { isArray } from 'lodash-es';
+	
 
 	export let data: PageData;
 
 	$: ({ GetLatestPost } = data);
 
-	$: latestPost = $GetLatestPost.data?.allPost
+	let latestPost: {
+		title: string;
+		feature: string;
+		_createdAt: string;
+		_updatedAt: string;
+		slug: { current: string };
+		tags: string[];
+		contentRaw: any;
+		mainImage: {
+			image: any;
+			alt: string;
+		};
+	}[];
+	$: latestPost = $GetLatestPost.data?.allPost;
+
 	$: isLoading = !$GetLatestPost || !$GetLatestPost.data;
 
 	let width: number = 0;
@@ -34,13 +48,17 @@
 	$: colors = [
 		{ name: 'rose', hex: '#f43f5e' },
 		{ name: 'yellow', hex: '#eab308' },
-		//{ name: 'indigo', hex: '#6366f1' },
 		{ name: 'teal', hex: '#14b8a6' }
 	];
 
 	$: color = onFirstVisit();
 
-	$: console.log('blogisArray?',Array.isArray(latestPost))
+	onMount(() => {
+    if (typeof latestPost === undefined) {
+      location.reload();
+    }
+  });
+
 </script>
 
 <svelte:head>
@@ -104,6 +122,8 @@
 	{/if}
 	<AboutSection />
 	<SkillsSection />
+	{#if latestPost}
 	<BlogSection {latestPost} />
+	{/if}
 	<ProjectSection />
 {/if}
