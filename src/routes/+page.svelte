@@ -1,94 +1,129 @@
 <script lang="ts">
-	import RadarChart from '../component/RadarChart/RadarChart.svelte';
-	import Image from '../component/Image/Image.svelte'
-	import { firstVisit } from '../stores/home';
+	import RadarwithAvatar from '../component/Home/RadarwithAvatar.svelte';
+	import DynamicButtons from '../component/Home/DynamicButtons.svelte';
+	import { userHasNavigated } from '../stores/stores';
+	import SkillsSection from '../component/Home/SkillsSection.svelte';
+	import AboutSection from '../component/Home/AboutSection.svelte';
+	import BlogSection from '../component/Home/BlogSection.svelte';
+	import ProjectSection from '../component/Home/ProjectSection.svelte';
+	import { onMount } from 'svelte';
+	import type { PageData } from './$houdini';
+	
+
+	export let data: PageData;
+
+	$: ({ GetLatestPost } = data);
+
+	let latestPost: {
+		title: string;
+		feature: string;
+		_createdAt: string;
+		_updatedAt: string;
+		slug: { current: string };
+		tags: string[];
+		contentRaw: any;
+		mainImage: {
+			image: any;
+			alt: string;
+		};
+	}[];
+	$: latestPost = $GetLatestPost.data?.allPost;
+
+	$: isLoading = !$GetLatestPost || !$GetLatestPost.data;
 
 	let width: number = 0;
+	let screenwidth: number = 0;
 
-	// const text = [
-	// 	{ name: 'BI developer.', image: 'HK_thumbnail.png', alt: "Harry's profile picture" },
-	// 	{ name: 'nerd?', image: 'HK_Naruto.png', alt: 'Harry as a cartoon' },
-	// 	{ name: 'musician?', image: 'HK_Music.jpg', alt: 'Harry creating music' },
-	// 	{ name: 'enough?', image: 'HK_Ken.png', alt: 'Am I Kenough?' }
-	// ];
-	// let counter: number = 0;
-	// let cycles: number = 0;
-	// const maxCycles: number = 1;
-	// let interval: number | undefined = undefined;
+	$: bool = true;
+	$: additionalClass = screenwidth >= 1024 ? 'lg:translate-x-8' : screenwidth < 768 ? 'pt-10' : '';
 
-	// function changeText() {
-	// 	counter = (counter + 1) % text.length;
-	// 	if (counter === 0) {
-	// 		cycles++;
-	// 		if (cycles === maxCycles) {
-	// 			firstVisit.set('false');
-	// 			clearInterval(interval);
-	// 			console.log(firstVisit);
-	// 		}
-	// 	}
-	// }
+	function onFirstVisit() {
+		if ($userHasNavigated) {
+			return colors[Math.floor(Math.random() * colors.length)];
+		} else {
+			return { name: 'indigo', hex: '#6366f1' };
+		}
+	}
 
-	// // Computed property to determine the interval based on conditions
-	// $: {
-	// 	clearInterval(interval); // Clear any existing interval
+	$: colors = [
+		{ name: 'rose', hex: '#f43f5e' },
+		{ name: 'yellow', hex: '#eab308' },
+		{ name: 'teal', hex: '#14b8a6' }
+	];
 
-	// 	if (counter === 0 && cycles === 0) {
-	// 		interval = setInterval(changeText, 2150);
-	// 	} else if (counter === text.length - 1 && cycles === 0) {
-	// 		interval = setInterval(changeText, 2500);
-	// 	} else if (counter === text.length - 2 && cycles === 0) {
-	// 		interval = setInterval(changeText, 1900);
-	// 	} else if (counter !== 0 && cycles === 0) {
-	// 		interval = setInterval(changeText, 1450);
-	// 	}
-	// }
+	$: color = onFirstVisit();
 
-	// $: textStyle =
-	// 	counter === 0 || cycles === maxCycles
-	// 		? 'text-indigo-600 font-medium'
-	// 		: 'text-orange-600 font-medium';
+	onMount(() => {
+    if (typeof latestPost === undefined) {
+      location.reload();
+    }
+  });
 
-	// $: def = counter === text.length - 1 ? 'I am ' : "Hi, I'm a ";
-
-	// $: k = counter === text.length - 1 ? '𝓚' : '';
 </script>
 
 <svelte:head>
 	<title>Harry Kelleher</title>
 </svelte:head>
 
-<!-- {#if $firstVisit === 'true'}
-	<section class="flex flex-col items-center font-normal px-4 py-2 text-lg w-full">
-		<p>
-			{def}<span class="text-3xl text-pink-600 font-medium">{k}</span><span
-				id="changeText"
-				class={textStyle}>{text[counter].name}</span
-			>
-		</p>
-		{#if cycles != 1}
-			<div class="py-8">
-				<Image
-					src={text[counter].image}
-					alt={text[counter].alt}
-					width="400"
-					height="400"
-					style="border-radius: 50%"
-				/>
-			</div>
-		{/if}
-	</section>
-{:else} -->
-	<section class="flex flex-col-reverse md:flex-row">
-		<div class="w-full xs:w-11/12 xs:translate-x-7 sm:w-3/4 sm:translate-x-20 md:w-1/2 md:translate-x-0" bind:clientWidth={width}>
-			{#if width > 0}
-				<RadarChart {width} />
+<svelte:window bind:innerWidth={screenwidth} />
+
+<section class="flex flex-col md:flex-row">
+	<div
+		class="relative flex flex-col justify-center items-center w-full xs:w-11/12 xs:translate-x-7 sm:w-3/4 sm:translate-x-20 md:w-1/2 md:-translate-x-5"
+		bind:clientWidth={width}
+	>
+		{#if width > 0}
+			{#if screenwidth < 768}
+				<div class="">
+					<p>
+						I'm a <span
+							class="text-{color.name === 'yellow' ? '[#b7791f]' : color.name + '-600'} font-medium"
+							>Data Visualisation Lead.</span
+						>
+					</p>
+					<br />
+					<p>I create data products to help grow your business.</p>
+				</div>
+				{#if screenwidth >= 640}
+					<DynamicButtons {color} {additionalClass} />
+				{/if}
 			{/if}
-		</div>
-		<div class="space-y-4 md:p-8 w-full md:w-1/2">
-			<p>
-				I'm a <span class=" text-indigo-600 font-medium">Data Visualisation Developer.</span>
-			</p>
-			<p>I create data products to help grow your business.</p>
-		</div>
-	</section>
-<!-- {/if} -->
+
+			<RadarwithAvatar {width} {color} {bool} />
+		{/if}
+	</div>
+
+	<div
+		class="flex flex-col items-center justify-center space-y-4 md:p-8 w-full md:w-1/2"
+		bind:clientWidth={width}
+	>
+		{#if width > 0}
+			{#if screenwidth >= 768}
+				<div class="translate-y-0 xs:-translate-y-1/2">
+					<p>
+						I'm a <span
+							class="text-{color.name === 'yellow' ? '[#b7791f]' : color.name + '-600'} font-medium"
+							>Data Visualisation Lead.</span
+						>
+					</p>
+					<br />
+					<p>I create data products to help grow your business.</p>
+				</div>
+				{#if screenwidth >= 1024}
+					<DynamicButtons {color} {additionalClass} />
+				{/if}
+			{/if}
+		{/if}
+	</div>
+</section>
+{#if width > 0}
+	{#if screenwidth >= 768 && screenwidth < 1024}
+		<DynamicButtons {color} {additionalClass} />
+	{/if}
+	<AboutSection />
+	<SkillsSection />
+	{#if latestPost}
+	<BlogSection {latestPost} />
+	{/if}
+	<ProjectSection />
+{/if}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import DesktopMenu from './DesktopMenu/DesktopMenu.svelte';
+	import Logo from './Footer/icons/Logo.svelte';
 	import MobileMenu from './MobileMenu/MobileMenu.svelte';
 
 	$: open = false;
@@ -8,19 +9,21 @@
 		open = !open;
 	};
 
-    const handleClose = () => {
+	const handleClose = () => {
 		open = false;
 	};
-
 </script>
 
 <nav
 	class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
 >
-	<div class="px-2 xs:px-4 md:px-16 lg:px-32 xl:px-44 2xl:px-56 flex flex-wrap items-center justify-between mx-auto py-2">
+	<div
+		class="px-2 xs:px-4 md:px-16 lg:px-32 xl:px-44 2xl:px-56 flex flex-wrap items-center justify-between mx-auto py-2"
+	>
 		<a href="/" class="flex items-center">
-			<img src="/HK_thumbnail.png" class="h-12 mr-4" alt="Harry Kelleher" />
-			<span class="self-center text-2xl font-semibold whitespace-nowrap font-customHeading dark:text-white hover:underline"
+			<Logo />
+			<span
+				class="px-3 self-center text-2xl font-semibold whitespace-nowrap font-customHeading dark:text-white hover:underline"
 				>Harry Kelleher</span
 			>
 		</a>
@@ -47,6 +50,6 @@
 			>
 		</button>
 		<DesktopMenu />
-		<MobileMenu {open} {handleClose}/>
+		<MobileMenu {open} {handleClose} />
 	</div>
 </nav>

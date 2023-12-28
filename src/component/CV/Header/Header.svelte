@@ -13,7 +13,7 @@
 				</h2>
 				<span class="text-indigo-500 hidden sm:block text-xl">|</span>
 				<div class="flex flex-col gap-y-2 text-left group relative ">
-					<p style="padding-top:4px;">
+					<p class="pt-2 sm:pt-1">
 						<button>Security Cleared</button><img
 							src={`secure.svg`}
 							alt="security cleared"

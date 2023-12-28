@@ -1,4 +1,4 @@
-export default function averageReadingTime(array: any[]) {
+export default function averageReadingTime(array: JSON) {
 	let totalCharacters = 0;
 	const averageCharactersInWord = 5;
 	const averageWordsPerMinute = 265;

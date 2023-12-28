@@ -38,6 +38,4 @@ export const removeActiveNode = writable((node: number) => {
 export const hoverStore = writable({ link: false, node: false });
 export const clickStore = writable({ node: false });
 
-export const one_cycle = writable<boolean>(localStorage.one_cycle === 'true')
-one_cycle.subscribe((value) => localStorage.enabled = String(value))
-
+export const userHasNavigated =  writable<boolean>(false)

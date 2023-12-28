@@ -3,6 +3,10 @@ query GetPostBySlug($slug: String!) {
     _createdAt
     _updatedAt
     title
+    feature
+    slug {
+      current
+    }
     tags
     contentRaw
     mainImage {

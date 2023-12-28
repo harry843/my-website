@@ -6,7 +6,7 @@
 
 <section>
 	<h1 class="mb-2 font-medium">{categories}</h1>
-	<div class={classNames('grid gap-3', gridColsClass)}>
+	<div class={classNames('grid gap-1', gridColsClass)}>
 		{#each items as item}
 			<p
 				class="rounded-sm border border-gray-100 text-center text-gray-500 text-ss font-medium px-1 sm:px-2"

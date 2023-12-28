@@ -43,12 +43,18 @@
 			failed = true;
 		};
 	});
-
-	$: console.log(src);
 </script>
 
 {#if loaded}
-	<img srcset={buildSrcset()} sizes="(max-width: 979px) 500px, 1000px" {src} {alt} class="object-contain w-full h-full" loading="lazy" decoding="async" />
+	<img
+		srcset={buildSrcset()}
+		sizes="(max-width: 979px) 500px, 1000px"
+		{src}
+		{alt}
+		class="object-contain w-full h-full"
+		loading="lazy"
+		decoding="async"
+	/>
 {:else if failed}
 	<img src="https://icon-library.com/images/not-found-icon/not-found-icon-20.jpg" alt="Not Found" />
 	<p>{buildSrcset()}</p>

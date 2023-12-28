@@ -1,6 +1,6 @@
 <script lang="ts">
 	import classNames from 'classnames';
-	export let withArrow: boolean;
+	export let withArrow: boolean; 
 	export let imageColorClass: string;
 	export let image: string;
 	export let title: string;

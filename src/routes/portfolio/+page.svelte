@@ -62,7 +62,7 @@
 </svelte:head>
 
 <section bind:clientWidth={width} class="flex flex-col px-4 text-sm w-full space-y-4">
-	<h1 class="font-semibold text-3xl font-customHeading">Projects</h1>
+	<h1 class="font-semibold text-2xl font-customHeading">Projects</h1>
 	<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 md:gap-4">
 		{#each projects as project}
 			<a
@@ -79,7 +79,7 @@
 						<h1 class="font-medium text-lg">{project.title}</h1>
 						<div class="flex gap-x-2">
 							{#each project.skills as skill}
-								<span class="rounded-full px-4 py-1 font-medium bg-indigo-600 text-white text-xs">{skill}</span>
+								<span class="rounded-md px-4 py-1 font-medium bg-indigo-50 text-indigo-700 text-xs">{skill}</span>
 							{/each}
 						</div>
 					</div>
