@@ -1,4 +1,6 @@
 <script async defer src="https://cusdis.com/js/cusdis.es.js" lang="ts">
+    import { onMount, createEventDispatcher, afterUpdate, onDestroy } from "svelte";
+	import { browser } from "$app/environment";
 	import CustomHeading from '../../../component/PortableText/CustomHeading.svelte';
 	import CustomParagraph from '../../../component/PortableText/CustomParagraph.svelte';
 	import CustomUrl from '../../../component/PortableText/CustomURL.svelte';
@@ -19,16 +21,45 @@
 	$: ({ GetPostBySlug } = data);
 
 	$: blog = $GetPostBySlug.data?.allPost[0];
-	$: console.log(blog?.title.toLowerCase().replace(/\s/g, '-'));
+
+	const dispatch = createEventDispatcher();
+
+const load = () =>{
+	dispatch("load");
+}
+
+onDestroy(()=>{
+	if (browser){
+		let url = "https://cusdis-comments-4386.vercel.app/js/cusdis.es.js";
+		let script  = document.querySelector(`script[src="${url}"]`);
+		script.removeEventListener("load", load);
+	}
+})
+
+afterUpdate(async ()=>{
+	load();
+})
+
+onMount(async ()=>{
+	let url = "https://cusdis-comments-4386.vercel.app/js/cusdis.es.js";
+        let script  = document.querySelector(`script[src="${url}"]`);
+        if (!script){
+            script = document.createElement("script");
+            script.src = url;
+            script.defer = true;
+            script.async = true;
+            script.addEventListener("load", load);
+            document.querySelector("head").appendChild(script);
+        }
+        window.CUSDIS.initial();
+    })
+
+	$: console.log(blog?.slug.current);
 </script>
 
 <svelte:head>
 	<title>Blog | {blog?.title}</title>
-	<script
-		async
-		defer
-		src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"
-	></script>
+	<script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script>
 </svelte:head>
 
 <div class="mx-5 md:mx-[15%] lg:mx-[18%] xl:mx-[22%]">
@@ -104,14 +135,11 @@
 
 <div
 	id="cusdis_thread"
-	class="bg-indigo-100 h-96 scale-100"
+	class="scale-100"
 	data-host="https://cusdis-comments-4386.vercel.app"
 	data-app-id="6a1a98be-887b-4480-88ed-0cc2e588698a"
-	data-page-id={blog?.title.toLowerCase().replace(/\s/g, '-')}
-	data-page-url="https://staging.harrykelleher.com/blog/{blog?.title
-		.toLowerCase()
-		.replace(/\s/g, '-')}"
+	data-page-id={blog?.slug.current}
+	data-page-url="https://staging.harrykelleher.com/blog/{blog?.slug.current}"
 	data-page-title={blog?.title}
 	data-theme="light"
->
-</div>
+/>
