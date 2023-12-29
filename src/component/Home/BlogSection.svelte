@@ -19,7 +19,7 @@
 		</div>
 		<div class="md:col-start-2 md:col-span-4">
 			<p class="ml-px py-1">Every now and then, I write about something that interests me.</p>
-			<h1 class="font-customHeading font-semibold text-center text-xl pt-5">Latest Blog Post</h1>
+			<h1 class="font-customHeading font-semibold text-left text-xl pt-5">↓ Latest Blog Post ↓</h1>
 		</div>
 		{#each latestPost as post, index}
 			<BlogPostCard

@@ -23,8 +23,8 @@
 			<li>
 				<a
 					href={'/' + route.slug}
-					class={classNames('block py-2 px-4 text-gray-800 border-blue-300', {
-						'text-blue-700 bg-gray-100 rounded-md': route.slug === $page.url.pathname.slice(1)
+					class={classNames('block py-2 px-4 dark:text-white text-gray-800 border-blue-300', {
+						'text-blue-700 dark:text-sky-300 dark:bg-gray-700 bg-gray-100 rounded-md': route.slug === $page.url.pathname.slice(1)
 					},
                     )}
 					aria-current="page"
