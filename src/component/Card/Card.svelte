@@ -16,7 +16,7 @@
 
 <svelte:element
 	this={tag}
-	class="rounded-sm border border-gray-100 transition-all duration-400 relative w-full hover:shadow-lg {additionalClass}"
+	class="rounded-sm border border-gray-100 dark:border-gray-600 transition-all duration-400 relative w-full hover:shadow-lg {additionalClass}"
 	{...linkProps}
 	data-sveltekit-preload-data
 	{...$$restProps}

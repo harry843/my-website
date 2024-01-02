@@ -30,8 +30,6 @@
             darkMode = false;
         }
     }
-
-	$: console.log(darkMode);
 </script>
 
 <div
