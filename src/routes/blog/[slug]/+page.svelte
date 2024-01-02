@@ -15,7 +15,6 @@
 	import type { PageData } from './$houdini';
 	import { PortableText } from '@portabletext/svelte';
 	import Email from '../../../component/CV/Header/Contact/icons/Email.svelte';
-	import LinkedIn from '../../../component/NavBar/Footer/icons/LinkedIn.svelte';
 
 	export let data: PageData;
 
@@ -60,7 +59,7 @@
 	<title>Blog | {blog?.title}</title>
 	<script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script>
 	<meta property="og:title" content={blog?.title} />
-	<meta property="og:image" content={blog?.mainImage?.image?.asset?.url + '?w=1200&h=627'} />
+	<meta property="og:image" content={blog?.mainImage?.image?.asset?.url} />
 	<meta property="og:description" content={blog?.feature} />
 	<meta property="og:url" content={'https://harrykelleher.com/blog/' + blog?.slug.current} />
 </svelte:head>
