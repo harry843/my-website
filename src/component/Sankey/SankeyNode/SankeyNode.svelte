@@ -72,11 +72,10 @@
 </script>
 
 <rect
-	class={classNames('cursor-pointer opacity-90 focus:outline-none', {
+	class={classNames('cursor-pointer opacity-90 focus:outline-none stroke-white dark:stroke-gray-800', {
 		'opacity-100': nodeIsActive
 	})}
 	fill={node.colour}
-	stroke="white"
 	stroke-width="1"
 	rx="1"
 	x={node.x0}
@@ -121,7 +120,7 @@
 	on:blur={() => nodeHandleMouseOut()}
 />
 <text
-	class={classNames('fill-gray-800 hidden md:block', { 'font-semibold': nodeIsActive })}
+	class={classNames('fill-gray-800 dark:fill-gray-300 hidden md:block md:text-xs xl:text-sm', { 'font-semibold': nodeIsActive })}
 	x={labelXPosition}
 	y={labelYPosition}
 	text-anchor={textAnchor}
