@@ -1,7 +1,7 @@
     <div class="flex h-full w-full flex-grow items-center justify-center">
         <svg
             role="status"
-            class="mr-2 inline h-12 w-12 animate-spin fill-indigo-600 text-gray-200 dark:text-gray-600"
+            class="mr-2 inline h-12 w-12 animate-spin fill-indigo-600 dark:fill-sky-400 text-gray-200 dark:text-gray-500"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

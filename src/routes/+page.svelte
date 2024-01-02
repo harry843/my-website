@@ -8,7 +8,7 @@
 	import ProjectSection from '../component/Home/ProjectSection.svelte';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$houdini';
-	
+	import { browser } from '$app/environment';
 
 	export let data: PageData;
 
@@ -38,10 +38,21 @@
 	$: additionalClass = screenwidth >= 1024 ? 'lg:translate-x-8' : screenwidth < 768 ? 'pt-10' : '';
 
 	function onFirstVisit() {
-		if ($userHasNavigated) {
-			return colors[Math.floor(Math.random() * colors.length)];
-		} else {
-			return { name: 'indigo', hex: '#6366f1' };
+		if (browser) {
+			if (
+				localStorage.theme === 'dark' ||
+				(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+			) {
+				return { name: 'sky', hex: '#7dd3fc' };
+			}
+			if (
+				($userHasNavigated && localStorage.theme !== 'dark') ||
+				(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+			) {
+				return colors[Math.floor(Math.random() * colors.length)];
+			} else {
+				return { name: 'indigo', hex: '#6366f1' };
+			}
 		}
 	}
 
@@ -54,10 +65,10 @@
 	$: color = onFirstVisit();
 
 	onMount(() => {
-    if (typeof latestPost === undefined) {
-      location.reload();
-    }
-  });
+		if (typeof latestPost === undefined) {
+			location.reload();
+		}
+	});
 
 </script>
 
@@ -77,8 +88,9 @@
 				<div class="">
 					<p>
 						I'm a <span
-							class="text-{color.name === 'yellow' ? '[#b7791f]' : color.name + '-600'} font-medium"
-							>Data Visualisation Lead.</span
+							class="text-{color.name === 'yellow'
+								? '[#b7791f]'
+								: color.name + '-600'} dark:text-sky-300 font-medium">Data Visualisation Lead.</span
 						>
 					</p>
 					<br />
@@ -102,7 +114,9 @@
 				<div class="translate-y-0 xs:-translate-y-1/2">
 					<p>
 						I'm a <span
-							class="text-{color.name === 'yellow' ? '[#b7791f]' : color.name + '-600'} font-medium"
+							class="text-{color.name === 'yellow'
+								? '[#b7791f]'
+								: color.name + '-600'} dark:md:text-sky-300 font-medium"
 							>Data Visualisation Lead.</span
 						>
 					</p>
@@ -123,7 +137,7 @@
 	<AboutSection />
 	<SkillsSection />
 	{#if latestPost}
-	<BlogSection {latestPost} />
+		<BlogSection {latestPost} />
 	{/if}
 	<ProjectSection />
 {/if}

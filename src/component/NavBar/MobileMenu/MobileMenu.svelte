@@ -2,14 +2,18 @@
 	import classNames from 'classnames';
 	import { page } from '$app/stores';
     import { routes} from '../utils/utils';
+	import Moon from '../../Icons/Moon.svelte';
+	import Sun from '../../Icons/Sun.svelte';
 	export let open: boolean;
 	export let handleClose: () => void;
+	export let darkMode;
+	export let handleSwitchDarkMode;
 
 </script>
 
 <div
 	class={classNames(
-		'absolute p-4 w-1/2 h-screen top-20 transition-all duration-700 md:hidden',
+		'absolute right-0 p-4 w-1/2 h-screen top-20 transition-all duration-700 md:hidden',
 		{
 			'left-1/2': open,
 			'left-full': !open
@@ -23,8 +27,8 @@
 			<li>
 				<a
 					href={'/' + route.slug}
-					class={classNames('block py-2 px-4 text-gray-800 border-blue-300', {
-						'text-blue-700 bg-gray-100 rounded-md': route.slug === $page.url.pathname.slice(1)
+					class={classNames('block py-2 px-4 dark:text-white text-gray-800 border-blue-300', {
+						'text-indigo-600 dark:text-sky-400 dark:bg-gray-700 bg-gray-100 rounded-md': route.slug === $page.url.pathname.slice(1)
 					},
                     )}
 					aria-current="page"
@@ -35,3 +39,21 @@
 		{/each}
 	</ul>
 </div>
+
+<label class="relative flex items-center justify-center cursor-pointer">
+	<input
+		type="checkbox"
+		checked={darkMode}
+		value=""
+		class="sr-only peer"
+		on:change={handleSwitchDarkMode}
+	/>
+
+	<div class="ms-2">
+		{#if darkMode}
+			<Moon />
+		{:else}
+			<Sun />
+		{/if}
+	</div>
+</label>

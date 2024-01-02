@@ -69,7 +69,7 @@
 				href={project.url}
 				target={project.isExternal ? '_blank' : null}
 				rel="noreferrer"
-				class="border border-gray-100 flex flex-col divide-y rounded-sm shadow-sm hover:shadow-lg"
+				class="border border-gray-100 dark:border-gray-600 flex flex-col divide-y rounded-sm shadow-sm hover:shadow-lg dark:hover:scale-[1.02] dark:hover:ease-in dark:hover:duration-200 dark:hover:delay-75"
 			>
 				<Image src={`${project.image}`} alt={project.title} />
 				<div class="p-4 space-y-2">
@@ -79,7 +79,7 @@
 						<h1 class="font-medium text-lg">{project.title}</h1>
 						<div class="flex gap-x-2">
 							{#each project.skills as skill}
-								<span class="rounded-md px-4 py-1 font-medium bg-indigo-50 text-indigo-700 text-xs">{skill}</span>
+								<span class="rounded-md px-4 py-1 font-medium bg-indigo-50 text-indigo-700 dark:bg-sky-300 dark:text-gray-900 text-xs">{skill}</span>
 							{/each}
 						</div>
 					</div>

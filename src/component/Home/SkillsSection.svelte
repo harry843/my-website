@@ -56,7 +56,7 @@
 
 <div class="container grid md:grid-cols-6 gap-8 pt-5 md:pt-7 items-center">
 	<div class="md:col-start-3 md:col-span-4">
-		<h2 class="inline-block bg-yellow-400 py-2 px-4 md:-ml-4 mb-2 rounded-sm text-lg font-bold font-customHeading uppercase">
+		<h2 class="inline-block bg-yellow-400 dark:text-gray-900 py-2 px-4 md:-ml-4 mb-2 rounded-sm text-lg font-bold font-customHeading uppercase">
 			Skills
 		</h2>
 	</div>
@@ -73,7 +73,7 @@
 		<h3 class="text-xl font-customHeading font-semibold mb-2">Technical</h3>
 		{#each technical as { name, value, score }}
 			<div
-				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black hover:delay-75"
+				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:delay-75"
 			>
 				<h1>{name}</h1>
 				<div
@@ -90,12 +90,12 @@
 		<h3 class="text-xl font-customHeading font-semibold pt-5 mb-2">People</h3>
 		{#each people as { name, value, score }}
 			<div
-				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black hover:delay-75"
+				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:delay-75"
 			>
 				<h1>{name}</h1>
 				<div
 					data-tooltip-target="tooltip-default"
-					class="flex items-center transition duration-150 hover:scale-105 hover:text-black"
+					class="flex items-center transition duration-150 hover:scale-105 hover:text-black dark:hover:text-white"
 				>
 					{#each generateStars(value) as starClass}
 						<Star {starClass} />
@@ -108,12 +108,12 @@
 		<h3 class="text-xl font-customHeading pt-5 sm:pt-0 font-semibold mb-2">Software</h3>
 		{#each software as { name, value, score }}
 			<div
-				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black hover:delay-75"
+				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:delay-75"
 			>
 				<h1>{name}</h1>
 				<div
 					data-tooltip-target="tooltip-default"
-					class="flex items-center transition duration-150 hover:scale-105 hover:text-black"
+					class="flex items-center transition duration-150 hover:scale-105 hover:text-black dark:hover:text-white"
 				>
 					{#each generateStars(value) as starClass}
 						<Star {starClass} />
@@ -124,12 +124,12 @@
 		<h3 class="text-xl font-customHeading pt-5 font-semibold mb-2">Languages</h3>
 		{#each languages as { name, value, score }}
 			<div
-				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black hover:delay-75"
+				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:ease-in-out"
 			>
 				<h1>{name}</h1>
 				<div
 					data-tooltip-target="tooltip-default"
-					class="flex items-center transition duration-150 hover:scale-105 hover:text-black"
+					class="flex items-center transition hover:duration-150 hover:ease-in-out hover:scale-105 hover:text-black dark:hover:text-white"
 				>
 					{#each generateStars(value) as starClass}
 						<Star {starClass} />

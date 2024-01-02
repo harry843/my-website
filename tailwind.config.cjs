@@ -11,11 +11,14 @@ const safeList = [
 	'stroke-rose-500',
 	'stroke-indigo-500',
 	'stroke-teal-500',
+	'stroke-sky-500',
 	'text-teal-600',
 	'text-teal-700',
 	'text-indigo-600',
 	'text-rose-600',
 	'text-[#b7791f]',
+	'text-sky-700',
+	'dark:text-sky-300',
 	'from-indigo-500',
 	'via-indigo-600',
 	'to-indigo-700',
@@ -25,6 +28,9 @@ const safeList = [
 	'from-teal-500',
 	'via-teal-700',
 	'to-teal-700',
+	'from-sky-500',
+	'via-sky-600',
+	'to-sky-700',
 	'from-yellow-500',
 	'via-yellow-700',
 	'to-yellow-700',
@@ -36,6 +42,7 @@ const safeList = [
 	'border-rose-600',
 	'border-teal-600',
 	'border-yellow-600',
+	'border-sky-600',
 ];
 
 module.exports = {
@@ -48,6 +55,7 @@ module.exports = {
 		'hover:text-github',
 		'hover:text-email'
 	],
+	darkMode: 'class',
 	theme: {
 		extend: {
 			screens: {

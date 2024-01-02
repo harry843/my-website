@@ -13,7 +13,7 @@
 </script>
 
 {#if link.href}
-  <a class="text-blue-600 underline" href={link.href} rel="noreferrer" target={newWindow ? '_blank' : undefined}>
+  <a class="text-blue-600 dark:text-sky-300 underline" href={link.href} rel="noreferrer" target={newWindow ? '_blank' : undefined}>
     <slot />
   </a>
 {:else}

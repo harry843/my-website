@@ -23,7 +23,7 @@
 			{title}
 		</h1>
 		{#if readingTime}
-			<div class="text-sm text-slate-600">{readingTime}</div>
+			<div class="text-sm text-slate-600 dark:text-gray-300">{readingTime}</div>
 		{/if}
 		{#if excerpt}
 			<p class="mt-5 text-base text-justify">
