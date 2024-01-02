@@ -4,16 +4,32 @@
 	import { routes } from '../utils/utils';
 	import Sun from '../../Icons/Sun.svelte';
 	import Moon from '../../Icons/Moon.svelte';
+	import { browser } from '$app/environment';
 
 	let darkMode = false;
 
 	function handleSwitchDarkMode() {
-		darkMode = !darkMode;
+        darkMode = !darkMode;
 
-		darkMode
-			? document.documentElement.classList.add('dark')
-			: document.documentElement.classList.remove('dark');
-	}
+        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+
+        darkMode
+            ? document.documentElement.classList.add('dark')
+            : document.documentElement.classList.remove('dark');
+    }
+
+	if (browser) {
+        if (
+            localStorage.theme === 'dark' ||
+            (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark');
+            darkMode = true;
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkMode = false;
+        }
+    }
 
 	$: console.log(darkMode);
 </script>
