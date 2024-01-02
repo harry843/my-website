@@ -6,7 +6,7 @@
 <Section>
 	<div class="xxs:flex flex-col text-left lg:flex-row items-left justify-between">
 		<div class="flex flex-col gap-y-2">
-			<h1 class="max-w-max text-3xl font-medium font-customHeading pb-2">Harry Kelleher</h1>
+			<h1 class="max-w-max text-3xl font-medium font-customHeading dark:text-black pb-2">Harry Kelleher</h1>
 			<div class="flex flex-col sm:items-center sm:flex-row gap-x-4 pt-3">
 				<h2 class="text-lg font-medium text-gray-800">
 					Business Intelligence Developer <span class="text-indigo-500">&#8226;</span> Analytics Manager
