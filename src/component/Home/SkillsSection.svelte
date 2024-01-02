@@ -124,12 +124,12 @@
 		<h3 class="text-xl font-customHeading pt-5 font-semibold mb-2">Languages</h3>
 		{#each languages as { name, value, score }}
 			<div
-				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:delay-75"
+				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:ease-in-out"
 			>
 				<h1>{name}</h1>
 				<div
 					data-tooltip-target="tooltip-default"
-					class="flex items-center transition duration-150 hover:scale-105 hover:text-black dark:hover:text-white"
+					class="flex items-center transition hover:duration-150 hover:ease-in-out hover:scale-105 hover:text-black dark:hover:text-white"
 				>
 					{#each generateStars(value) as starClass}
 						<Star {starClass} />
