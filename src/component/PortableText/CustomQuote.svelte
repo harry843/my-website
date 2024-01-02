@@ -1,7 +1,6 @@
 <script lang="ts">
 	export let portableText;
 	$: quote = portableText?.value
-	//$: console.log(quote);
 </script>
 <br>
 <figure

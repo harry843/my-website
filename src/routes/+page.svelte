@@ -70,7 +70,6 @@
 		}
 	});
 
-	$: console.log(color)
 </script>
 
 <svelte:head>

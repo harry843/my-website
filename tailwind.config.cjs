@@ -18,6 +18,7 @@ const safeList = [
 	'text-rose-600',
 	'text-[#b7791f]',
 	'text-sky-700',
+	'dark:text-sky-300',
 	'from-indigo-500',
 	'via-indigo-600',
 	'to-indigo-700',

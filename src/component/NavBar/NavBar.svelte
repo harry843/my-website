@@ -2,8 +2,10 @@
 	import DesktopMenu from './DesktopMenu/DesktopMenu.svelte';
 	import Logo from './Footer/icons/Logo.svelte';
 	import MobileMenu from './MobileMenu/MobileMenu.svelte';
+	import { browser } from '$app/environment';
 
 	$: open = false;
+	let width = 0;
 
 	const handleOpen = () => {
 		open = !open;
@@ -12,9 +14,35 @@
 	const handleClose = () => {
 		open = false;
 	};
+
+	let darkMode = false;
+
+	function handleSwitchDarkMode() {
+		darkMode = !darkMode;
+
+		localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+
+		darkMode
+			? document.documentElement.classList.add('dark')
+			: document.documentElement.classList.remove('dark');
+	}
+
+	if (browser) {
+		if (
+			localStorage.theme === 'dark' ||
+			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+		) {
+			document.documentElement.classList.add('dark');
+			darkMode = true;
+		} else {
+			document.documentElement.classList.remove('dark');
+			darkMode = false;
+		}
+	}
 </script>
 
 <nav
+bind:clientWidth={width}
 	class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
 >
 	<div
@@ -22,11 +50,20 @@
 	>
 		<a href="/" class="flex items-center">
 			<Logo />
+			{#if width != 0 && width >= 375 }
+				
+		
 			<span
 				class="px-3 self-center text-2xl font-semibold whitespace-nowrap font-customHeading dark:text-white hover:underline"
 				>Harry Kelleher</span
-			>
+			>	{/if}
 		</a>
+		<div class="flex flex-row items-center gap-x-5">
+		{#if width > 767}
+		<DesktopMenu {darkMode} {handleSwitchDarkMode}/>
+		{:else if width != 0}
+		<MobileMenu {open} {handleClose} {darkMode} {handleSwitchDarkMode} />
+		{/if}
 		<button
 			data-collapse-toggle="navbar-sticky"
 			type="button"
@@ -49,7 +86,7 @@
 				/></svg
 			>
 		</button>
-		<DesktopMenu />
-		<MobileMenu {open} {handleClose} />
+	</div>
+
 	</div>
 </nav>
