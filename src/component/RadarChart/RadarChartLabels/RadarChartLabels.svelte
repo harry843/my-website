@@ -22,7 +22,7 @@
 <g>
 	{#each labelsData as { name, coordinate, textAnchor }}
 		<text
-			class="text-xs sm:text-sm fill-slate-700 font-semibold"
+			class="text-xs sm:text-sm fill-slate-700 dark:fill-white font-semibold"
 			alignment-baseline="middle"
 			text-anchor={textAnchor}
 			x={coordinate[0]}

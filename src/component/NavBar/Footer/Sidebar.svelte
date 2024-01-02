@@ -43,7 +43,7 @@
 </script>
 
 {#if outerWidth !== undefined && outerWidth > 767}
-	<div class="flex justify-center">
+	<div class="flex justify-center dark:bg-gray-900">
 		<div
 			class="fixed flex justify-center md:right-7 md:flex-col items-center gap-6 md:gap-9 bottom-0 -translate-y-2 md:bottom-1/2 transform md:translate-y-1/2 z-10"
 		>
@@ -56,7 +56,7 @@
 			{/each}
 		</div>
 	</div>
-	<footer>
+	<footer class="dark:bg-gray-900">
 		<div class="px-2 xs:px-4 md:px-16 lg:px-32 xl:px-44 2xl:px-56 xxs:py-8">
 			<div
 				class="flex items-center justify-between px-0 xxs:px-2 md:translate-y-[4.7rem] lg:translate-y-[5.6rem]"
@@ -66,20 +66,20 @@
 					class="flex items-start xs:items-center mb-0 space-x-3 rtl:space-x-reverse grayscale hover:grayscale-0"
 				>
 					<img src="/HK_thumbnail.png" class="h-8" alt="Harry Kelleher" />
-					<span class="self-center font-customHeading text-base font-medium whitespace-nowrap"
+					<span class="self-center font-customHeading text-base font-medium whitespace-nowrap dark:text-white"
 						>{myName}</span
 					>
 				</a>
 			</div>
 			<hr class="my-6 border-gray-200 mx-auto lg:my-8" />
-			<span class="block text-sm text-gray-500 text-center dark:text-gray-400"
+			<span class="block text-sm text-gray-500 text-center dark:text-gray-300"
 				>© {currentYear}
 				<a href="/" class="hover:underline">Harry Kelleher</a></span
 			>
 		</div>
 	</footer>
 {:else}
-	<footer bind:clientWidth={outerWidth}>
+	<footer bind:clientWidth={outerWidth} class="dark:bg-gray-900">
 		<div class="w-full max-w-screen-xl mx-auto p-4 xxs:py-8">
 			<div class="flex items-center justify-between px-0 xxs:px-2">
 				<a
@@ -87,7 +87,7 @@
 					class="flex items-start xs:items-center mb-0 space-x-3 rtl:space-x-reverse grayscale hover:grayscale-0"
 				>
 					<img src="/HK_thumbnail.png" class="h-8" alt="Harry Kelleher" />
-					<span class="self-center text-base font-medium whitespace-nowrap">{myName}</span>
+					<span class="self-center text-base font-medium whitespace-nowrap dark:text-white">{myName}</span>
 				</a>
 				<div class="flex items-center space-x-6">
 					{#each contactInfo as { link, className, icon }}
@@ -100,7 +100,7 @@
 				</div>
 			</div>
 			<hr class="my-6 border-gray-200 mx-auto lg:my-8" />
-			<span class="block text-sm text-gray-500 text-center dark:text-gray-400"
+			<span class="block text-sm text-gray-500 text-center dark:text-gray-300"
 				>© {currentYear}
 				<a href="/" class="hover:underline">Harry Kelleher</a></span
 			>

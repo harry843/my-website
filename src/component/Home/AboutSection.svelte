@@ -8,7 +8,7 @@
     <div class="md:container grid md:grid-cols-3 gap-8 pt-5 md:pt-10">
             <div class="md:col-span-2 items-start">
             <h2
-                class="inline-block bg-yellow-400 py-2 px-4 md:-ml-4 mb-2 rounded-sm text-lg font-bold font-customHeading uppercase"
+                class="inline-block bg-yellow-400 dark:text-gray-900 py-2 px-4 md:-ml-4 mb-2 rounded-sm text-lg font-bold font-customHeading uppercase"
             >
                 About Me
             </h2>

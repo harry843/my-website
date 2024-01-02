@@ -56,7 +56,7 @@
 
 <div class="container grid md:grid-cols-6 gap-8 pt-5 md:pt-7 items-center">
 	<div class="md:col-start-3 md:col-span-4">
-		<h2 class="inline-block bg-yellow-400 py-2 px-4 md:-ml-4 mb-2 rounded-sm text-lg font-bold font-customHeading uppercase">
+		<h2 class="inline-block bg-yellow-400 dark:text-gray-900 py-2 px-4 md:-ml-4 mb-2 rounded-sm text-lg font-bold font-customHeading uppercase">
 			Skills
 		</h2>
 	</div>

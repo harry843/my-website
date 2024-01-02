@@ -1,4 +1,4 @@
-<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-orange-300 ms-2"
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-orange-300"
 	><rect fill="none" height="256" width="256" /><circle cx="128" cy="128" r="68" /><path
 		d="M128,44a8,8,0,0,0,8-8V16a8,8,0,0,0-16,0V36A8,8,0,0,0,128,44Z"
 	/><path

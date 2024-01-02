@@ -48,6 +48,7 @@ module.exports = {
 		'hover:text-github',
 		'hover:text-email'
 	],
+	darkMode: 'class',
 	theme: {
 		extend: {
 			screens: {

@@ -77,7 +77,7 @@
 				<div class="">
 					<p>
 						I'm a <span
-							class="text-{color.name === 'yellow' ? '[#b7791f]' : color.name + '-600'} font-medium"
+							class="text-{color.name === 'yellow' ? '[#b7791f]' : color.name + '-600'} dark:text-sky-300 font-medium"
 							>Data Visualisation Lead.</span
 						>
 					</p>
@@ -102,7 +102,7 @@
 				<div class="translate-y-0 xs:-translate-y-1/2">
 					<p>
 						I'm a <span
-							class="text-{color.name === 'yellow' ? '[#b7791f]' : color.name + '-600'} font-medium"
+							class="text-{color.name === 'yellow' ? '[#b7791f]' : color.name + '-600'} dark:md:text-sky-300 font-medium"
 							>Data Visualisation Lead.</span
 						>
 					</p>
