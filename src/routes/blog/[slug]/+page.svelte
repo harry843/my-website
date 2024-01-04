@@ -59,9 +59,13 @@
 	<title>Blog | {blog?.title}</title>
 	<script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script>
 	<meta property="og:title" content={blog?.title} />
+	<meta property="og:type" content="article" />
+	<meta name="author" content="Harry Kelleher" />
+	<meta name="article:published_time" content={blog?._updatedAt} />
 	<meta property="og:image" content={blog?.mainImage?.image?.asset?.url} />
 	<meta property="og:description" content={blog?.feature} />
 	<meta property="og:url" content={'https://harrykelleher.com/blog/' + blog?.slug.current} />
+	<meta property="og:locale" content="en_GB" />
 </svelte:head>
 
 <section class="mx-2 sm:mx-5 md:mx-[15%] lg:mx-[18%] xl:mx-[22%]">
@@ -140,8 +144,14 @@
 	<div
 		class="inline items-center justify-between xs:flex xs:flex-row xs:justify-center sm:gap-x-2 md:gap-x-3 lg:justify-start"
 	>
-		<a href="https://www.linkedin.com/shareArticle?url=https://harrykelleher.com/blog/{blog?.slug.current}&title={blog?.title.replace(/ /g, '%20')}" rel="noreferrer nofollow">
-			<div class="text-white bg-[#0077b5] hover:bg-[#0077b5]/90 font-medium rounded-lg text-sm px-3 sm:px-5 py-2.5 text-center inline-flex justify-center items-center me-2 mb-2 gap-x-2.5">
+		<a
+			href="https://www.linkedin.com/shareArticle?url=https://harrykelleher.com/blog/{blog?.slug
+				.current}&title={blog?.title.replace(/ /g, '%20')}"
+			rel="noreferrer nofollow"
+		>
+			<div
+				class="text-white bg-[#0077b5] hover:bg-[#0077b5]/90 font-medium rounded-lg text-sm px-3 sm:px-5 py-2.5 text-center inline-flex justify-center items-center me-2 mb-2 gap-x-2.5"
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-4 w-4"
@@ -153,8 +163,8 @@
 					/>
 				</svg>
 				LinkedIn
-		</div>
-	</a>
+			</div>
+		</a>
 		<a
 			href="https://twitter.com/intent/tweet?url=https://harrykelleher.com/blog/{blog?.slug
 				.current}&text={blog?.title.replace(/ /g, '%20')}&via="
@@ -186,7 +196,8 @@
 			target="_blank"
 			rel="nofollow noopener"
 		>
-			<div class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-3 sm:px-5 py-2.5 text-center inline-flex justify-center items-center dark:focus:ring-[#3b5998]/55 me-2 mb-2"
+			<div
+				class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-3 sm:px-5 py-2.5 text-center inline-flex justify-center items-center dark:focus:ring-[#3b5998]/55 me-2 mb-2"
 			>
 				<svg
 					class="w-4 h-4 me-2"
@@ -212,7 +223,8 @@
 			target="_blank"
 			rel="nofollow noopener"
 		>
-			<div class="text-white bg-[#db4437] hover:bg-[#db4437]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-3 sm:px-5 py-2.5 text-center inline-flex justify-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2 gap-x-2"
+			<div
+				class="text-white bg-[#db4437] hover:bg-[#db4437]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-3 sm:px-5 py-2.5 text-center inline-flex justify-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2 gap-x-2"
 			>
 				<Email />
 				Email

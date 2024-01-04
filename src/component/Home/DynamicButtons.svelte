@@ -16,9 +16,9 @@
 		const isProject = name === 'Projects';
 
 		if (isProject) {
-			return `flex flex-row gap-x-3 items-center text-black bg-gradient-to-r hover:bg-gradient-to-br hover:ring-1 font-medium rounded-lg text-sm sm:text-base px-2 sm:px-5 py-2 text-center me-4 mb-2 from-white via-${color.name}-50 to-white border border-${color.name}-600`;
+			return `flex flex-row gap-x-3 items-center text-black bg-gradient-to-r hover:bg-gradient-to-br hover:ring-1 font-medium rounded-lg text-sm sm:text-base px-2 sm:px-5 py-2 text-center me-4 mb-2 from-white via-${color.name}-50 to-white border border-${color.name}-600 dark:from-sky-50 dark:via-sky-100 dark:to-sky-50 dark:border-sky-600`;
 		} else {
-			return `flex flex-row gap-x-3 items-center text-white bg-gradient-to-r hover:bg-gradient-to-br hover:ring-1 font-medium rounded-lg text-sm sm:text-base px-2 sm:px-5 py-2 text-center me-4 mb-2 from-${color.name}-500 via-${color.name}-600 to-${color.name}-700 border border-${color.name}-600`;
+			return `flex flex-row gap-x-3 items-center text-white bg-gradient-to-r hover:bg-gradient-to-br hover:ring-1 font-medium rounded-lg text-sm sm:text-base px-2 sm:px-5 py-2 text-center me-4 mb-2 from-${color.name}-500 via-${color.name}-600 to-${color.name}-700 border border-${color.name}-600 dark:from-sky-500 dark:via-sky-600 dark:to-sky-700 dark:border-sky-600`;
 		}
 	}
 	
