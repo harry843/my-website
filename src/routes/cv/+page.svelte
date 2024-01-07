@@ -11,7 +11,7 @@
 </svelte:head>
 
 <div class="grid place-items-center py-2 m-2 sm:mx-auto sm:my-0 lg:m-0">
-	<section class="flex flex-col items-center rounded-md bg-white border px-4 text-sm sm:m-2">
+	<section class="flex flex-col items-center rounded-lg bg-white border px-4 text-sm sm:m-2">
 		<div class="h-full w-full overflow-hidden bg-white">
 			<Header />
 			<Bio />
