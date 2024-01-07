@@ -10,7 +10,7 @@
 		.curve(curveCardinalClosed);
 
 	const getStrokeClass = (color: string) => {
-		return `stroke-${color}-500`;
+		return `stroke-${color}-500 dark:stroke-sky-500`;
 	};
 
 	$: d = lineGenerator(pathCoords);

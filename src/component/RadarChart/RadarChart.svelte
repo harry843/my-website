@@ -20,6 +20,7 @@
 
 	$: rangeArray = [0, width / 2 - 80];
 	$: pathCoords = getTraitCoords(traits, width, nVertices, domainArray, rangeArray);
+
 </script>
 
 <svg {width} height={width}>

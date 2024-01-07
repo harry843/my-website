@@ -69,7 +69,7 @@
 				href={project.url}
 				target={project.isExternal ? '_blank' : null}
 				rel="noreferrer"
-				class="border border-gray-100 dark:border-gray-600 flex flex-col divide-y rounded-sm shadow-sm hover:shadow-lg dark:hover:scale-[1.02] dark:hover:ease-in dark:hover:duration-200 dark:hover:delay-75"
+				class="border border-gray-200 dark:border-gray-600 flex flex-col divide-y rounded-lg shadow-sm hover:shadow-lg dark:hover:scale-[1.02] dark:hover:ease-in dark:hover:duration-200 dark:hover:delay-75"
 			>
 				<Image src={`${project.image}`} alt={project.title} />
 				<div class="p-4 space-y-2">

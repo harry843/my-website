@@ -51,7 +51,7 @@
 		sizes="(max-width: 979px) 500px, 1000px"
 		{src}
 		{alt}
-		class="object-contain w-full h-full"
+		class="object-contain rounded-lg w-full h-full"
 		loading="lazy"
 		decoding="async"
 	/>
