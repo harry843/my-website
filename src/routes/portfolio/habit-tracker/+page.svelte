@@ -1,16 +1,25 @@
 <script>
-	let width =  0;
+	let width = 0;
 	// let innerWidth = 0;
 
 	$: height = width >= 1000 ? 830 : 1830;
 
-	$: url = `https://public.tableau.com/views/HabitTracker_16751705386590/HabitTracker?:language=en-US&:showVizHome=no&:embed=y&:device=desktop&:origin:viz_share_link&:size=${width},1&:apiID=host0#navType=0&navSrc=Parse`
+	$: url = `https://public.tableau.com/views/HabitTracker_16751705386590/HabitTracker?:language=en-US&:showVizHome=no&:embed=y&:device=desktop&:origin:viz_share_link&:size=${width},1&:apiID=host0#navType=0&navSrc=Parse`;
 
-	$: src = width < 1000 ? url.replace(/device=desktop/g, "device=mobile") : url
-
+	$: src = width < 1000 ? url.replace(/device=desktop/g, 'device=mobile') : url;
 </script>
 
 <svelte:head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-28Y41L6BQN');
+	</script>
 	<title>Habit Tracker | Harry Kelleher</title>
 </svelte:head>
 
@@ -23,12 +32,5 @@
 	<!-- <p>Total width of screen is: {innerWidth} pixels.</p>
 	<p>Width of screen is: {width} pixels.</p> -->
 
-			<iframe
-				title="habit-tracker"
-				{src}
-				{width}
-				{height}
-			/>
-	
+	<iframe title="habit-tracker" {src} {width} {height} />
 </section>
-

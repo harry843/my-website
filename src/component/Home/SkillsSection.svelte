@@ -3,33 +3,33 @@
 
 	$: technical = [
 		{ name: 'Python', value: 4, score: 'Advanced' },
-		{ name: 'SQL', value: 3, score: 'Intermediate' },
+		{ name: 'SQL', value: 3, score: 'Competent' },
 		{ name: 'R', value: 2, score: 'Capable' },
 		{ name: 'Typescript', value: 2, score: 'Capable' },
-		{ name: 'Svelte', value: 3, score: 'Intermediate' },
-		{ name: 'React', value: 3, score: 'Intermediate' },
-		{ name: 'HTML/5', value: 3, score: 'Intermediate' },
-		{ name: 'CSS/3', value: 3, score: 'Intermediate' },
-		{ name: 'Tailwind 3.x', value: 2, score: 'Capable' }
+		{ name: 'Svelte', value: 3, score: 'Competent' },
+		{ name: 'React', value: 2, score: 'Capable' },
+		{ name: 'HTML/5', value: 3, score: 'Competent' },
+		{ name: 'CSS/3', value: 2, score: 'Capable' },
+		{ name: 'Tailwind 3.x', value: 3, score: 'Competent' }
 	];
 
 	$: people = [
-		{ name: 'Leadership', value: 4, score: 'Intermediate' },
+		{ name: 'Leadership', value: 4, score: 'Advanced' },
 		{ name: 'People management', value: 4, score: 'Advanced' },
 		{ name: 'Upskilling capability', value: 4, score: 'Advanced' },
-		{ name: 'Technical consulting', value: 3, score: 'Intermediate' },
-		{ name: 'Project management', value: 4, score: 'Capable' }
+		{ name: 'Technical consulting', value: 3, score: 'Competent' },
+		{ name: 'Project management', value: 3, score: 'Competent' }
 	];
 
 	$: software = [
 		{ name: 'Tableau Desktop', value: 5, score: 'Expert' },
 		{ name: 'Tableau Server', value: 5, score: 'Expert' },
-		{ name: 'Google Analytics', value: 3, score: 'Intermediate' },
+		{ name: 'Google Analytics', value: 3, score: 'Competent' },
 		{ name: 'GitHub / GitLab', value: 4, score: 'Advanced' },
-		{ name: 'AWS', value: 3, score: 'Intermediate' },
-		{ name: 'Jira / Confluence', value: 3, score: 'Intermediate' },
+		{ name: 'AWS', value: 3, score: 'Competent' },
+		{ name: 'Jira / Confluence', value: 3, score: 'Competent' },
 		{ name: 'Visual Studio', value: 4, score: 'Advanced' },
-		{ name: 'Excel', value: 3, score: 'Intermediate' },
+		{ name: 'Excel', value: 3, score: 'Competent' },
 		{ name: 'Scrum / Agile', value: 4, score: 'Advanced' }
 	];
 

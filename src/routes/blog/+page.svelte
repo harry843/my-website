@@ -6,20 +6,32 @@
 
 	export let data: PageData;
 
-	$: width = 0;
 	$: ({ GetAllPost } = data);
 	$: imageUrlParams = '?fm=webp&max-h=300&max-w=500&min-h=240&min-w=400';
 	$: isLoading = !$GetAllPost || !$GetAllPost.data;
 </script>
 
 <svelte:head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-28Y41L6BQN');
+	</script>
 	<title>Blog | Harry Kelleher</title>
 </svelte:head>
 
-<section class={isLoading ? "flex h-screen items-center justify-center" : "px-1 xs:px-2 md:px-4 flex flex-col items-center justify-center text-sm"}>
+<section
+	class={isLoading
+		? 'flex h-screen items-center justify-center'
+		: 'px-1 xs:px-2 md:px-4 flex flex-col items-center justify-center text-sm'}
+>
 	{#if isLoading}
-				<Loading />
-
+		<Loading />
 	{:else if $GetAllPost.errors}
 		<!-- Display error message if there was an error -->
 		<div class="text-red-500">An error occurred while fetching data. Please try again later.</div>

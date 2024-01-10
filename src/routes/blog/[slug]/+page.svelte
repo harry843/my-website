@@ -56,6 +56,16 @@
 </script>
 
 <svelte:head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-28Y41L6BQN');
+	</script>
 	<title>Blog | {blog?.title}</title>
 	<script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script>
 	<meta property="og:title" content={blog?.title} />
@@ -75,17 +85,11 @@
 
 	<div class="flex flex-row justify-center items-center">
 		<img src="/HK_profile2.jpg" class="h-14 mr-2 rounded-full" alt="Harry Kelleher" />
-
 		<div class="flex flex-col justify-center text-center gap-y-1 font-customParagraph">
 			<div class="text-sm text-opacity-80">by Harry Kelleher</div>
 			<div class="text-sm text-opacity-80">
-				{dateformat(blog._createdAt, 'UTC:dd mmm yyyy')} - {averageReadingTime(blog.contentRaw)}
+				{dateformat(blog._updatedAt, 'UTC:dd mmm yyyy')} - {averageReadingTime(blog.contentRaw)}
 			</div>
-			{#if !blog._updatedAt}
-				<div class="text-sm text-opacity-80">
-					Updated {dateformat(blog._updatedAt, 'UTC:dd mmm yyyy')}
-				</div>
-			{/if}
 		</div>
 	</div>
 
@@ -97,12 +101,14 @@
 		</div>
 	{/if}
 	{#if blog?.mainImage}
-		<div class="py-4">
+		<figure class="py-4">
 			<img src={blog?.mainImage?.image?.asset?.url + '?fit=max'} alt={blog?.mainImage.alt} />
-		</div>
-	{/if}
-	{#if blog?.mainImage?.caption}
-		<div><p class="py-2 text-center text-sm">{blog?.mainImage?.caption}</p></div>
+			{#if blog?.mainImage?.caption}
+				<figcaption class="text-sm text-center text-gray-700 py-2">
+					{blog?.mainImage.caption}
+				</figcaption>
+			{/if}
+		</figure>
 	{/if}
 
 	{#if blog?.contentRaw}

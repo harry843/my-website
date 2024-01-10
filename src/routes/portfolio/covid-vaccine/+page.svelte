@@ -9,14 +9,19 @@
 </script>
 
 <svelte:head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-28Y41L6BQN');
+	</script>
 	<title>COVID-19 Vaccine Trials | Harry Kelleher</title>
 </svelte:head>
 
 <section bind:clientWidth={width} class="flex items-center font-normal px-4 text-sm w-full">
-	<iframe
-		title="covid-vaccine-trials"
-		{src}
-		{height}
-		{width}
-			/>
+	<iframe title="covid-vaccine-trials" {src} {height} {width} />
 </section>

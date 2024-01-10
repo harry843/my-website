@@ -58,6 +58,16 @@
 </script>
 
 <svelte:head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-28Y41L6BQN');
+	</script>
 	<title>Portfolio | Harry Kelleher</title>
 </svelte:head>
 
@@ -79,7 +89,10 @@
 						<h1 class="font-medium text-lg">{project.title}</h1>
 						<div class="flex gap-x-2">
 							{#each project.skills as skill}
-								<span class="rounded-md px-4 py-1 font-medium bg-indigo-50 text-indigo-700 dark:bg-sky-300 dark:text-gray-900 text-xs">{skill}</span>
+								<span
+									class="rounded-md px-4 py-1 font-medium bg-indigo-50 text-indigo-700 dark:bg-sky-300 dark:text-gray-900 text-xs"
+									>{skill}</span
+								>
 							{/each}
 						</div>
 					</div>

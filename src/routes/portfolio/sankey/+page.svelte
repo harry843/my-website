@@ -28,6 +28,16 @@
 </script>
 
 <svelte:head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-28Y41L6BQN');
+	</script>
 	<title>Patient Flow through NHS Services | Harry Kelleher</title>
 </svelte:head>
 
@@ -49,7 +59,9 @@
 	{/if}
 	<SankeyLayers />
 	{#if innerWidth < 768 && width > 0}
-		<p class="px-3 py-1 text-gray-600 dark:text-gray-400">Select the chart nodes and links to find out more!</p>
+		<p class="px-3 py-1 text-gray-600 dark:text-gray-400">
+			Select the chart nodes and links to find out more!
+		</p>
 	{/if}
 	<section
 		bind:clientWidth={width}
@@ -82,5 +94,7 @@
 	{#if innerWidth > 767}
 		<SankeyArrow {height} />
 	{/if}
-	<div class="text-center text-xs md:text-right md:-translate-y-4 md:-translate-x-4">*This viz uses test data and does not represent real world events.</div>
+	<div class="text-center text-xs md:text-right md:-translate-y-4 md:-translate-x-4">
+		*This viz uses test data and does not represent real world events.
+	</div>
 </div>
