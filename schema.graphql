@@ -28,7 +28,7 @@ type Block {
   style: String
 }
 
-union BlockOrBreakOrImageWithAltOrQuote = Block | Break | ImageWithAlt | Quote
+union BlockOrBreakOrIframeOrImageWithAltOrQuote = Block | Break | Iframe | ImageWithAlt | Quote
 
 input BooleanFilter {
   """Checks if the value is equal to the given input."""
@@ -253,6 +253,30 @@ input IDFilter {
   """Checks if the value is not equal to the given input."""
   neq: ID
   nin: [ID!]
+}
+
+type Iframe {
+  _key: String
+  _type: String
+  caption: String
+  id: String
+  url: String
+}
+
+input IframeFilter {
+  _key: StringFilter
+  _type: StringFilter
+  caption: StringFilter
+  id: StringFilter
+  url: StringFilter
+}
+
+input IframeSorting {
+  _key: SortOrder
+  _type: SortOrder
+  caption: SortOrder
+  id: SortOrder
+  url: SortOrder
 }
 
 type Image {

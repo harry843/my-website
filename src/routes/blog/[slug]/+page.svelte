@@ -9,6 +9,7 @@
 	import CustomListItem from '../../../component/PortableText/CustomListItem.svelte';
 	import CustomQuote from '../../../component/PortableText/CustomQuote.svelte';
 	import CustomImage from '../../../component/PortableText/CustomImage.svelte';
+	import CustomIFrame from '../../../component/PortableText/CustomIFrame.svelte';
 	import Tag from '../../../component/Tag/Tag.svelte';
 	import averageReadingTime from '../../../component/Card/BlogPostCard/averageReadingTime';
 	import dateformat from 'dateformat';
@@ -53,6 +54,8 @@
 		}
 		window.CUSDIS.initial();
 	});
+
+	//$: console.log(blog)
 </script>
 
 <svelte:head>
@@ -116,7 +119,8 @@
 			components={{
 				types: {
 					quote: CustomQuote,
-					imageWithAlt: CustomImage
+					imageWithAlt: CustomImage,
+					iframe: CustomIFrame,
 				},
 				block: {
 					normal: CustomParagraph,

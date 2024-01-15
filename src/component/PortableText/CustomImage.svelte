@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Image from '../Image/Image.svelte';
 	export let portableText;
 	const urlStem = 'https://cdn.sanity.io/images/g2pdrwyj/production/';
 
@@ -8,6 +7,7 @@
 	$: parts = ref?.split('-');
 
 	$: imageUrl = urlStem + `${parts[1]}-${parts[2]}.${parts[3]}`;
+
 </script>
 
 <br />
@@ -15,5 +15,5 @@
 	<slot name="image"><img src={imageUrl + '?fit=max'} alt={image.alt} /></slot>
 </div>
 {#if image?.caption}
-	<slot name="caption"><p class="py-2 text-center text-sm">{image?.caption}</p></slot>
+	<slot name="caption"><p class="py-1 pb-8 text-center text-sm">{image?.caption}</p></slot>
 {/if}

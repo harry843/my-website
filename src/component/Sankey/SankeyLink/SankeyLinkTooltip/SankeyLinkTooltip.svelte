@@ -6,7 +6,6 @@
 	import { hoverStore, linkTooltipData } from '../../../../stores/stores';
 	import nodevalues from '../../../../routes/portfolio/sankey/nodevalues.json';
 	import classNames from 'classnames';
-	import type { TransformedLink } from '../../../../types/portfolio';
 
 	export let paddingY: number;
 
