@@ -1,10 +1,5 @@
 <script lang="ts">
 	export let portableText;
-
-	// $: url = portableText?.value;
-	// $: caption = portableText?.iframe.caption
-
-	$: console.log(portableText.value)
 </script>
 
 <br />

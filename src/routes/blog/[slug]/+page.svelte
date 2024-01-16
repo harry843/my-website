@@ -16,6 +16,7 @@
 	import type { PageData } from './$houdini';
 	import { PortableText } from '@portabletext/svelte';
 	import Email from '../../../component/CV/Header/Contact/icons/Email.svelte';
+	import CustomCodeBlock from '../../../component/PortableText/CustomCodeBlock.svelte';
 
 	export let data: PageData;
 
@@ -121,6 +122,7 @@
 					quote: CustomQuote,
 					imageWithAlt: CustomImage,
 					iframe: CustomIFrame,
+					code: CustomCodeBlock
 				},
 				block: {
 					normal: CustomParagraph,
@@ -131,7 +133,6 @@
 					h4: CustomHeading,
 					h5: CustomHeading
 				},
-
 				marks: {
 					link: CustomUrl
 				},
