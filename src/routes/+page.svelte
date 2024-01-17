@@ -88,7 +88,7 @@
 	<meta name="author" content="Harry Kelleher" />
 	<meta name="article:published_time" content={latestPost[0]._updatedAt} />
 	<meta property="og:image" content="https://ibb.co/B6d632h" />
-	<meta property="og:description" content="Hi - I'm Harry Kelleher. I'm a Data Visualisation Lead. I create data products to help grow your business." />
+	<meta property="og:description" content="Hi - I'm Harry Kelleher. I'm a Data Visualisation Developer. I create data products to help grow your business." />
 	<meta property="og:url" content="https://harrykelleher.com/" />
 	<meta property="og:locale" content="en_GB" />
 </svelte:head>
@@ -107,7 +107,7 @@
 						I'm a <span
 							class="text-{color.name === 'yellow'
 								? '[#b7791f]'
-								: color.name + '-600'} dark:text-sky-300 font-medium">Data Visualisation Lead.</span
+								: color.name + '-600'} dark:text-sky-300 font-medium">Data Visualisation Developer.</span
 						>
 					</p>
 					<br />
@@ -134,7 +134,7 @@
 							class="text-{color.name === 'yellow'
 								? '[#b7791f]'
 								: color.name + '-600'} dark:md:text-sky-300 font-medium"
-							>Data Visualisation Lead.</span
+							>Data Visualisation Developer.</span
 						>
 					</p>
 					<br />

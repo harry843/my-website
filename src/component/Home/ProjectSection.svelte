@@ -23,7 +23,7 @@
 			coverImage={'/sankey.png'}
 			altText={'A Sankey diagram showing patient flow through NHS services'}
 			excerpt={'A Sankey diagram showing patient flow through NHS services following an NHS 111 call.'}
-			tags={["d3.js","Svelte"]}
+			tags={["D3.js","Svelte"]}
 			readingTime={""}
 			additionalClass={'col-span-full'}
 			index={0}

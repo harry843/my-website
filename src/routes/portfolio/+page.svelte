@@ -21,7 +21,7 @@
 			image: 'sankey.png',
 			url: '/portfolio/sankey',
 			isExternal: false,
-			skills: ['d3.js', 'Svelte'],
+			skills: ['D3.js', 'Svelte'],
 			loaded: false
 		},
 		{

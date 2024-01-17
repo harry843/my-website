@@ -5,12 +5,12 @@
 		{ name: 'Python', value: 4, score: 'Advanced' },
 		{ name: 'SQL', value: 3, score: 'Competent' },
 		{ name: 'R', value: 2, score: 'Capable' },
-		{ name: 'Typescript', value: 2, score: 'Capable' },
+		{ name: 'Typescript', value: 3, score: 'Competent' },
 		{ name: 'Svelte', value: 3, score: 'Competent' },
 		{ name: 'React', value: 2, score: 'Capable' },
 		{ name: 'HTML/5', value: 3, score: 'Competent' },
 		{ name: 'CSS/3', value: 2, score: 'Capable' },
-		{ name: 'Tailwind 3.x', value: 3, score: 'Competent' }
+		{ name: 'Tailwind 3.x', value: 4, score: 'Advanced' }
 	];
 
 	$: people = [
