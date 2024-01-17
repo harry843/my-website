@@ -9,12 +9,14 @@
 	import CustomListItem from '../../../component/PortableText/CustomListItem.svelte';
 	import CustomQuote from '../../../component/PortableText/CustomQuote.svelte';
 	import CustomImage from '../../../component/PortableText/CustomImage.svelte';
+	import CustomIFrame from '../../../component/PortableText/CustomIFrame.svelte';
 	import Tag from '../../../component/Tag/Tag.svelte';
 	import averageReadingTime from '../../../component/Card/BlogPostCard/averageReadingTime';
 	import dateformat from 'dateformat';
 	import type { PageData } from './$houdini';
 	import { PortableText } from '@portabletext/svelte';
 	import Email from '../../../component/CV/Header/Contact/icons/Email.svelte';
+	import CustomCodeBlock from '../../../component/PortableText/CustomCodeBlock.svelte';
 
 	export let data: PageData;
 
@@ -53,11 +55,23 @@
 		}
 		window.CUSDIS.initial();
 	});
+
 </script>
 
 <svelte:head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-28Y41L6BQN');
+	</script>
 	<title>Blog | {blog?.title}</title>
 	<script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.js"></script>
 	<meta property="og:title" content={blog?.title} />
 	<meta property="og:type" content="article" />
 	<meta name="author" content="Harry Kelleher" />
@@ -75,17 +89,11 @@
 
 	<div class="flex flex-row justify-center items-center">
 		<img src="/HK_profile2.jpg" class="h-14 mr-2 rounded-full" alt="Harry Kelleher" />
-
 		<div class="flex flex-col justify-center text-center gap-y-1 font-customParagraph">
 			<div class="text-sm text-opacity-80">by Harry Kelleher</div>
 			<div class="text-sm text-opacity-80">
-				{dateformat(blog._createdAt, 'UTC:dd mmm yyyy')} - {averageReadingTime(blog.contentRaw)}
+				{dateformat(blog._updatedAt, 'UTC:dd mmm yyyy')} - {averageReadingTime(blog.contentRaw)}
 			</div>
-			{#if !blog._updatedAt}
-				<div class="text-sm text-opacity-80">
-					Updated {dateformat(blog._updatedAt, 'UTC:dd mmm yyyy')}
-				</div>
-			{/if}
 		</div>
 	</div>
 
@@ -97,12 +105,14 @@
 		</div>
 	{/if}
 	{#if blog?.mainImage}
-		<div class="py-4">
+		<figure class="py-4">
 			<img src={blog?.mainImage?.image?.asset?.url + '?fit=max'} alt={blog?.mainImage.alt} />
-		</div>
-	{/if}
-	{#if blog?.mainImage?.caption}
-		<div><p class="py-2 text-center text-sm">{blog?.mainImage?.caption}</p></div>
+			{#if blog?.mainImage?.caption}
+				<figcaption class="text-sm text-center dark:text-slate-100 py-2">
+					{blog?.mainImage.caption}
+				</figcaption>
+			{/if}
+		</figure>
 	{/if}
 
 	{#if blog?.contentRaw}
@@ -110,7 +120,9 @@
 			components={{
 				types: {
 					quote: CustomQuote,
-					imageWithAlt: CustomImage
+					imageWithAlt: CustomImage,
+					iframe: CustomIFrame,
+					code: CustomCodeBlock
 				},
 				block: {
 					normal: CustomParagraph,
@@ -121,7 +133,6 @@
 					h4: CustomHeading,
 					h5: CustomHeading
 				},
-
 				marks: {
 					link: CustomUrl
 				},

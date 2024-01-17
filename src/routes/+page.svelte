@@ -69,11 +69,28 @@
 			location.reload();
 		}
 	});
-
 </script>
 
 <svelte:head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-28Y41L6BQN');
+	</script>
 	<title>Harry Kelleher</title>
+	<meta property="og:title" content="Harry Kelleher" />
+	<meta property="og:type" content="article" />
+	<meta name="author" content="Harry Kelleher" />
+	<meta name="article:published_time" content={latestPost[0]._updatedAt} />
+	<meta property="og:image" content="https://ibb.co/B6d632h" />
+	<meta property="og:description" content="Hi - I'm Harry Kelleher. I'm a Data Visualisation Developer. I create data products to help grow your business." />
+	<meta property="og:url" content="https://harrykelleher.com/" />
+	<meta property="og:locale" content="en_GB" />
 </svelte:head>
 
 <svelte:window bind:innerWidth={screenwidth} />
@@ -90,11 +107,11 @@
 						I'm a <span
 							class="text-{color.name === 'yellow'
 								? '[#b7791f]'
-								: color.name + '-600'} dark:text-sky-300 font-medium">Data Visualisation Lead.</span
+								: color.name + '-600'} dark:text-sky-300 font-medium">Data Visualisation Developer.</span
 						>
 					</p>
 					<br />
-					<p>I create data products to help grow your business.</p>
+					<p>I build data products to create experiences which make impact.</p>
 				</div>
 				{#if screenwidth >= 640}
 					<DynamicButtons {color} {additionalClass} />
@@ -117,11 +134,11 @@
 							class="text-{color.name === 'yellow'
 								? '[#b7791f]'
 								: color.name + '-600'} dark:md:text-sky-300 font-medium"
-							>Data Visualisation Lead.</span
+							>Data Visualisation Developer.</span
 						>
 					</p>
 					<br />
-					<p>I create data products to help grow your business.</p>
+					<p>I build data products to create experiences which make impact.</p>
 				</div>
 				{#if screenwidth >= 1024}
 					<DynamicButtons {color} {additionalClass} />

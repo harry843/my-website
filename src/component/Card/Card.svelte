@@ -21,9 +21,9 @@
 	data-sveltekit-preload-data
 	{...$$restProps}
 >		
-<div class={index === 0 ? "grid grid-cols-1 lg:grid-cols-2 lg:place-items-center lg:gap-x-3 p-1 md:p-3" : "p-1 md:p-3"}>
+<div class={index === 0 ? "grid grid-cols-1 place-items-center lg:grid-cols-2 lg:gap-x-3 p-1 md:p-3" : "p-1 md:p-3"}>
 {#if $$slots.image}
-			<div class={index === 0 ? "" : "grid grid-cols-1 place-items-center"} >
+			<div class={index === 0 ? "max-w-lg md:max-w-2xl" : "grid grid-cols-1 place-items-center"} >
 				<slot name="image" />
 			</div>
 		{/if}

@@ -19,6 +19,16 @@
 </script>
 
 <svelte:head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-28Y41L6BQN');
+	</script>
 	<title>Digital Services | Harry Kelleher</title>
 </svelte:head>
 
@@ -29,5 +39,4 @@
 	<!-- <p>Width of screen is: {width} pixels.</p> -->
 
 	<iframe title="digital-services" src={deviceTypeModifer(width, url)} {height} {width} />
-	
 </section>

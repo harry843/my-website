@@ -16,7 +16,7 @@
 <Card href="/{slug}" target="_self" {additionalClass} {index}>
 	
 	<div class="" slot="image">
-		<img class="{index === 0 ? "" : "max-h-[240px]"}"src={coverImage} alt={altText} />
+		<img class="{index === 0 ? "items-center" : "max-h-[300px] "}"src={coverImage} alt={altText} />
 	</div>
 	<div class="gap-0 items-start" slot="content">
 		<h1 class="flex items-center justify-between w-full text-2xl font-semibold">

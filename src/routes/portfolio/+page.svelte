@@ -21,7 +21,7 @@
 			image: 'sankey.png',
 			url: '/portfolio/sankey',
 			isExternal: false,
-			skills: ['d3.js', 'Svelte'],
+			skills: ['D3.js', 'Svelte'],
 			loaded: false
 		},
 		{
@@ -58,11 +58,21 @@
 </script>
 
 <svelte:head>
+	<!-- Google tag (gtag.js) --> 
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+		gtag('config', 'G-28Y41L6BQN');
+	</script>
 	<title>Portfolio | Harry Kelleher</title>
 </svelte:head>
 
 <section bind:clientWidth={width} class="flex flex-col px-4 text-sm w-full space-y-4">
-	<h1 class="font-semibold text-2xl font-customHeading">Projects</h1>
+	<h1 class="font-semibold text-2xl font-customHeading pb-2">Projects</h1>
 	<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 md:gap-4">
 		{#each projects as project}
 			<a
@@ -79,7 +89,10 @@
 						<h1 class="font-medium text-lg">{project.title}</h1>
 						<div class="flex gap-x-2">
 							{#each project.skills as skill}
-								<span class="rounded-md px-4 py-1 font-medium bg-indigo-50 text-indigo-700 dark:bg-sky-300 dark:text-gray-900 text-xs">{skill}</span>
+								<span
+									class="rounded-md px-4 py-1 font-medium bg-indigo-50 text-indigo-700 dark:bg-sky-300 dark:text-gray-900 text-xs"
+									>{skill}</span
+								>
 							{/each}
 						</div>
 					</div>
