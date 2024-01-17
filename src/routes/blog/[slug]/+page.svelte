@@ -72,6 +72,7 @@
 	</script>
 	<title>Blog | {blog?.title}</title>
 	<script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.js"></script>
 	<meta property="og:title" content={blog?.title} />
 	<meta property="og:type" content="article" />
 	<meta name="author" content="Harry Kelleher" />
