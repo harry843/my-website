@@ -15,5 +15,5 @@
 	<slot name="image"><img src={imageUrl + '?fit=max'} alt={image.alt} /></slot>
 </div>
 {#if image?.caption}
-	<slot name="caption"><p class="pb-8 text-center text-sm dark:text-slate-100">{image?.caption}</p></slot>
+	<slot name="caption"><p class="pb-8 text-center text-xs md:text-sm dark:text-slate-100 mx-[5%]">{image?.caption}</p></slot>
 {/if}

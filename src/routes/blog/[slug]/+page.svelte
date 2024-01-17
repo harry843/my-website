@@ -56,7 +56,6 @@
 		window.CUSDIS.initial();
 	});
 
-	//$: console.log(blog)
 </script>
 
 <svelte:head>
@@ -109,7 +108,7 @@
 		<figure class="py-4">
 			<img src={blog?.mainImage?.image?.asset?.url + '?fit=max'} alt={blog?.mainImage.alt} />
 			{#if blog?.mainImage?.caption}
-				<figcaption class="text-sm text-center text-gray-700 dark:text-slate-100 py-2">
+				<figcaption class="text-sm text-center dark:text-slate-100 py-2">
 					{blog?.mainImage.caption}
 				</figcaption>
 			{/if}

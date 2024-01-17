@@ -41,7 +41,7 @@
 		<div class="flex gap-x-1 md:gap-x-3">
 			{#if portableText.value.language !== 'batchfile'}
 				<div
-					class="bg-indigo-50 text-indigo-700 dark:bg-sky-300 dark:text-gray-900 rounded-md text-sm md:text-base font-medium py-0.5 px-1 sm:px-2 pr-1 first-line:xxs:pr-2 border"
+					class="bg-indigo-50 text-indigo-700 dark:bg-sky-300 dark:text-gray-900 rounded-md text-sm md:text-base font-medium py-0.5 px-1 sm:px-2 pr-1 first-line:xxs:pr-2 border dark:border-slate-500"
 				>
 					{portableText.value.language === 'mysql' ? 'SQL' : (portableText.value.language).toUpperCase()}
 				</div>

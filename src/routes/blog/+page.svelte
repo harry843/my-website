@@ -36,7 +36,7 @@
 		<!-- Display error message if there was an error -->
 		<div class="text-red-500">An error occurred while fetching data. Please try again later.</div>
 	{:else if $GetAllPost.data?.allPost && $GetAllPost.data?.allPost != undefined}
-		<div class="md:w-5/6 grid grid-cols-2 space-y-6 gap-x-6 py-3 rounded-md">
+		<div class="grid grid-cols-2 space-y-6 gap-x-6 rounded-md">
 			<h1 class="font-customHeading font-semibold text-left text-2xl">Blog Posts</h1>
 			{#each $GetAllPost.data?.allPost as post, index}
 				<BlogPostCard
