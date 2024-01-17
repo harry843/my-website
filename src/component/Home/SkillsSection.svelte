@@ -35,9 +35,9 @@
 
 	$: languages = [
 		{ name: 'English (native)', value: 5, score: 'Expert' },
-		{ name: 'Spanish (B2)', value: 3, score: 'Intermediate' },
-		{ name: 'French (survivable)', value: 2, score: 'Beginner' },
-		{ name: "Italian (un po')", value: 1, score: 'Expert' }
+		{ name: 'Spanish (B2)', value: 3, score: 'Competent' },
+		{ name: 'French (survivable)', value: 2, score: 'Capable' },
+		{ name: "Italian (un po')", value: 1, score: 'Beginner' }
 	];
 
 	function generateStars(numberOfStars) {
@@ -56,85 +56,48 @@
 
 <div class="container grid md:grid-cols-6 gap-8 pt-5 md:pt-7 items-center">
 	<div class="md:col-start-3 md:col-span-4">
-		<h2 class="inline-block bg-yellow-400 dark:text-gray-900 py-2 px-4 md:-ml-4 mb-2 rounded-sm text-lg font-bold font-customHeading uppercase">
+		<h2
+			class="inline-block bg-yellow-400 dark:text-gray-900 py-2 px-4 md:-ml-4 mb-2 rounded-sm text-lg font-bold font-customHeading uppercase"
+		>
 			Skills
 		</h2>
 	</div>
 	<div class="md:col-start-2 md:col-span-4">
-		<p class="ml-px">
-			Here is a summary of my most important skills as a Data Visualisation Lead:
-		</p>
+		<p class="ml-px">Here is a summary of my most important skills:</p>
 	</div>
 </div>
-<div class="mx-6 md:mt-8 w-16 h-0.5 bg-gray-300 md:mx-auto md:relative md:-left-24" />
+<div class="mx-6 mt-5 md:mt-8 w-16 h-0.5 bg-gray-300 md:mx-auto md:relative md:-left-24" />
 
 <section class="px-1 pt-8 min-[370px]:px-5 sm:px-0 sm:flex sm:flex-row sm:justify-around pb-10">
-	<div class="flex flex-col">
-		<h3 class="text-xl font-customHeading font-semibold mb-2">Technical</h3>
-		{#each technical as { name, value, score }}
-			<div
-				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:delay-75"
-			>
-				<h1>{name}</h1>
-				<div
-					data-tooltip-target="tooltip-default"
-					class="flex items-center transition duration-150 hover:scale-105 hover:text-black"
-				>
-					{#each generateStars(value) as starClass}
-						<Star {starClass} />
-					{/each}
-				</div>
-			</div>
-		{/each}
+	<div
+		class="flex flex-col sm:grid sm:grid-rows-2 sm:grid-flow-col sm:gap-x-[4rem] md:gap-x-[5rem] lg:gap-x-[10rem]"
+	>
+		{#each [{ name: 'Technical', skill: technical }, { name: 'People', skill: people }, { name: 'Software', skill: software }, { name: 'Languages', skill: languages }] as skills}
+			<div class="py-4">
+				<h3 class="text-xl font-customHeading font-semibold mb-2">{skills.name}</h3>
 
-		<h3 class="text-xl font-customHeading font-semibold pt-5 mb-2">People</h3>
-		{#each people as { name, value, score }}
-			<div
-				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:delay-75"
-			>
-				<h1>{name}</h1>
-				<div
-					data-tooltip-target="tooltip-default"
-					class="flex items-center transition duration-150 hover:scale-105 hover:text-black dark:hover:text-white"
-				>
-					{#each generateStars(value) as starClass}
-						<Star {starClass} />
-					{/each}
-				</div>
-			</div>
-		{/each}
-	</div>
-	<div>
-		<h3 class="text-xl font-customHeading pt-5 sm:pt-0 font-semibold mb-2">Software</h3>
-		{#each software as { name, value, score }}
-			<div
-				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:delay-75"
-			>
-				<h1>{name}</h1>
-				<div
-					data-tooltip-target="tooltip-default"
-					class="flex items-center transition duration-150 hover:scale-105 hover:text-black dark:hover:text-white"
-				>
-					{#each generateStars(value) as starClass}
-						<Star {starClass} />
-					{/each}
-				</div>
-			</div>
-		{/each}
-		<h3 class="text-xl font-customHeading pt-5 font-semibold mb-2">Languages</h3>
-		{#each languages as { name, value, score }}
-			<div
-				class="group flex justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:ease-in-out"
-			>
-				<h1>{name}</h1>
-				<div
-					data-tooltip-target="tooltip-default"
-					class="flex items-center transition hover:duration-150 hover:ease-in-out hover:scale-105 hover:text-black dark:hover:text-white"
-				>
-					{#each generateStars(value) as starClass}
-						<Star {starClass} />
-					{/each}
-				</div>
+				{#each skills.skill as { name, value, score }}
+					<div
+						class="grid grid-cols-2 gap-x-3 xs:gap-x-5 sm:flex sm:justify-between py-0.5 sm:gap-x-1 md:gap-x-10 hover:font-medium hover:text-black dark:hover:text-white hover:delay-75"
+					>
+						<h1>{name}</h1>
+						<button
+							data-tooltip-target="tooltip-default"
+							class="flex items-center transition duration-150 hover:scale-105 hover:text-black"
+						>
+							{#each generateStars(value) as starClass}
+								<Star {starClass} />
+							{/each}
+							<div
+								id="tooltip-default"
+								role="tooltip"
+								class="absolute z-10 px-1 sm:px-3 py-2 text-sm right-0 left-0 top-0 bottom-0 font-medium text-indigo-700 transition-opacity hover:opacity-100 delay-300 duration-200 bg-indigo-50 rounded-md shadow-sm opacity-0 flex items-center justify-center dark:bg-gray-700"
+							>
+								{score}
+							</div>
+						</button>
+					</div>
+				{/each}
 			</div>
 		{/each}
 	</div>
