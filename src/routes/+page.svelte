@@ -111,7 +111,7 @@
 						>
 					</p>
 					<br />
-					<p>I build data products to create experiences which make impact.</p>
+					<p>I use data to tell stories you'll remember.</p>
 				</div>
 				{#if screenwidth >= 640}
 					<DynamicButtons {color} {additionalClass} />
