@@ -11,7 +11,7 @@
 </script>
 
 <br />
-<div class="py-4">
+<div class="flex flex-col items-center py-4">
 	<slot name="image"><img src={imageUrl + '?fit=max'} alt={image.alt} /></slot>
 </div>
 {#if image?.caption}
