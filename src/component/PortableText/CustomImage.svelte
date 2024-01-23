@@ -11,9 +11,9 @@
 </script>
 
 <br />
-<div class="flex flex-col items-center py-4">
+<div class="flex flex-col items-center py-2">
 	<slot name="image"><img src={imageUrl + '?fit=max'} alt={image.alt} /></slot>
 </div>
 {#if image?.caption}
-	<slot name="caption"><p class="pb-8 text-center text-xs md:text-sm dark:text-slate-100 mx-[5%]">{image?.caption}</p></slot>
+	<slot name="caption"><p class="pb-5 text-center text-xs md:text-sm text-gray-800 dark:text-slate-100 mx-[5%]">{image?.caption}</p></slot>
 {/if}
