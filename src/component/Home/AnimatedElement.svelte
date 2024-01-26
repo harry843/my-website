@@ -14,7 +14,7 @@
     }}
   >
     {#if isInView}
-      <div in:fade={{ delay: 165, duration: 600 }}>
+      <div in:fade|global={{ delay: 165, duration: 600 }}>
         <h3>{text}</h3>
       </div>
     {/if}
