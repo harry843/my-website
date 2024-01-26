@@ -1,7 +1,8 @@
 export default function averageReadingTime(array: JSON) {
 	let totalCharacters = 0;
-	const averageCharactersInWord = 5;
-	const averageWordsPerMinute = 265;
+	// Average Characters per Word including spaces and punctuation
+	const averageCharactersInWord = 6;
+	const averageWordsPerMinute = 238;
 
 	array.forEach((item) => {
 		if (item.children) {
