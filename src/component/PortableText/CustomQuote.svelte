@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let portableText;
 	$: quote = portableText?.value
-	$: blockquoteOnlyTextSize = quote.author === undefined ? 'text-base' : 'text-lg'
+	$: blockquoteOnlyTextSize = quote.author === undefined ? 'text-base' : 'text-base md:text-lg'
 </script>
 <br>
 <figure
@@ -12,7 +12,7 @@
 	</blockquote>
 
 	{#if quote.author !== undefined}
-	<figcaption class="text-right not-italic text-base pt-2 dark:text-white">
+	<figcaption class="text-right not-italic text-sm md:text-base pt-2 dark:text-white">
 		<slot name="author">{quote.author}</slot>
 	</figcaption>
 	{/if}
