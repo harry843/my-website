@@ -54,7 +54,6 @@
 		"patch-package": "^8.0.0",
 		"prismjs": "^1.29.0",
 		"radar-chart-d3": "github:alangrafu/radar-chart-d3",
-		"svelte-inview": "^4.0.2",
-		"svelte-prism": "^1.1.6"
+		"svelte-inview": "^4.0.2"
 	}
 }
