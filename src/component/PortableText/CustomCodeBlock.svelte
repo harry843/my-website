@@ -68,11 +68,11 @@
 			}}
 		>
 			{#if isCopied}
-				<span class="flex flex-row text-[0.7rem] items-center gap-x-1 pr-1"
+				<span class="flex flex-row text-[0.7rem] md:text-sm items-center gap-x-1 pr-1"
 					><Tick />Copied</span
 				>
 			{:else}
-				<span class="flex flex-row text-[0.7rem] items-center gap-x-1 pr-1"
+				<span class="flex flex-row text-[0.7rem] md:text-sm items-center gap-x-1 pr-1"
 					><CopyToClipboard />Copy</span
 				>
 			{/if}

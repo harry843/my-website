@@ -69,6 +69,14 @@
 		gtag('js', new Date());
 		gtag('config', 'G-28Y41L6BQN');
 	</script>
+	<!-- Clarity tag -->
+	<script type="text/javascript">
+		(function(c,l,a,r,i,t,y){
+			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+			t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+		})(window, document, "clarity", "script", "krsxfgbemy");
+	</script>
 	<title>Blog | {blog?.title}</title>
 	<script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.js"></script>
@@ -108,7 +116,7 @@
 		<figure class="py-4">
 			<img src={blog?.mainImage?.image?.asset?.url + '?fit=max'} alt={blog?.mainImage.alt} />
 			{#if blog?.mainImage?.caption}
-				<figcaption class="text-sm text-center dark:text-slate-100 py-2">
+				<figcaption class="text-xs sm:text-sm text-center mx-[5%] text-gray-800 dark:text-slate-100 py-2">
 					{blog?.mainImage.caption}
 				</figcaption>
 			{/if}

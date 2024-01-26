@@ -82,6 +82,14 @@
 		gtag('js', new Date());
 		gtag('config', 'G-28Y41L6BQN');
 	</script>
+	<!-- Clarity tag -->
+	<script type="text/javascript">
+		(function(c,l,a,r,i,t,y){
+			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+			t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+		})(window, document, "clarity", "script", "krsxfgbemy");
+	</script>
 	<title>Harry Kelleher</title>
 	<meta property="og:title" content="Harry Kelleher" />
 	<meta property="og:type" content="article" />
@@ -111,7 +119,7 @@
 						>
 					</p>
 					<br />
-					<p>I build data products to create experiences which make impact.</p>
+					<p>I use data to tell stories you'll remember.</p>
 				</div>
 				{#if screenwidth >= 640}
 					<DynamicButtons {color} {additionalClass} />
