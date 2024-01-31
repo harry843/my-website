@@ -27,6 +27,7 @@ const config = {
 		}
 	},
 	cacheBufferSize: 12
+
 };
 
 export default config;

@@ -82,6 +82,7 @@
 	y={node.y0}
 	width={nodeWidth}
 	height={node.y1 - node.y0}
+	role="tooltip"
 	on:click={handleNodeClick}
 	on:keydown={handleNodeClick}
 	on:mouseenter={() => {
