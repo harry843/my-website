@@ -6,30 +6,15 @@
 	import AboutSection from '../component/Home/AboutSection.svelte';
 	import BlogSection from '../component/Home/BlogSection.svelte';
 	import ProjectSection from '../component/Home/ProjectSection.svelte';
-	import { onMount } from 'svelte';
 	import type { PageData } from './$houdini';
 	import { browser } from '$app/environment';
+
 
 	export let data: PageData;
 
 	$: ({ GetLatestPost } = data);
 
-	let latestPost: {
-		title: string;
-		feature: string;
-		_createdAt: string;
-		_updatedAt: string;
-		slug: { current: string };
-		tags: string[];
-		contentRaw: any;
-		mainImage: {
-			image: any;
-			alt: string;
-		};
-	}[];
 	$: latestPost = $GetLatestPost.data?.allPost;
-
-	$: isLoading = !$GetLatestPost || !$GetLatestPost.data;
 
 	let width: number = 0;
 	let screenwidth: number = 0;
@@ -64,39 +49,46 @@
 
 	$: color = onFirstVisit();
 
-	onMount(() => {
-		if (typeof latestPost === undefined) {
-			location.reload();
-		}
-	});
+	// let previousPage: string = base;
+
+	// afterNavigate(({ from }) => {
+	// 	previousPage = from?.url.pathname || previousPage;
+	// });
+
+	// onMount(() => {
+	// 	if (typeof latestPost === undefined) {
+	// 		location.reload();
+	// 	}
+	// });
+	$: console.log($GetLatestPost.source);
 </script>
 
 <svelte:head>
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-28Y41L6BQN"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'G-28Y41L6BQN');
-	</script>
 	<!-- Clarity tag -->
-	<script type="text/javascript">
-		(function(c,l,a,r,i,t,y){
-			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-			t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-		})(window, document, "clarity", "script", "krsxfgbemy");
-	</script>
+	<!-- <script type="text/javascript">
+		(function (c, l, a, r, i, t, y) {
+			c[a] =
+				c[a] ||
+				function () {
+					(c[a].q = c[a].q || []).push(arguments);
+				};
+			t = l.createElement(r);
+			t.async = 1;
+			t.src = 'https://www.clarity.ms/tag/' + i;
+			y = l.getElementsByTagName(r)[0];
+			y.parentNode.insertBefore(t, y);
+		})(window, document, 'clarity', 'script', 'krsxfgbemy');
+	</script> -->
 	<title>Harry Kelleher</title>
 	<meta property="og:title" content="Harry Kelleher" />
 	<meta property="og:type" content="article" />
 	<meta name="author" content="Harry Kelleher" />
-	<meta name="article:published_time" content={latestPost[0]._updatedAt} />
+	<meta name="article:published_time" content={new Date().toLocaleDateString()} />
 	<meta property="og:image" content="https://ibb.co/B6d632h" />
-	<meta property="og:description" content="Hi - I'm Harry Kelleher. I'm a Data Visualisation Developer. I create data products to help grow your business." />
+	<meta
+		property="og:description"
+		content="Hi - I'm Harry Kelleher. I'm a Data Visualisation Developer. I create data products to help grow your business."
+	/>
 	<meta property="og:url" content="https://harrykelleher.com/" />
 	<meta property="og:locale" content="en_GB" />
 </svelte:head>
@@ -115,7 +107,8 @@
 						I'm a <span
 							class="text-{color.name === 'yellow'
 								? '[#b7791f]'
-								: color.name + '-600'} dark:text-sky-300 font-medium">Data Visualisation Developer.</span
+								: color.name + '-600'} dark:text-sky-300 font-medium"
+							>Data Visualisation Developer.</span
 						>
 					</p>
 					<br />
@@ -161,8 +154,8 @@
 	{/if}
 	<AboutSection />
 	<SkillsSection />
-	{#if latestPost}
+	{#key latestPost}
 		<BlogSection {latestPost} />
-	{/if}
+	{/key}
 	<ProjectSection />
 {/if}
