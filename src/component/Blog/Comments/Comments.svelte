@@ -9,9 +9,9 @@
 	<div
 		id="cusdis_thread"
 		data-host="https://cusdis-comments-4386.vercel.app"
-		data-app-id="6a1a98be-887b-4480-88ed-0cc2e588698a"
+		data-app-id="abef92dc-6c41-4f5f-8069-1d4fc045f773"
 		data-page-id={slug}
-		data-page-url="https://staging.harrykelleher.com/blog/{slug}"
+		data-page-url="https://www.harrykelleher.com/blog/{slug}"
 		data-page-title={title}
 		data-theme="light"
 	/>

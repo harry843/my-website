@@ -16,7 +16,6 @@
 	import dateformat from 'dateformat';
 	import type { PageData } from './$houdini';
 	import { PortableText } from '@portabletext/svelte';
-	import Email from '../../../component/CV/Header/Contact/icons/Email.svelte';
 	import Loading from '../../../component/Loading/Loading.svelte';
 	import Socials from '../../../component/Blog/Socials/Socials.svelte';
 	import Comments from '../../../component/Blog/Comments/Comments.svelte';
@@ -27,8 +26,7 @@
 
 	$: blog = $GetPostBySlug.data?.allPost[0];
 
-	$: console.log($GetPostBySlug.source)
-
+	$: console.log($GetPostBySlug.source);
 
 	const dispatch = createEventDispatcher();
 
@@ -83,7 +81,9 @@
 		: 'mx-2 sm:mx-5 md:mx-[15%] lg:mx-[18%] xl:mx-[22%]'}
 >
 	{#if $GetPostBySlug.fetching}
-		<Loading />
+		<div class="flex h-screen items-center justify-center">
+			<Loading />
+		</div>
 	{:else if $GetPostBySlug.errors}
 		<!-- Display error message if there was an error -->
 		<div class="text-red-500">An error occurred while fetching data. Please try again later.</div>
