@@ -1,14 +1,14 @@
 <script lang="ts">
-	import CopyToClipboard from '../Icons/CopyToClipboard.svelte';
-	import Tick from '../Icons/Tick.svelte';
-	import copyToClipboard from './utils/copyToClipboard';
-	import countNumberofLines from './utils/countNumberofLines'
+	import Tick from '../../Icons/Tick.svelte';
 	import Prism from 'prismjs';
 	import 'prismjs/components/prism-sql.js';
 	import 'prismjs/components/prism-python.js';
 	import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 	import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 	import { onMount } from 'svelte';
+	import copyToClipboard from '../utils/copyToClipboard';
+	import countNumberofLines from '../utils/countNumberofLines';
+	import CopyToClipboard from '../../Icons/CopyToClipboard.svelte';
 
 	export let portableText;
 

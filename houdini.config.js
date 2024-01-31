@@ -8,23 +8,26 @@ const config = {
 	plugins: {
 		'houdini-svelte': {}
 	},
+	features: {
+		imperativeCache: true
+	},
 
 	scalars: {
-		/* in your case, something like */
-		JSON: {
-			// <- The GraphQL Scalar
-			type: 'JSON' // <-  The TypeScript type
-		},
 		DateTime: {
 			type: 'Date',
-			marshal(val) {
-			  return val.toISOString()
-			},
 			unmarshal(val) {
-			  return new Date(val)
+				return val ? new Date(val) : null;
+			},
+			marshal(date) {
+				return date && date.getTime();
 			}
-		  }
-	}
+		},
+		JSON: {
+			type: 'JSON' // <-  The TypeScript type
+		}
+	},
+	cacheBufferSize: 12
+
 };
 
 export default config;
