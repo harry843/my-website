@@ -91,7 +91,7 @@
 							<div
 								id="tooltip-default"
 								role="tooltip"
-								class="absolute z-10 px-1 sm:px-3 py-2 text-sm right-0 left-0 top-0 bottom-0 font-medium text-indigo-700 dark:text-gray-900 transition-opacity hover:opacity-100 delay-300 duration-200 bg-indigo-50 rounded-md shadow-sm opacity-0 flex items-center justify-center dark:bg-sky-300"
+								class="absolute z-10 w-[100px] px-1 sm:px-3 py-1.5 text-sm font-medium text-indigo-700 dark:text-gray-900 transition-opacity hover:opacity-100 delay-200 duration-300 bg-indigo-50 rounded-md shadow-sm opacity-0 flex items-center justify-center dark:bg-sky-300"
 							>
 								{score}
 							</div>

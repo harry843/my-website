@@ -1,5 +1,5 @@
 <script lang="ts">
-	import BlockQuote from '../PortableText/BlockQuote.svelte';
+	import BlockQuote from '../Blog/PortableText/BlockQuote.svelte';
 	import AnimatedElement from './AnimatedElement.svelte';
 
 	const src = '/hk-about.jpg';
