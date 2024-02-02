@@ -3,7 +3,7 @@
 /** @type {import('houdini').ConfigFile} */
 const config = {
 	watchSchema: {
-		url: 'https://g2pdrwyj.api.sanity.io/v2023-08-01/graphql/production/default'
+		url: 'https://g2pdrwyj.apicdn.sanity.io/v2023-08-01/graphql/production/default'
 	},
 	plugins: {
 		'houdini-svelte': {}
@@ -27,6 +27,7 @@ const config = {
 		}
 	},
 	cacheBufferSize: 12
+
 };
 
 export default config;

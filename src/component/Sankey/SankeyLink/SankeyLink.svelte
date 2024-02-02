@@ -32,6 +32,7 @@
 	stroke={strokeGradient}
 	d={sankeyLinkHorizontal()(link)}
 	stroke-width={link.width ? Math.max(1, link.width) : undefined}
+	role="tooltip"
 	on:mouseenter={() => {
 		hoverStore.update((state) => {
 			state.link = true;
