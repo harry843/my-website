@@ -74,7 +74,7 @@
 	>
 		{#each [{ name: 'Technical', skill: technical }, { name: 'People', skill: people }, { name: 'Software', skill: software }, { name: 'Languages', skill: languages }] as skills, index}
 			<div class="py-4">
-				<h3 class={"text-xl font-customHeading font-semibold mb-2"}>{skills.name}</h3>
+				<h3 class="text-xl font-customHeading font-semibold mb-2">{skills.name}</h3>
 
 				{#each skills.skill as { name, value, score }}
 					<div
