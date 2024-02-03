@@ -32,3 +32,7 @@ export const _houdini_load = graphql(`
 export function _houdini_onError({ error }) {
     throw this.redirect(307, '/')
 }
+
+/** @type {import('./$types').EntryGenerator} */ export function entries() {
+	return [{ $slug: 'i-built-a-website' }];
+}
