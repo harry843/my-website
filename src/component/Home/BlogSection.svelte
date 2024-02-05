@@ -1,6 +1,7 @@
 <script lang="ts">
 	import BlogPostCard from '../../component/Card/BlogPostCard/BlogPostCard.svelte';
 	import averageReadingTime from '../../component/Card/BlogPostCard/averageReadingTime';
+	import genImageUrl from '../Sanity/utils/genImageUrl';
 
 	export let latestPost;
 
@@ -21,19 +22,17 @@
 			<p class="ml-px py-1">Every now and then, I write about something that interests me.</p>
 			<h1 class="font-customHeading font-semibold text-left text-xl pt-5">↓ Latest Blog Post ↓</h1>
 		</div>
-		{#each latestPost as post, index}
-			<BlogPostCard
-				slug={'blog/' + post.slug?.current}
-				title={post.title}
-				coverImage={post.mainImage?.image?.asset?.url + imageUrlParams}
-				altText={post.mainImage?.alt}
-				excerpt={post.feature}
-				tags={post?.tags}
-				readingTime={averageReadingTime(post?.contentRaw)}
-				additionalClass={index === 0 ? 'col-span-full' : 'col-span-full md:col-span-1'}
-				{index}
-			/>
-		{/each}
+		<BlogPostCard
+			slug={'blog/' + latestPost.slug}
+			title={latestPost.title}
+			coverImage={genImageUrl(latestPost.imageUrl, imageUrlParams)}
+			altText={latestPost.imageAlt}
+			excerpt={latestPost.feature}
+			tags={latestPost?.tags}
+			readingTime={averageReadingTime(latestPost?.content)}
+			additionalClass={'col-span-full'}
+			index={0}
+		/>
 	</div>
-	<div class="pb-10"></div>
+	<div class="pb-10" />
 </section>
