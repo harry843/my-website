@@ -4,7 +4,7 @@
 	export let title: string;
 	export let slug: string;
 </script>
-
+{#if slug !== undefined}
 <section class="mx-2 sm:mx-5 md:mx-[15%] lg:mx-[18%] xl:mx-[22%] py-2 md:py-4">
 	<div class="mx-6 mt-8 w-[75%] h-0.5 bg-gray-300 md:mx-auto md:relative" />
 	<h2 class="font-customHeading text-2xl font-medium text-left py-3 pt-10">Spread the word!</h2>
@@ -102,3 +102,4 @@
 		</a>
 	</div>
 </section>
+{/if}

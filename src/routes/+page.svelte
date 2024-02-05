@@ -6,14 +6,10 @@
 	import AboutSection from '../component/Home/AboutSection.svelte';
 	import BlogSection from '../component/Home/BlogSection.svelte';
 	import ProjectSection from '../component/Home/ProjectSection.svelte';
-	import type { PageData } from './$houdini';
+	import Loading from '../component/Loading/Loading.svelte';
+	import { homeData } from '../stores/stores';
 	import { browser } from '$app/environment';
-
-	export let data: PageData;
-
-	$: ({ GetLatestPost } = data);
-
-	$: latestPost = $GetLatestPost.data?.allPost;
+	import DataFetcher from '../component/Sanity/DataFetcher.svelte';
 
 	let width: number = 0;
 	let screenwidth: number = 0;
@@ -48,18 +44,17 @@
 
 	$: color = onFirstVisit();
 
-	// let previousPage: string = base;
+	const getLatestPost = `
+	  *[_type == 'post']
+	  | order(_createdAt desc)[0] {
+		  title, "slug":slug.current, "imageUrl":mainImage.image.asset._ref, "imageCaption":mainImage.caption, "imageAlt":mainImage.alt, feature, tags, content
+	  }
+	`;
 
-	// afterNavigate(({ from }) => {
-	// 	previousPage = from?.url.pathname || previousPage;
-	// });
-
-	// onMount(() => {
-	// 	if (typeof latestPost === undefined) {
-	// 		location.reload();
-	// 	}
-	// });
-	$: console.log($GetLatestPost.source);
+	// Function to receive data from DataFetcher component
+	function handleData(data) {
+		$homeData = data;
+	}
 </script>
 
 <svelte:head>
@@ -78,6 +73,8 @@
 </svelte:head>
 
 <svelte:window bind:innerWidth={screenwidth} />
+
+<DataFetcher query={getLatestPost} onData={handleData} store={homeData} />
 
 <section class="flex flex-col md:flex-row">
 	<div
@@ -138,8 +135,11 @@
 	{/if}
 	<AboutSection />
 	<SkillsSection />
-	{#key latestPost}
-		<BlogSection {latestPost} />
-	{/key}
+	{#if Object.keys($homeData).length == 0}
+		<Loading />
+	{:else if Object.keys($homeData).length > 0}
+		<BlogSection latestPost={$homeData} />
+	{/if}
+
 	<ProjectSection />
 {/if}

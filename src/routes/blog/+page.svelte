@@ -2,14 +2,21 @@
 	import BlogPostCard from '../../component/Card/BlogPostCard/BlogPostCard.svelte';
 	import averageReadingTime from '../../component/Card/BlogPostCard/averageReadingTime';
 	import Loading from '../../component/Loading/Loading.svelte';
-	import type { PageData } from './$houdini';
+	import DataFetcher from '../../component/Sanity/DataFetcher.svelte';
+	import genImageUrl from '../../component/Sanity/utils/genImageUrl';
+	import { blogData } from '../../stores/stores';
 
-	export let data: PageData;
+	const getAllPosts = `
+	  *[_type == 'post']
+	  | order(_createdAt desc) {
+		  title, "slug":slug.current, "imageUrl":mainImage.image.asset._ref, "imageCaption":mainImage.caption, "imageAlt":mainImage.alt, feature, tags, content
+	  }
+	`;
 
-	$: ({ GetAllPost } = data);
-	$: imageUrlParams = '?fm=webp&max-h=300&max-w=500&min-h=240&min-w=400';
-
-	$: console.log($GetAllPost.source)
+	// Function to receive data from DataFetcher component
+	function handleData(data) {
+		$blogData = data;
+	}
 </script>
 
 <svelte:head>
@@ -17,31 +24,31 @@
 </svelte:head>
 
 <section
-	class={$GetAllPost.fetching
+	class={Object.keys($blogData).length == 0
 		? 'flex h-screen items-center justify-center'
 		: 'px-1 xs:px-2 md:px-4 flex flex-col items-center justify-center text-sm'}
 >
-	{#if $GetAllPost.fetching}
+	<DataFetcher query={getAllPosts} onData={handleData} store={blogData}/>
+	{#if Object.keys($blogData).length == 0 }
 		<Loading />
-	{:else if $GetAllPost.errors}
-		<!-- Display error message if there was an error -->
-		<div class="text-red-500">An error occurred while fetching data. Please try again later.</div>
-	{:else if $GetAllPost.data?.allPost !== undefined}
+	{:else if Object.keys($blogData).length > 0}
 		<div class="grid grid-cols-2 space-y-6 gap-x-6 rounded-md">
 			<h1 class="font-customHeading font-semibold text-left text-2xl">Blog Posts</h1>
-			{#each $GetAllPost.data?.allPost as post, index}
+			{#each $blogData as post, index}
 				<BlogPostCard
-					slug={'blog/' + post.slug?.current}
+					slug={'blog/' + post.slug}
 					title={post.title}
-					coverImage={post.mainImage?.image?.asset?.url + imageUrlParams}
+					coverImage={genImageUrl(post.imageUrl, "?fit=max")}
 					altText={post.mainImage?.alt}
 					excerpt={post.feature}
 					tags={post?.tags}
-					readingTime={averageReadingTime(post?.contentRaw)}
+					readingTime={averageReadingTime(post?.content)}
 					additionalClass={index === 0 ? 'col-span-full' : 'col-span-full md:col-span-1'}
 					{index}
 				/>
 			{/each}
 		</div>
+		{:else}
+		<div class="text-lg text-red-500">An error occurred whilst fetching data. Please refresh the page or try.</div>
 	{/if}
 </section>

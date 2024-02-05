@@ -3,6 +3,7 @@
     export let title: string;
 </script>
 
+{#if slug !== undefined && title !== undefined}
 <section class="flex flex-col items-left text-left mx-2 md:mx-[15%] lg:mx-[18%] xl:mx-[22%] pt-5">
 	<h2 class="py-2 font-customHeading font-medium text-2xl">What's your take?</h2>
 	<p class="pb-4">A penny for your thoughts in the comments below.</p>
@@ -16,3 +17,4 @@
 		data-theme="light"
 	/>
 </section>
+{/if}

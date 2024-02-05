@@ -1,6 +1,7 @@
-<script async defer src="https://cusdis.com/js/cusdis.es.js" lang="ts">
-	import { onMount, createEventDispatcher, afterUpdate, onDestroy } from 'svelte';
-	import { browser } from '$app/environment';
+<script lang="ts">
+	//import { onMount, createEventDispatcher, afterUpdate, onDestroy } from 'svelte';
+	import { page } from '$app/stores';
+	//import { browser } from '$app/environment';
 	import CustomHeading from '../../../component/Blog/PortableText/CustomHeading.svelte';
 	import CustomParagraph from '../../../component/Blog/PortableText/CustomParagraph.svelte';
 	import CustomUrl from '../../../component/Blog/PortableText/CustomURL.svelte';
@@ -14,148 +15,164 @@
 	import Tag from '../../../component/Tag/Tag.svelte';
 	import averageReadingTime from '../../../component/Card/BlogPostCard/averageReadingTime';
 	import dateformat from 'dateformat';
-	import type { PageData } from './$houdini';
 	import { PortableText } from '@portabletext/svelte';
 	import Loading from '../../../component/Loading/Loading.svelte';
 	import Socials from '../../../component/Blog/Socials/Socials.svelte';
-	import Comments from '../../../component/Blog/Comments/Comments.svelte';
+	//import Comments from '../../../component/Blog/Comments/Comments.svelte';
+	import { slugData } from '../../../stores/stores';
+	import DataFetcher from '../../../component/Sanity/DataFetcher.svelte';
+	import genImageUrl from '../../../component/Sanity/utils/genImageUrl';
 
-	export let data: PageData;
+	$: slug = $page.params.slug;
 
-	$: ({ GetPostBySlug } = data);
+	$: getSlugPost = `
+	  *[_type == 'post' && slug.current == '${slug}'] {
+		  _createdAt, _updatedAt, title, "slug":slug.current, "imageUrl":mainImage.image.asset._ref, "imageCaption":mainImage.caption, "imageAlt":mainImage.alt, feature, tags, content
+	  }
+	`;
 
-	$: blog = $GetPostBySlug.data?.allPost[0];
+	$: renderHead = false;
 
-	$: console.log($GetPostBySlug.source);
+	// Function to receive data from DataFetcher component
+	function handleData(data) {
+		$slugData = data;
+		renderHead = true;
+	}
 
-	const dispatch = createEventDispatcher();
+	// const dispatch = createEventDispatcher();
 
-	const load = () => {
-		dispatch('load');
-	};
+	// const load = () => {
+	// 	dispatch('load');
+	// };
 
-	onDestroy(() => {
-		if (browser) {
-			let url = 'https://cusdis-comments-4386.vercel.app/js/cusdis.es.js';
-			let script = document.querySelector(`script[src="${url}"]`);
-			script.removeEventListener('load', load);
-		}
-	});
+	// onDestroy(() => {
+	// 	if (browser) {
+	// 		let url = 'https://cusdis-comments-4386.vercel.app/js/cusdis.es.js';
+	// 		let script = document.querySelector(`script[src="${url}"]`);
+	// 		script.removeEventListener('load', load);
+	// 	}
+	// });
 
-	afterUpdate(async () => {
-		load();
-	});
+	// afterUpdate(async () => {
+	// 	load();
+	// });
 
-	onMount(async () => {
-		let url = 'https://cusdis-comments-4386.vercel.app/js/cusdis.es.js';
-		let script = document.querySelector(`script[src="${url}"]`);
-		if (!script) {
-			script = document.createElement('script');
-			script.src = url;
-			script.defer = true;
-			script.async = true;
-			script.addEventListener('load', load);
-			document.querySelector('head').appendChild(script);
-		}
-		window.CUSDIS.initial();
-	});
+	// onMount(async () => {
+	// 	let url = 'https://cusdis-comments-4386.vercel.app/js/cusdis.es.js';
+	// 	let script = document.querySelector(`script[src="${url}"]`);
+	// 	if (!script) {
+	// 		script = document.createElement('script');
+	// 		script.src = url;
+	// 		script.defer = true;
+	// 		script.async = true;
+	// 		script.addEventListener('load', load);
+	// 		document.querySelector('head').appendChild(script);
+	// 	}
+	// 	window.CUSDIS.initial();
+	// });
 </script>
 
 <svelte:head>
-	<title>Blog | {blog?.title}</title>
-	<script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.js"></script>
-	<meta property="og:title" content={blog?.title} />
+	{#if renderHead}
+		<title>Blog | {$slugData[0].title}</title>
+		<meta property="og:title" content={$slugData[0].title} />
+		<meta name="article:published_time" content={$slugData[0]._updatedAt} />
+		<meta property="og:image" content={genImageUrl($slugData[0].imageUrl, '?fit=max')} />
+		<meta property="og:description" content={$slugData[0].feature} />
+		<meta property="og:url" content={'https://harrykelleher.com/blog/' + $slugData[0].slug} />
+	{/if}
 	<meta property="og:type" content="article" />
 	<meta name="author" content="Harry Kelleher" />
-	<meta name="article:published_time" content={blog?._updatedAt.toISOString()} />
-	<meta property="og:image" content={blog?.mainImage?.image?.asset?.url} />
-	<meta property="og:description" content={blog?.feature} />
-	<meta property="og:url" content={'https://harrykelleher.com/blog/' + blog?.slug.current} />
 	<meta property="og:locale" content="en_GB" />
+	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.js"></script>
 </svelte:head>
 
-<section
-	class={$GetPostBySlug.fetching
-		? 'flex h-screen items-center justify-center'
-		: 'mx-2 sm:mx-5 md:mx-[15%] lg:mx-[18%] xl:mx-[22%]'}
->
-	{#if $GetPostBySlug.fetching}
-		<div class="flex h-screen items-center justify-center">
-			<Loading />
-		</div>
-	{:else if $GetPostBySlug.errors}
-		<!-- Display error message if there was an error -->
-		<div class="text-red-500">An error occurred while fetching data. Please try again later.</div>
-	{:else if $GetPostBySlug.data?.allPost !== undefined}
-		{#if blog?.title}
-			<h1 class="text-3xl font-semibold font-customHeading text-center pb-6">{blog?.title}</h1>
-		{/if}
+<DataFetcher query={getSlugPost} onData={handleData} store={slugData} />
+{#if $slugData[0] === undefined}
+	<div class="flex h-screen items-center justify-center">
+		<Loading />
+	</div>
+{:else}
+	<section class="mx-2 sm:mx-5 md:mx-[15%] lg:mx-[18%] xl:mx-[22%]">
+		{#if Object.keys($slugData[0]).length > 0}
+			{#if $slugData[0].title !== undefined}
+				<h1 class="text-3xl font-semibold font-customHeading text-center pb-6">
+					{$slugData[0].title}
+				</h1>
+			{/if}
 
-		<div class="flex flex-row justify-center items-center">
-			<img src="/HK_profile2.jpg" class="h-14 mr-2 rounded-full" alt="Harry Kelleher" />
-			<div class="flex flex-col justify-center text-center gap-y-1 font-customParagraph">
-				<div class="text-sm text-opacity-80">by Harry Kelleher</div>
-				<div class="text-sm text-opacity-80">
-					{dateformat(blog._updatedAt, 'UTC:dd mmm yyyy')} - {averageReadingTime(blog.contentRaw)}
+			<div class="flex flex-row justify-center items-center">
+				<img src="/HK_profile2.jpg" class="h-14 mr-2 rounded-full" alt="Harry Kelleher" />
+				<div class="flex flex-col justify-center text-center gap-y-1 font-customParagraph">
+					<div class="text-sm text-opacity-80">by Harry Kelleher</div>
+					{#if $slugData[0].content !== undefined}
+						<div class="text-sm text-opacity-80">
+							{dateformat($slugData[0]._updatedAt, 'UTC:dd mmm yyyy')} - {averageReadingTime(
+								$slugData[0].content
+							)}
+						</div>
+					{/if}
 				</div>
 			</div>
-		</div>
 
-		{#if blog.tags}
-			<div class="pt-6 flex justify-center gap-3 flex-wrap">
-				{#each blog.tags as tag}
-					<Tag>{tag}</Tag>
-				{/each}
-			</div>
-		{/if}
-		{#if blog?.mainImage}
-			<figure class="py-4">
-				<img src={blog?.mainImage?.image?.asset?.url + '?fit=max'} alt={blog?.mainImage.alt} />
-				{#if blog?.mainImage?.caption}
-					<figcaption
-						class="text-xs sm:text-sm text-center mx-[5%] text-gray-800 dark:text-slate-100 py-2"
-					>
-						{blog?.mainImage.caption}
-					</figcaption>
-				{/if}
-			</figure>
-		{/if}
+			{#if $slugData[0].tags !== undefined}
+				<div class="pt-6 flex justify-center gap-3 flex-wrap">
+					{#each $slugData[0].tags as tag}
+						<Tag>{tag}</Tag>
+					{/each}
+				</div>
+			{/if}
+			{#if $slugData[0].imageUrl !== undefined}
+				<figure class="py-4">
+					<img src={genImageUrl($slugData[0].imageUrl, '?fit=max')} alt={$slugData[0].imageAlt} />
+					{#if $slugData[0].imageCaption}
+						<figcaption
+							class="text-xs sm:text-sm text-center mx-[5%] text-gray-800 dark:text-slate-100 py-2"
+						>
+							{$slugData[0].imageCaption}
+						</figcaption>
+					{/if}
+				</figure>
+			{/if}
 
-		{#if blog?.contentRaw}
-			<PortableText
-				components={{
-					types: {
-						quote: CustomQuote,
-						imageWithAlt: CustomImage,
-						iframe: CustomIFrame,
-						code: CustomCodeBlock
-					},
-					block: {
-						normal: CustomParagraph,
-						blockquote: BlockQuote,
-						h1: CustomHeading,
-						h2: CustomHeading,
-						h3: CustomHeading,
-						h4: CustomHeading,
-						h5: CustomHeading
-					},
-					marks: {
-						link: CustomUrl
-					},
-					listItem: {
-						bullet: CustomListItem
-					},
-					list: {
-						bullet: CustomBullet
-					}
-				}}
-				value={blog?.contentRaw}
-				onMissingComponent={false}
-			/>
+			{#if $slugData[0].content !== undefined}
+				<PortableText
+					components={{
+						types: {
+							quote: CustomQuote,
+							imageWithAlt: CustomImage,
+							iframe: CustomIFrame,
+							code: CustomCodeBlock
+						},
+						block: {
+							normal: CustomParagraph,
+							blockquote: BlockQuote,
+							h1: CustomHeading,
+							h2: CustomHeading,
+							h3: CustomHeading,
+							h4: CustomHeading,
+							h5: CustomHeading
+						},
+						marks: {
+							link: CustomUrl
+						},
+						listItem: {
+							bullet: CustomListItem
+						},
+						list: {
+							bullet: CustomBullet
+						}
+					}}
+					value={$slugData[0].content}
+					onMissingComponent={false}
+				/>
+			{/if}
+		{:else}
+			<div class="text-red-500">An error occurred while fetching data. Please try again later.</div>
 		{/if}
-	{/if}
-</section>
+	</section>
 
-<Socials title={blog?.title} slug={blog?.slug.current} />
-<Comments title={blog?.title} slug={blog?.slug.current} />
+	<Socials title={$slugData[0].title} slug={$slugData[0].slug} />
+	<!-- <Comments title={$slugData[0].title} slug={$slugData[0].slug} /> -->
+{/if}
