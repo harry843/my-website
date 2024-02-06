@@ -17,11 +17,14 @@
 	import dateformat from 'dateformat';
 	import { PortableText } from '@portabletext/svelte';
 	import Loading from '../../../component/Loading/Loading.svelte';
+	import Eye from '../../../component/Icons/Eye.svelte';
 	import Socials from '../../../component/Blog/Socials/Socials.svelte';
 	//import Comments from '../../../component/Blog/Comments/Comments.svelte';
 	import { slugData } from '../../../stores/stores';
 	import DataFetcher from '../../../component/Sanity/DataFetcher.svelte';
 	import genImageUrl from '../../../component/Sanity/utils/genImageUrl';
+
+	export let data;
 
 	$: slug = $page.params.slug;
 
@@ -85,6 +88,7 @@
 	<meta name="author" content="Harry Kelleher" />
 	<meta property="og:locale" content="en_GB" />
 	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
+	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.js"></script>
 </svelte:head>
 
@@ -106,13 +110,24 @@
 				<img src="/HK_profile2.jpg" class="h-14 mr-2 rounded-full" alt="Harry Kelleher" />
 				<div class="flex flex-col justify-center text-center gap-y-1 font-customParagraph">
 					<div class="text-sm text-opacity-80">by Harry Kelleher</div>
-					{#if $slugData[0].content !== undefined}
-						<div class="text-sm text-opacity-80">
-							{dateformat($slugData[0]._updatedAt, 'UTC:dd mmm yyyy')} - {averageReadingTime(
-								$slugData[0].content
-							)}
-						</div>
-					{/if}
+					<div class="flex flex-row text-sm gap-x-1.5 text-opacity-80">
+						{#if $slugData[0]._updatedAt !== undefined}
+							<div>
+								{dateformat($slugData[0]._updatedAt, 'UTC:dd mmm yyyy')}
+							</div>
+						{/if}
+						<div>&#x2022;</div>
+						{#if $slugData[0].content !== undefined}
+							<div>{averageReadingTime($slugData[0].content)}</div>
+						{/if}
+						<div>&#x2022;</div>
+						{#if data.reads !== undefined}
+							<div class="flex flex-row items-center gap-x-1 text-sm text-opacity-80">
+								<Eye />
+								<div class="items-center">{data.reads}</div>
+							</div>
+						{/if}
+					</div>
 				</div>
 			</div>
 
