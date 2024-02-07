@@ -6,6 +6,7 @@ import {
 	metricName
 } from '$env/static/private';
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
+import { formatTooltipValue } from '../../portfolio/sankey/utils';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
@@ -32,14 +33,14 @@ export async function load({ params }) {
 		]
 	});
 
-	//console.log('Report result:', parseInt(response.rows[0].metricValues[0].value));
 	let reads = 0;
 	response.rows.forEach((row) => {
+        //console.log(row.metricValues[0], row.dimensionValues[0])
 		if (row.dimensionValues[0].value.startsWith(`/blog/${params.slug}`)) {
-			//console.log(row.dimensionValues[0], row.metricValues[0]);
-			reads += parseInt(row.metricValues[0].value);
+			
+            reads += parseInt(row.metricValues[0].value);
 		}
 	});
 	console.log("Reads:",reads)
-	return { "reads" : reads };
+	return { "reads" : formatTooltipValue(reads) };
 }

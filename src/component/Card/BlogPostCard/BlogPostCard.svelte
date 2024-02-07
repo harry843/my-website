@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Card from '../Card.svelte';
 	import Tag from '../../Tag/Tag.svelte';
+	import Eye from '../../Icons/Eye.svelte';
 
 	export let title: string | null = null;
 	export let coverImage: string | undefined = undefined;
@@ -10,13 +11,12 @@
 	export let tags: (string | null)[] | null | undefined = null;
 	export let readingTime: string | null = null;
 	export let additionalClass: string | undefined = undefined;
-	export let index: number | undefined = undefined
+	export let index: number | undefined = undefined;
 </script>
 
 <Card href="/{slug}" target="_self" {additionalClass} {index}>
-	
 	<div class="" slot="image">
-		<img class="{index === 0 ? "items-center" : "max-h-[300px] "}"src={coverImage} alt={altText} />
+		<img class={index === 0 ? 'items-center' : 'max-h-[300px] '} src={coverImage} alt={altText} />
 	</div>
 	<div class="gap-0 items-start" slot="content">
 		<h1 class="flex items-center justify-between w-full text-2xl font-semibold">

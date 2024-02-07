@@ -110,7 +110,7 @@
 				<img src="/HK_profile2.jpg" class="h-14 mr-2 rounded-full" alt="Harry Kelleher" />
 				<div class="flex flex-col justify-center text-center gap-y-1 font-customParagraph">
 					<div class="text-sm text-opacity-80">by Harry Kelleher</div>
-					<div class="flex flex-row text-sm gap-x-1.5 text-opacity-80">
+					<div class="flex flex-row text-sm gap-x-1 xxs:gap-x-1.5 text-opacity-80">
 						{#if $slugData[0]._updatedAt !== undefined}
 							<div>
 								{dateformat($slugData[0]._updatedAt, 'UTC:dd mmm yyyy')}
@@ -124,7 +124,7 @@
 						{#if data.reads !== undefined}
 							<div class="flex flex-row items-center gap-x-1 text-sm text-opacity-80">
 								<Eye />
-								<div class="items-center">{data.reads}</div>
+								<div class="items-center text-opacity-80">{data.reads}</div>
 							</div>
 						{/if}
 					</div>

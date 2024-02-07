@@ -7,7 +7,24 @@ import {
 } from '$env/static/private';
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 
-/** @type {import('./$types').PageLoad} */
+// Function to flag matching substrings
+function flagMatchingSubstrings(lst) {
+    const matches = [];
+
+    lst.forEach((elem, i) => {
+        if (elem.startsWith('/blog/')) {
+            lst.forEach((otherElem, j) => {
+                if (i !== j && otherElem.includes(elem)) {
+                    matches.push({ url: elem, index: i }, { url: otherElem, index: j });
+                }
+            });
+        } 
+    });
+
+    return matches;
+}
+
+/** @type {import('./$types').PageServerLoad} */
 export async function load() {
 	const analyticsDataClient = new BetaAnalyticsDataClient({
 		keyFilename: GOOGLE_APPLICATION_CREDENTIALS
@@ -32,11 +49,9 @@ export async function load() {
 		]
 	});
 
-	//console.log('Report result:', parseInt(response.rows[0].metricValues[0].value));
 	let reads = 0;
 	response.rows.forEach((row) => {
-		if (row.dimensionValues[0].value.startsWith(`/blog/i-built-a-website`)) {
-			//console.log(row.dimensionValues[0], row.metricValues[0]);
+		if (row.dimensionValues[0].value.startsWith(`/blog/`)) {
 			reads += parseInt(row.metricValues[0].value);
 		}
 	});
