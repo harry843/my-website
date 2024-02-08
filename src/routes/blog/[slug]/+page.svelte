@@ -23,8 +23,11 @@
 	import { slugData } from '../../../stores/stores';
 	import DataFetcher from '../../../component/Sanity/DataFetcher.svelte';
 	import genImageUrl from '../../../component/Sanity/utils/genImageUrl';
+	import BlogMenu from '../../../component/Blog/Menu/BlogMenu.svelte';
 
 	export let data;
+
+	let screenWidth: number = 0;
 
 	$: slug = $page.params.slug;
 
@@ -92,6 +95,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.js"></script>
 </svelte:head>
 
+<svelte:window bind:innerWidth={screenWidth} />
+
 <DataFetcher query={getSlugPost} onData={handleData} store={slugData} />
 {#if $slugData[0] === undefined}
 	<div class="flex h-screen items-center justify-center">
@@ -102,7 +107,8 @@
 		{#if Object.keys($slugData[0]).length > 0}
 			{#if $slugData[0].title !== undefined}
 				<h1 class="text-3xl font-semibold font-customHeading text-center pb-6">
-					{$slugData[0].title}
+					<!-- svelte-ignore a11y-missing-content -->
+					{$slugData[0].title}<a href="#top"></a>
 				</h1>
 			{/if}
 
@@ -152,6 +158,8 @@
 			{/if}
 
 			{#if $slugData[0].content !== undefined}
+				<BlogMenu {screenWidth} content={$slugData[0].content} />
+
 				<PortableText
 					components={{
 						types: {

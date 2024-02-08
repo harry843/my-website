@@ -35,7 +35,6 @@ export async function load({ params }) {
 
 	let reads = 0;
 	response.rows.forEach((row) => {
-        //console.log(row.metricValues[0], row.dimensionValues[0])
 		if (row.dimensionValues[0].value.startsWith(`/blog/${params.slug}`)) {
 			
             reads += parseInt(row.metricValues[0].value);
