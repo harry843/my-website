@@ -8,10 +8,11 @@ import {
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import { formatTooltipValue } from '../../portfolio/sankey/utils';
 
+
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
 	const analyticsDataClient = new BetaAnalyticsDataClient({
-		keyFilename: GOOGLE_APPLICATION_CREDENTIALS
+		credentials: JSON.parse(GOOGLE_APPLICATION_CREDENTIALS)
 	});
 	const [response] = await analyticsDataClient.runReport({
 		property: `properties/${propertyId}`,
