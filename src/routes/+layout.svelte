@@ -16,7 +16,6 @@
 	};
 
 	$: if ($navigating) onRouteChange();
-	console.log($page.url.pathname);
 </script>
 
 <svelte:window bind:outerWidth />
