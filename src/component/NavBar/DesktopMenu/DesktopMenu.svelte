@@ -9,7 +9,6 @@
 	export let handleSwitchDarkMode;
 
 </script>
-
 <div
 	class="items-right justify-between hidden w-full md:flex md:w-auto md:order-2"
 	id="navbar-sticky"

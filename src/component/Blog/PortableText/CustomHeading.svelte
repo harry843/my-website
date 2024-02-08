@@ -7,7 +7,6 @@
 	const precededByHeading = headers ? ['h1', 'h2', 'h3'].includes(headers) : undefined;
 
 	$: anchorId = headers ? `section-${portableText.value._key}` : undefined;
-	console.log(portableText)
 
 </script>
 

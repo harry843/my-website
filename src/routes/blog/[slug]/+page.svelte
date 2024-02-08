@@ -24,6 +24,7 @@
 	import DataFetcher from '../../../component/Sanity/DataFetcher.svelte';
 	import genImageUrl from '../../../component/Sanity/utils/genImageUrl';
 	import BlogMenu from '../../../component/Blog/Menu/BlogMenu.svelte';
+	import ProgressBar from '../../../component/Blog/ProgressBar/ProgressBar.svelte';
 
 	export let data;
 
@@ -92,6 +93,7 @@
 	<meta property="og:locale" content="en_GB" />
 	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
 	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
+	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.js"></script>
 </svelte:head>
 
@@ -108,7 +110,7 @@
 			{#if $slugData[0].title !== undefined}
 				<h1 class="text-3xl font-semibold font-customHeading text-center pb-6">
 					<!-- svelte-ignore a11y-missing-content -->
-					{$slugData[0].title}<a href="#top"></a>
+					{$slugData[0].title}<a href="#top" />
 				</h1>
 			{/if}
 
