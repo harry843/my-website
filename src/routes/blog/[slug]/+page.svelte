@@ -17,11 +17,18 @@
 	import dateformat from 'dateformat';
 	import { PortableText } from '@portabletext/svelte';
 	import Loading from '../../../component/Loading/Loading.svelte';
+	import Eye from '../../../component/Icons/Eye.svelte';
 	import Socials from '../../../component/Blog/Socials/Socials.svelte';
 	//import Comments from '../../../component/Blog/Comments/Comments.svelte';
 	import { slugData } from '../../../stores/stores';
 	import DataFetcher from '../../../component/Sanity/DataFetcher.svelte';
 	import genImageUrl from '../../../component/Sanity/utils/genImageUrl';
+	import BlogMenu from '../../../component/Blog/Menu/BlogMenu.svelte';
+	import ProgressBar from '../../../component/Blog/ProgressBar/ProgressBar.svelte';
+
+	export let data;
+
+	let screenWidth: number = 0;
 
 	$: slug = $page.params.slug;
 
@@ -85,8 +92,12 @@
 	<meta name="author" content="Harry Kelleher" />
 	<meta property="og:locale" content="en_GB" />
 	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
+	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
+	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.js"></script>
 </svelte:head>
+
+<svelte:window bind:innerWidth={screenWidth} />
 
 <DataFetcher query={getSlugPost} onData={handleData} store={slugData} />
 {#if $slugData[0] === undefined}
@@ -98,7 +109,8 @@
 		{#if Object.keys($slugData[0]).length > 0}
 			{#if $slugData[0].title !== undefined}
 				<h1 class="text-3xl font-semibold font-customHeading text-center pb-6">
-					{$slugData[0].title}
+					<!-- svelte-ignore a11y-missing-content -->
+					{$slugData[0].title}<a href="#top" />
 				</h1>
 			{/if}
 
@@ -106,13 +118,24 @@
 				<img src="/HK_profile2.jpg" class="h-14 mr-2 rounded-full" alt="Harry Kelleher" />
 				<div class="flex flex-col justify-center text-center gap-y-1 font-customParagraph">
 					<div class="text-sm text-opacity-80">by Harry Kelleher</div>
-					{#if $slugData[0].content !== undefined}
-						<div class="text-sm text-opacity-80">
-							{dateformat($slugData[0]._updatedAt, 'UTC:dd mmm yyyy')} - {averageReadingTime(
-								$slugData[0].content
-							)}
-						</div>
-					{/if}
+					<div class="flex flex-row text-sm gap-x-1 xxs:gap-x-1.5 text-opacity-80">
+						{#if $slugData[0]._updatedAt !== undefined}
+							<div>
+								{dateformat($slugData[0]._updatedAt, 'UTC:dd mmm yyyy')}
+							</div>
+						{/if}
+						<div>&#x2022;</div>
+						{#if $slugData[0].content !== undefined}
+							<div>{averageReadingTime($slugData[0].content)}</div>
+						{/if}
+						<div>&#x2022;</div>
+						{#if data.reads !== undefined}
+							<div class="flex flex-row items-center gap-x-1 text-sm text-opacity-80">
+								<Eye />
+								<div class="items-center text-opacity-80">{data.reads}</div>
+							</div>
+						{/if}
+					</div>
 				</div>
 			</div>
 
@@ -137,6 +160,8 @@
 			{/if}
 
 			{#if $slugData[0].content !== undefined}
+				<BlogMenu {screenWidth} content={$slugData[0].content} />
+
 				<PortableText
 					components={{
 						types: {

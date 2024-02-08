@@ -43,3 +43,5 @@ export const userHasNavigated =  writable<boolean>(false)
 export const blogData = writable([])
 export const slugData = writable([])
 export const homeData = writable([])
+
+export const blogViews = writable<number>(0)

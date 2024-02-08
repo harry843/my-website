@@ -3,9 +3,13 @@
 	import Logo from './Footer/icons/Logo.svelte';
 	import MobileMenu from './MobileMenu/MobileMenu.svelte';
 	import { browser } from '$app/environment';
+	import ProgressBar from '../Blog/ProgressBar/ProgressBar.svelte';
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
 	$: open = false;
 	let width = 0;
+	let progress = 10;
 
 	const handleOpen = () => {
 		open = !open;
@@ -39,10 +43,32 @@
 			darkMode = false;
 		}
 	}
+
+	onMount(() => {
+    const calculateScrollProgress = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollPosition = window.scrollY;
+
+      // Calculate scroll progress as a percentage
+      progress = (scrollPosition / (documentHeight - windowHeight)) * 100;
+    };
+
+    // Attach scroll event listener to update progress on scroll
+    window.addEventListener("scroll", calculateScrollProgress);
+
+    // Initial calculation
+    calculateScrollProgress();
+
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("scroll", calculateScrollProgress);
+    };
+  });
 </script>
 
 <nav
-bind:clientWidth={width}
+	bind:clientWidth={width}
 	class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
 >
 	<div
@@ -50,43 +76,44 @@ bind:clientWidth={width}
 	>
 		<a href="/" class="flex items-center">
 			<Logo />
-			{#if width != 0 && width >= 375 }
-				
-		
-			<span
-				class="px-3 self-center text-2xl font-semibold whitespace-nowrap font-customHeading dark:text-white hover:underline"
-				>Harry Kelleher</span
-			>	{/if}
+			{#if width != 0 && width >= 375}
+				<span
+					class="px-3 self-center text-2xl font-semibold whitespace-nowrap font-customHeading dark:text-white hover:underline"
+					>Harry Kelleher</span
+				>
+			{/if}
 		</a>
 		<div class="flex flex-row items-center gap-x-5">
-		{#if width > 767}
-		<DesktopMenu {darkMode} {handleSwitchDarkMode}/>
-		{:else if width != 0}
-		<MobileMenu {open} {handleClose} {darkMode} {handleSwitchDarkMode} />
-		{/if}
-		<button
-			data-collapse-toggle="navbar-sticky"
-			type="button"
-			class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-			aria-controls="navbar-sticky"
-			aria-expanded="false"
-			on:click={handleOpen}
-		>
-			<span class="sr-only" />
-			<svg
-				class="w-6 h-6"
-				aria-hidden="true"
-				fill="currentColor"
-				viewBox="0 0 20 20"
-				xmlns="http://www.w3.org/2000/svg"
-				><path
-					fill-rule="evenodd"
-					d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-					clip-rule="evenodd"
-				/></svg
+			{#if width > 767}
+				<DesktopMenu {darkMode} {handleSwitchDarkMode} />
+			{:else if width != 0}
+				<MobileMenu {open} {handleClose} {darkMode} {handleSwitchDarkMode} />
+			{/if}
+			<button
+				data-collapse-toggle="navbar-sticky"
+				type="button"
+				class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+				aria-controls="navbar-sticky"
+				aria-expanded="false"
+				on:click={handleOpen}
 			>
-		</button>
+				<span class="sr-only" />
+				<svg
+					class="w-6 h-6"
+					aria-hidden="true"
+					fill="currentColor"
+					viewBox="0 0 20 20"
+					xmlns="http://www.w3.org/2000/svg"
+					><path
+						fill-rule="evenodd"
+						d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+						clip-rule="evenodd"
+					/></svg
+				>
+			</button>
+		</div>
 	</div>
-
-	</div>
+	{#if $page.url.pathname.startsWith('/blog/') && width >= 640}
+		<ProgressBar height={0.5} {progress}/>
+	{/if}
 </nav>

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { BlockComponentProps } from '@portabletext/svelte';
-	import handleAnchorClick from '../utils/handleAnchorClick';
 	export let portableText: BlockComponentProps;
 
 	const headers = portableText.value.style;
 	const precededByHeading = headers ? ['h1', 'h2', 'h3'].includes(headers) : undefined;
 
-	$: anchorId = headers ? `section-${portableText.value._key}` : undefined;
+	$: anchorId = headers ? `heading-${portableText.value._key}` : undefined;
+	
 
 </script>
 
@@ -20,8 +20,7 @@
 		<h3 class="text-xl font-bold">
 			<slot />
 			<a href="#{anchorId}" aria-hidden="true"
-			tabIndex={-1}
-			on:click={handleAnchorClick}>
+			tabIndex={-1}>
 				<span class="sr-only">Link to this heading</span>
 					🔗
 			</a>
