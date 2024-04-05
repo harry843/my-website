@@ -5,6 +5,8 @@
 
 	export let latestPost;
 
+	const dataset = process.env.NODE_ENV === "development" ? "development" : "production"
+
 	$: imageUrlParams = '?fm=webp&max-h=300&max-w=500&min-h=240&min-w=400';
 </script>
 
@@ -25,7 +27,7 @@
 		<BlogPostCard
 			slug={'blog/' + latestPost.slug}
 			title={latestPost.title}
-			coverImage={genImageUrl(latestPost.imageUrl, imageUrlParams)}
+			coverImage={genImageUrl(latestPost.imageUrl, dataset, imageUrlParams)}
 			altText={latestPost.imageAlt}
 			excerpt={latestPost.feature}
 			tags={latestPost?.tags}

@@ -6,6 +6,8 @@
 	import genImageUrl from '../../component/Sanity/utils/genImageUrl';
 	import { blogData } from '../../stores/stores';
 
+	const dataset = process.env.NODE_ENV === "development" ? "development" : "production"
+
 	const getAllPosts = `
 	  *[_type == 'post']
 	  | order(_createdAt desc) {
@@ -38,7 +40,7 @@
 				<BlogPostCard
 					slug={'blog/' + post.slug}
 					title={post.title}
-					coverImage={genImageUrl(post.imageUrl, "?fit=max")}
+					coverImage={genImageUrl(post.imageUrl, dataset, "?fit=max")}
 					altText={post.mainImage?.alt}
 					excerpt={post.feature}
 					tags={post?.tags}

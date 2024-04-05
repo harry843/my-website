@@ -1,6 +1,9 @@
 <script lang="ts">
 	export let portableText;
-	const urlStem = 'https://cdn.sanity.io/images/g2pdrwyj/production/';
+	
+	const dataset = process.env.NODE_ENV === "development" ? "development" : "production"
+
+	const urlStem = `https://cdn.sanity.io/images/g2pdrwyj/${dataset}/`;
 
 	$: image = portableText?.value;
 	$: ref = image?.image?.asset?._ref;

@@ -7,9 +7,11 @@
     export let onData: (data: any) => void; // callback function to pass data to parent
     export let store: Writable<any[]>;
 
+    const dataset = process.env.NODE_ENV === "development" ? "development" : "production"
+
     const client = createClient({
         projectId: 'g2pdrwyj',
-        dataset: 'production',
+        dataset: dataset,
         useCdn: true,
         apiVersion: '2024-02-04'
     });
