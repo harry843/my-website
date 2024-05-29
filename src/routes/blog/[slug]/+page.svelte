@@ -26,15 +26,16 @@
 	import genImageUrl from '../../../component/Sanity/utils/genImageUrl';
 	import BlogMenu from '../../../component/Blog/Menu/BlogMenu.svelte';
 
-
 	export let data;
 
 	let screenWidth: number = 0;
 
-		// Set the current URL
-	let isLocalOrStaging = $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
+	// Set the current URL
+	let isLocalOrStaging =
+		$page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
 
-	const dataset = process.env.NODE_ENV === "development" || isLocalOrStaging ? "development" : "production"
+	const dataset =
+		process.env.NODE_ENV === 'development' || isLocalOrStaging ? 'development' : 'production';
 
 	$: slug = $page.params.slug;
 
@@ -53,8 +54,9 @@
 	}
 
 	afterUpdate(() => {
-		isLocalOrStaging =  $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
-		console.log("isLocalOrStaging", isLocalOrStaging);
+		isLocalOrStaging =
+			$page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
+		console.log('isLocalOrStaging', isLocalOrStaging);
 	});
 
 	// const dispatch = createEventDispatcher();
@@ -91,17 +93,18 @@
 </script>
 
 <svelte:head>
-	{#if renderHead}
-		<title>Blog | {$slugData[0].title}</title>
-		<meta property="og:title" content={$slugData[0].title} />
-		<meta name="article:published_time" content={$slugData[0]._updatedAt} />
-		<meta property="og:image" content={genImageUrl($slugData[0].imageUrl, dataset, '?fit=max')} />
-		<meta property="og:description" content={$slugData[0].feature} />
-		<meta property="og:url" content={'https://harrykelleher.com/blog/' + $slugData[0].slug} />
-	{/if}
+	<!-- {#if renderHead} -->
+	<title>Blog | {$slugData[0].title}</title>
+	<meta property="og:title" content={$slugData[0].title} />
+	<meta name="article:published_time" content={$slugData[0]._updatedAt} />
+	<meta property="og:image" content={genImageUrl($slugData[0].imageUrl, dataset, '?fit=max')} />
+	<meta property="og:description" content={$slugData[0].feature} />
+	<meta property="og:url" content={'https://harrykelleher.com/blog/' + $slugData[0].slug} />
+	<!-- {/if} -->
 	<meta property="og:type" content="article" />
 	<meta name="author" content="Harry Kelleher" />
 	<meta property="og:locale" content="en_GB" />
+	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
 	<!-- <script async defer src="https://cusdis-comments-4386.vercel.app/js/cusdis.es.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/prism.js"></script>
 </svelte:head>
@@ -157,7 +160,10 @@
 			{/if}
 			{#if $slugData[0].imageUrl !== undefined}
 				<figure class="py-4">
-					<img src={genImageUrl($slugData[0].imageUrl, dataset, '?fit=max')} alt={$slugData[0].imageAlt} />
+					<img
+						src={genImageUrl($slugData[0].imageUrl, dataset, '?fit=max')}
+						alt={$slugData[0].imageAlt}
+					/>
 					{#if $slugData[0].imageCaption}
 						<figcaption
 							class="text-xs sm:text-sm text-center mx-[5%] text-gray-800 dark:text-slate-100 py-2"
