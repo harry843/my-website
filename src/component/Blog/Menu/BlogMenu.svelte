@@ -1,12 +1,15 @@
 <script>
 	import classNames from 'classnames';
-    import handleAnchorClick from "../utils/handleAnchorClick"
-    import ArrowLeft from "../../Icons/ArrowLeft.svelte"
-    import ArrowRight from "../../Icons/ArrowRight.svelte"
+	import handleAnchorClick from "../utils/handleAnchorClick";
+	import ArrowLeft from "../../Icons/ArrowLeft.svelte";
+	import ArrowRight from "../../Icons/ArrowRight.svelte";
+	import { onMount, onDestroy } from 'svelte';
 
 	export let content = null;
 	export let screenWidth = 0;
 
+	let modalRef;
+	let buttonRef;
 
 	function extractHeadings(contents) {
 		let headings = [];
@@ -19,9 +22,37 @@
 	}
 
 	$: hidden = screenWidth >= 1280 ? false : true;
+
 	function onClick() {
 		hidden = !hidden;
 	}
+
+	function handleClickOutside(event) {
+		const { clientX, clientY } = event;
+		const modalRect = modalRef?.getBoundingClientRect();
+		
+		if (
+			modalRect &&
+			(clientX < modalRect.left || clientX > modalRect.right || 
+			clientY < modalRect.top || clientY > modalRect.bottom)
+		) {
+			hidden = true;
+			console.log('Setting hidden to true due to outside click');
+		}
+	}
+
+	function handleButtonClick(event) {
+		event.stopPropagation(); // Prevent the click event from propagating to the document
+		onClick();
+	}
+
+	onMount(() => {
+		document.addEventListener('click', handleClickOutside);
+	});
+
+	onDestroy(() => {
+		document.removeEventListener('click', handleClickOutside);
+	});
 </script>
 
 {#if screenWidth >= 768}
@@ -32,31 +63,29 @@
 					'-left-full': hidden,
 					'': !hidden
 				})}
+				bind:this={modalRef}
 			>
 				<div
 					class="bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 px-4 py-3 rounded-lg shadow-sm"
 				>
 					<div class="translate-x-[85%] px-4 pb-3 z-10">
-						<button aria-label="Hide table of contents" class="" on:click={onClick}
-							><ArrowLeft /></button
-						>
+						<button aria-label="Hide table of contents" class="" on:click={handleButtonClick}
+							><ArrowLeft /></button>
 					</div>
 					<div class="-translate-y-[7.5%]">
 						<h2 class="leading-5 font-medium font-customHeading text-xl pb-5">Table of contents</h2>
 						<ul>
 							<li class="py-1.5">
 								<a href="#top" class="hover:text-indigo-700 hover:underline dark:hover:text-sky-300"
-									>Top of page</a
-								>
+									>Top of page</a>
 							</li>
 							{#each extractHeadings(content) as { key, text }}
 								<li class="py-1.5">
 									<a
 										href="#section-{key}"
 										class="hover:text-indigo-700 hover:underline dark:hover:text-sky-300"
-                                        on:click={handleAnchorClick}
-                                        >{text}</a
-									>
+										on:click={handleAnchorClick}
+									>{text}</a>
 								</li>
 							{/each}
 						</ul>
@@ -70,9 +99,8 @@
 					class="bg-slate-50 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 p-3 rounded-lg shadow-sm"
 				>
 					<div class="flex flex-col items-center justify-center">
-						<button aria-label="Show table of contents" class="translate-x-0.5" on:click={onClick}
-							><ArrowRight /></button
-						>
+						<button bind:this={buttonRef} aria-label="Show table of contents" class="translate-x-0.5" on:click={handleButtonClick}
+							><ArrowRight /></button>
 					</div>
 				</div>
 			</section>

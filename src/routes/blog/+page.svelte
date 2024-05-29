@@ -5,6 +5,13 @@
 	import DataFetcher from '../../component/Sanity/DataFetcher.svelte';
 	import genImageUrl from '../../component/Sanity/utils/genImageUrl';
 	import { blogData } from '../../stores/stores';
+	import { page } from '$app/stores';
+	import { afterUpdate } from 'svelte';
+
+	// Find whether the current URL is local host or staging
+	let isLocalOrStaging = $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
+
+	const dataset = process.env.NODE_ENV === 'development' || isLocalOrStaging ? 'development' : 'production';
 
 	const getAllPosts = `
 	  *[_type == 'post']
@@ -17,6 +24,12 @@
 	function handleData(data) {
 		$blogData = data;
 	}
+
+	// Set it as soon as pages update
+	afterUpdate(() => {
+		isLocalOrStaging =  $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
+		console.log("isLocalOrStaging", isLocalOrStaging);
+	});
 </script>
 
 <svelte:head>
@@ -28,8 +41,8 @@
 		? 'flex h-screen items-center justify-center'
 		: 'px-1 xs:px-2 md:px-4 flex flex-col items-center justify-center text-sm'}
 >
-	<DataFetcher query={getAllPosts} onData={handleData} store={blogData}/>
-	{#if Object.keys($blogData).length == 0 }
+	<DataFetcher query={getAllPosts} onData={handleData} store={blogData} />
+	{#if Object.keys($blogData).length == 0}
 		<Loading />
 	{:else if Object.keys($blogData).length > 0}
 		<div class="grid grid-cols-2 space-y-6 gap-x-6 rounded-md">
@@ -38,7 +51,7 @@
 				<BlogPostCard
 					slug={'blog/' + post.slug}
 					title={post.title}
-					coverImage={genImageUrl(post.imageUrl, "?fit=max")}
+					coverImage={genImageUrl(post.imageUrl, dataset, '?fit=max')}
 					altText={post.mainImage?.alt}
 					excerpt={post.feature}
 					tags={post?.tags}
@@ -48,7 +61,9 @@
 				/>
 			{/each}
 		</div>
-		{:else}
-		<div class="text-lg text-red-500">An error occurred whilst fetching data. Please refresh the page or try.</div>
+	{:else}
+		<div class="text-lg text-red-500">
+			An error occurred whilst fetching data. Please refresh the page or try.
+		</div>
 	{/if}
 </section>
