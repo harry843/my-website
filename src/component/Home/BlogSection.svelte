@@ -1,13 +1,23 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import { afterUpdate } from 'svelte';
 	import BlogPostCard from '../../component/Card/BlogPostCard/BlogPostCard.svelte';
 	import averageReadingTime from '../../component/Card/BlogPostCard/averageReadingTime';
 	import genImageUrl from '../Sanity/utils/genImageUrl';
 
 	export let latestPost;
 
-	const dataset = process.env.NODE_ENV === "development" ? "development" : "production"
+    // Find whether the current URL is local host or staging
+	let isLocalOrStaging = $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
+
+    const dataset = process.env.NODE_ENV === "development" || isLocalOrStaging ? "development" : "production"
 
 	$: imageUrlParams = '?fm=webp&max-h=300&max-w=500&min-h=240&min-w=400';
+
+	afterUpdate(() => {
+		isLocalOrStaging =  $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
+		console.log("isLocalOrStaging", isLocalOrStaging);
+	});
 </script>
 
 <div class="mx-6 md:mt-8 w-16 h-0.5 bg-gray-300 md:mx-auto md:relative md:-left-24" />

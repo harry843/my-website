@@ -17,7 +17,7 @@
 	{:else if portableText.value.style === 'h2'}
 		<h2 class="text-3xl"><slot /></h2>
 	{:else if portableText.value.style === 'h3'}
-		<h3 class="text-xl font-bold">
+		<h3 class="text-xl xl:text-2xl font-bold">
 			<slot />
 			<a href="#{anchorId}" aria-hidden="true"
 			tabIndex={-1}

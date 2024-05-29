@@ -1,7 +1,8 @@
 <script lang="ts">
-	//import { onMount, createEventDispatcher, afterUpdate, onDestroy } from 'svelte';
+	// import { onMount, createEventDispatcher, afterUpdate, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
-	//import { browser } from '$app/environment';
+	import { afterUpdate } from 'svelte';
+	// import { browser } from '$app/environment';
 	import CustomHeading from '../../../component/Blog/PortableText/CustomHeading.svelte';
 	import CustomParagraph from '../../../component/Blog/PortableText/CustomParagraph.svelte';
 	import CustomUrl from '../../../component/Blog/PortableText/CustomURL.svelte';
@@ -19,17 +20,21 @@
 	import Loading from '../../../component/Loading/Loading.svelte';
 	import Eye from '../../../component/Icons/Eye.svelte';
 	import Socials from '../../../component/Blog/Socials/Socials.svelte';
-	//import Comments from '../../../component/Blog/Comments/Comments.svelte';
+	// import Comments from '../../../component/Blog/Comments/Comments.svelte';
 	import { slugData } from '../../../stores/stores';
 	import DataFetcher from '../../../component/Sanity/DataFetcher.svelte';
 	import genImageUrl from '../../../component/Sanity/utils/genImageUrl';
 	import BlogMenu from '../../../component/Blog/Menu/BlogMenu.svelte';
 
+
 	export let data;
 
 	let screenWidth: number = 0;
 
-	const dataset = process.env.NODE_ENV === "development" ? "development" : "production"
+		// Set the current URL
+	let isLocalOrStaging = $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
+
+	const dataset = process.env.NODE_ENV === "development" || isLocalOrStaging ? "development" : "production"
 
 	$: slug = $page.params.slug;
 
@@ -46,6 +51,11 @@
 		$slugData = data;
 		renderHead = true;
 	}
+
+	afterUpdate(() => {
+		isLocalOrStaging =  $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
+		console.log("isLocalOrStaging", isLocalOrStaging);
+	});
 
 	// const dispatch = createEventDispatcher();
 

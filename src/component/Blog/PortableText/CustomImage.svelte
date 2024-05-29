@@ -1,7 +1,12 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import { afterUpdate } from 'svelte';
 	export let portableText;
 	
-	const dataset = process.env.NODE_ENV === "development" ? "development" : "production"
+    // Find whether the current URL is local host or staging
+	let isLocalOrStaging = $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
+
+    const dataset = process.env.NODE_ENV === "development" || isLocalOrStaging ? "development" : "production"
 
 	const urlStem = `https://cdn.sanity.io/images/g2pdrwyj/${dataset}/`;
 
@@ -11,6 +16,10 @@
 
 	$: imageUrl = urlStem + `${parts[1]}-${parts[2]}.${parts[3]}`;
 
+	afterUpdate(() => {
+		isLocalOrStaging =  $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
+		console.log("isLocalOrStaging", isLocalOrStaging);
+	});
 </script>
 
 <br />
