@@ -28,7 +28,6 @@
 	// Set it as soon as pages update
 	afterUpdate(() => {
 		isLocalOrStaging =  $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
-		console.log("isLocalOrStaging", isLocalOrStaging);
 	});
 </script>
 
