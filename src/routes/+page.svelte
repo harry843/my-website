@@ -101,6 +101,9 @@
 			{/if}
 
 			<RadarwithAvatar {width} {color} {bool} />
+
+			{:else}
+	<div class="h-screen" />
 		{/if}
 	</div>
 
@@ -126,6 +129,8 @@
 					<DynamicButtons {color} {additionalClass} />
 				{/if}
 			{/if}
+			{:else}
+			<div class="h-screen" />
 		{/if}
 	</div>
 </section>
@@ -142,4 +147,7 @@
 	{/if}
 
 	<ProjectSection />
+
+	{:else}
+	<div class="h-screen"/>
 {/if}
