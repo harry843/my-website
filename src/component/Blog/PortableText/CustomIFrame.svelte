@@ -6,7 +6,7 @@
 <br />
 <div class="pt-4 relative">
 	<span class="absolute top-3 md:top-4 left-0 p-2">
-	  <Logo size={8}/>
+	  <Logo size={8} ignoreDarkMode={true}/>
 	</span>
 	<iframe 
 	  class="rounded-md w-full h-96 border border-gray-100 dark:bg-white" 
