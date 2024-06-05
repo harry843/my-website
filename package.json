@@ -42,6 +42,7 @@
 		"@sanity/client": "^6.12.3",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-vercel": "^4.0.0",
+		"animejs": "^3.2.2",
 		"classnames": "^2.3.2",
 		"d3": "^7.8.4",
 		"d3-sankey": "^0.12.3",

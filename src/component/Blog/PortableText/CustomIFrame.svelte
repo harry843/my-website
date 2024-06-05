@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Logo from '../../NavBar/Footer/icons/Logo.svelte';
+	import Logo from './iFrameLogo.svelte';
 	export let portableText;
 </script>
 
