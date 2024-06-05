@@ -32,7 +32,7 @@
 				})
 				.add({
 					targets: '.line',
-					translateX: [0, textWrapper.getBoundingClientRect().width + 15],
+					translateX: [0, textWrapper.getBoundingClientRect().width + 17],
 					easing: 'easeOutExpo',
 					duration: 800,
 					delay: 250
@@ -68,7 +68,7 @@
 
 <style>
 	.ml11 {
-		opacity: 0; 
+		opacity: 0;
 	}
 	.letter {
 		display: inline-block;
