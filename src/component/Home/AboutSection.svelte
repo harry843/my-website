@@ -8,7 +8,7 @@
 
 <section class="flex flex-col items-center justify-center px-1">
 	<div class="mx-6 mt-8 w-16 h-0.5 bg-gray-300 md:mx-auto md:relative md:-left-24" />
-	<h1 class="font-customHeading text-center font-medium text-4xl py-10">
+	<h1 class="font-customHeading text-center font-medium text-4xl py-12">
 		<AnimatedElement text={"Learn like you're going to live forever."} />
 	</h1>
 	<div class="mx-6 mt-1 w-16 h-0.5 bg-gray-300 md:mx-auto md:relative md:-left-24" />

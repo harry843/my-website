@@ -2,14 +2,18 @@
 	import RadarwithAvatar from '../component/Home/RadarwithAvatar.svelte';
 	import DynamicButtons from '../component/Home/DynamicButtons.svelte';
 	import { userHasNavigated } from '../stores/stores';
+	import MovingLetters from '../component/Home/MovingLetters.svelte';
+	import AnimatedElement from '../component/Home/AnimatedElement.svelte';
 	import SkillsSection from '../component/Home/SkillsSection.svelte';
 	import AboutSection from '../component/Home/AboutSection.svelte';
 	import BlogSection from '../component/Home/BlogSection.svelte';
 	import ProjectSection from '../component/Home/ProjectSection.svelte';
 	import Loading from '../component/Loading/Loading.svelte';
 	import { homeData } from '../stores/stores';
+	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import DataFetcher from '../component/Sanity/DataFetcher.svelte';
+	// import SloganAnimation from '../component/Home/SloganAnimation.svelte';
 
 	let width: number = 0;
 	let screenwidth: number = 0;
@@ -42,6 +46,12 @@
 		{ name: 'teal', hex: '#14b8a6' }
 	];
 
+	const slogans = [
+		"I use data to tell stories you'll remember.",
+		"I use data to build solutions you can rely on.",
+		'I leverage data to grow your business.'
+	];
+
 	$: color = onFirstVisit();
 
 	const getLatestPost = `
@@ -66,9 +76,9 @@
 	<meta property="og:image" content="https://ibb.co/B6d632h" />
 	<meta
 		property="og:description"
-		content="Hi - I'm Harry Kelleher. I'm a Data Visualisation Developer. I create data products to help grow your business."
+		content="I create data products to help grow your business."
 	/>
-	<meta property="og:url" content="https://harrykelleher.com/" />
+	<meta property="og:url" content={$page.url.href} />
 	<meta property="og:locale" content="en_GB" />
 </svelte:head>
 
@@ -84,16 +94,18 @@
 		{#if width > 0}
 			{#if screenwidth < 768}
 				<div class="">
-					<p>
-						I'm a <span
-							class="text-{color.name === 'yellow'
-								? '[#b7791f]'
-								: color.name + '-600'} dark:text-sky-300 font-medium"
-							>Data Visualisation Developer.</span
-						>
+					<p
+						class="text-{color.name === 'yellow'
+							? '[#b7791f]'
+							: color.name + '-600'} dark:md:text-sky-300 font-medium font-customHeading"
+					>
+						<MovingLetters text={'Data Developer'} />
 					</p>
 					<br />
-					<p>I use data to tell stories you'll remember.</p>
+					<p class="w-full xs:w-76 h-7">
+						<AnimatedElement {slogans} delay={1800}/>
+						<!-- <SloganAnimation {slogans} /> -->
+					</p>
 				</div>
 				{#if screenwidth >= 640}
 					<DynamicButtons {color} {additionalClass} />
@@ -101,9 +113,8 @@
 			{/if}
 
 			<RadarwithAvatar {width} {color} {bool} />
-
-			{:else}
-	<div class="h-screen" />
+		{:else}
+			<div class="h-screen" />
 		{/if}
 	</div>
 
@@ -114,22 +125,24 @@
 		{#if width > 0}
 			{#if screenwidth >= 768}
 				<div class="translate-y-0 xs:-translate-y-1/2">
-					<p>
-						I'm a <span
-							class="text-{color.name === 'yellow'
-								? '[#b7791f]'
-								: color.name + '-600'} dark:md:text-sky-300 font-medium"
-							>Data Visualisation Developer.</span
-						>
+					<p
+						class="text-{color.name === 'yellow'
+							? '[#b7791f]'
+							: color.name + '-600'} dark:md:text-sky-300 font-medium font-customHeading"
+					>
+						<MovingLetters text={'Data Developer'} />
 					</p>
 					<br />
-					<p>I use data to tell stories you'll remember..</p>
+					<div class="w-76 h-7">
+						<AnimatedElement {slogans} delay={1800}/>
+						<!-- <SloganAnimation {slogans} /> -->
+					</div>
 				</div>
 				{#if screenwidth >= 1024}
 					<DynamicButtons {color} {additionalClass} />
 				{/if}
 			{/if}
-			{:else}
+		{:else}
 			<div class="h-screen" />
 		{/if}
 	</div>
@@ -147,7 +160,6 @@
 	{/if}
 
 	<ProjectSection />
-
-	{:else}
-	<div class="h-screen"/>
+{:else}
+	<div class="h-screen" />
 {/if}
