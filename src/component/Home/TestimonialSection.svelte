@@ -39,22 +39,21 @@ import QuotationMarks from "../Icons/QuotationMarks.svelte";
         </h2>
     </div>
     <div class="md:col-start-2 md:col-span-4">
-        <p class="ml-px">I care about making strong relationships. What people say about me reflects the trust I build.</p>
+        <p class="ml-px px-1 font-customQuote xl:text-lg 2xl:text-xl">I care about making strong relationships.</p>
     </div>
     
 </div>
 
-<div class="grid place-items-center grid-cols-1 gap-y-6 md:gap-y-0 md:grid-cols-3 md:gap-x-8 lg:gap-x-10 xl:gap-x-12 pt-10">
+<div class="grid place-items-center grid-cols-1 gap-y-6 md:gap-y-0 md:grid-cols-3 md:gap-x-8 lg:gap-x-10 xl:gap-x-12 pt-8 pb-10">
     {#each testimonials as testimonial}
-        <div class="border-2 border-gray-200 rounded-md mx-[10%] md:mx-2 md:max-w-[300px] md:max-h-[530px]">
+        <div class="border-2 border-gray-200 rounded-md mx-[7.5%] xs:mx-[10%] md:mx-2 sm:max-w-[480px] md:max-w-[300px] md:h-[600px] xl:max-w-[450px] relative">
+           <div class="absolute top-0 right-0 md:mx-1 md:my-2 lg:m-2"> <QuotationMarks /> </div>
             <div class="mx-[12%] flex flex-col items-center justify-between h-full">
                 <div class="py-3">
                     <img class="w-28 h-28 rounded-full border-4" src={testimonial.src} alt={testimonial.name} />
                 </div>
-                
                 <div class="pb-2.5 text-center flex flex-col justify-center items-center flex-grow">
-                    <QuotationMarks />
-                    <p class="italic px-1 py-1.5 text-[1.03rem] h-[225px]">{testimonial.recommendation}</p>
+                    <p class="italic px-1 py-1.5 lg:text-[1.05rem] xl:text-[1.1025rem] xl:leading-relaxed md:min-h-[225px]">{testimonial.recommendation}</p>
                     <p class="text-center font-customQuote text-slate-700 py-2.5 px-2">{testimonial.name}</p>
                     <p class="p-1 py-1.5 font-customHeading">{testimonial.role}</p>
                     <p class="p-1 py-1.5 font-customHeading font-light">{testimonial.organisation}</p>

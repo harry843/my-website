@@ -13,8 +13,8 @@
 			</h2>
 		</div>
 		<div class="md:col-start-2 md:col-span-4">
-			<h1 class="font-customHeading font-semibold text-center text-xl">
-				Some projects I've been proud to work on:
+			<h1 class="font-customQuote xl:text-lg 2xl:text-xl">
+				An example project that I've been proud to work on.
 			</h1>
 		</div>
 		<BlogPostCard

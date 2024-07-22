@@ -63,12 +63,11 @@
 		</h2>
 	</div>
 	<div class="md:col-start-2 md:col-span-4">
-		<p class="ml-px">Here is a summary of my most important skills:</p>
+		<p class="ml-px font-customQuote xl:text-lg 2xl:text-xl">Here's a taste of what makes me unique.</p>
 	</div>
 </div>
-<div class="mx-6 mt-5 md:mt-8 w-16 h-0.5 bg-gray-300 md:mx-auto md:relative md:-left-24" />
 
-<section class="px-1 pt-8 min-[370px]:px-5 sm:px-0 sm:flex sm:flex-row sm:justify-around pb-10">
+<section class="px-1 pt-2 min-[370px]:px-5 sm:px-0 sm:flex sm:flex-row sm:justify-around pb-10">
 	<div
 		class="flex flex-col sm:grid sm:grid-rows-[320px_200px] sm:grid-flow-col sm:gap-x-[4rem] md:grid-rows-[320px_180px] md:gap-x-[5rem] lg:gap-x-[10rem]"
 	>
