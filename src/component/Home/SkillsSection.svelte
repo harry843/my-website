@@ -3,7 +3,7 @@
 
 	$: technical = [
 		{ name: 'Python', value: 4, score: 'Advanced' },
-		{ name: 'SQL', value: 3, score: 'Competent' },
+		{ name: 'SQL', value: 4, score: 'Advanced' },
 		{ name: 'R', value: 2, score: 'Capable' },
 		{ name: 'Typescript', value: 3, score: 'Competent' },
 		{ name: 'Svelte', value: 3, score: 'Competent' },
@@ -17,20 +17,21 @@
 		{ name: 'Leadership', value: 4, score: 'Advanced' },
 		{ name: 'People management', value: 4, score: 'Advanced' },
 		{ name: 'Upskilling capability', value: 4, score: 'Advanced' },
-		{ name: 'Technical consulting', value: 3, score: 'Competent' },
+		{ name: 'Technical consulting', value: 4, score: 'Advanced' },
 		{ name: 'Project management', value: 3, score: 'Competent' }
 	];
 
 	$: software = [
-		{ name: 'Tableau Desktop', value: 5, score: 'Expert' },
-		{ name: 'Tableau Server', value: 5, score: 'Expert' },
-		{ name: 'Google Analytics', value: 3, score: 'Competent' },
+		{ name: 'Tableau', value: 5, score: 'Expert' },
 		{ name: 'GitHub / GitLab', value: 4, score: 'Advanced' },
+		{ name: 'Scrum / Agile', value: 4, score: 'Advanced' },
 		{ name: 'AWS', value: 3, score: 'Competent' },
-		{ name: 'Jira / Confluence', value: 3, score: 'Competent' },
+		{ name: 'Azure Data Factory', value: 3, score: 'Competent' },
+		{ name: 'Jira / Confluence', value: 4, score: 'Advanced' },
 		{ name: 'Visual Studio', value: 4, score: 'Advanced' },
-		{ name: 'Excel', value: 3, score: 'Competent' },
-		{ name: 'Scrum / Agile', value: 4, score: 'Advanced' }
+		{ name: 'Google Analytics', value: 3, score: 'Competent' },
+		{ name: 'Excel', value: 4, score: 'Advanced' },
+
 	];
 
 	$: languages = [
@@ -63,12 +64,11 @@
 		</h2>
 	</div>
 	<div class="md:col-start-2 md:col-span-4">
-		<p class="ml-px">Here is a summary of my most important skills:</p>
+		<p class="ml-px font-customQuote xl:text-lg 2xl:text-xl">Here's a taste of what makes me unique.</p>
 	</div>
 </div>
-<div class="mx-6 mt-5 md:mt-8 w-16 h-0.5 bg-gray-300 md:mx-auto md:relative md:-left-24" />
 
-<section class="px-1 pt-8 min-[370px]:px-5 sm:px-0 sm:flex sm:flex-row sm:justify-around pb-10">
+<section class="px-1 pt-2 min-[370px]:px-5 sm:px-0 sm:flex sm:flex-row sm:justify-around pb-10">
 	<div
 		class="flex flex-col sm:grid sm:grid-rows-[320px_200px] sm:grid-flow-col sm:gap-x-[4rem] md:grid-rows-[320px_180px] md:gap-x-[5rem] lg:gap-x-[10rem]"
 	>

@@ -6,6 +6,7 @@
 	import AnimatedElement from '../component/Home/AnimatedElement.svelte';
 	import SkillsSection from '../component/Home/SkillsSection.svelte';
 	import AboutSection from '../component/Home/AboutSection.svelte';
+	import TestimonialSection from '../component/Home/TestimonialSection.svelte'
 	import BlogSection from '../component/Home/BlogSection.svelte';
 	import ProjectSection from '../component/Home/ProjectSection.svelte';
 	import Loading from '../component/Loading/Loading.svelte';
@@ -104,7 +105,6 @@
 					<br />
 					<p class="w-full xs:w-76 h-7">
 						<AnimatedElement {slogans} delay={1800}/>
-						<!-- <SloganAnimation {slogans} /> -->
 					</p>
 				</div>
 				{#if screenwidth >= 640}
@@ -135,7 +135,6 @@
 					<br />
 					<div class="w-76 h-7">
 						<AnimatedElement {slogans} delay={1800}/>
-						<!-- <SloganAnimation {slogans} /> -->
 					</div>
 				</div>
 				{#if screenwidth >= 1024}
@@ -153,6 +152,7 @@
 	{/if}
 	<AboutSection />
 	<SkillsSection />
+	<TestimonialSection {screenwidth} />
 	{#if Object.keys($homeData).length == 0}
 		<Loading />
 	{:else if Object.keys($homeData).length > 0}
