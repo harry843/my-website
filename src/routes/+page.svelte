@@ -152,7 +152,7 @@
 	{/if}
 	<AboutSection />
 	<SkillsSection />
-	<TestimonialSection />
+	<TestimonialSection {screenwidth} />
 	{#if Object.keys($homeData).length == 0}
 		<Loading />
 	{:else if Object.keys($homeData).length > 0}

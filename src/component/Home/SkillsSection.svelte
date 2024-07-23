@@ -3,7 +3,7 @@
 
 	$: technical = [
 		{ name: 'Python', value: 4, score: 'Advanced' },
-		{ name: 'SQL', value: 3, score: 'Competent' },
+		{ name: 'SQL', value: 4, score: 'Advanced' },
 		{ name: 'R', value: 2, score: 'Capable' },
 		{ name: 'Typescript', value: 3, score: 'Competent' },
 		{ name: 'Svelte', value: 3, score: 'Competent' },
@@ -17,20 +17,21 @@
 		{ name: 'Leadership', value: 4, score: 'Advanced' },
 		{ name: 'People management', value: 4, score: 'Advanced' },
 		{ name: 'Upskilling capability', value: 4, score: 'Advanced' },
-		{ name: 'Technical consulting', value: 3, score: 'Competent' },
+		{ name: 'Technical consulting', value: 4, score: 'Advanced' },
 		{ name: 'Project management', value: 3, score: 'Competent' }
 	];
 
 	$: software = [
-		{ name: 'Tableau Desktop', value: 5, score: 'Expert' },
-		{ name: 'Tableau Server', value: 5, score: 'Expert' },
-		{ name: 'Google Analytics', value: 3, score: 'Competent' },
+		{ name: 'Tableau', value: 5, score: 'Expert' },
 		{ name: 'GitHub / GitLab', value: 4, score: 'Advanced' },
+		{ name: 'Scrum / Agile', value: 4, score: 'Advanced' },
 		{ name: 'AWS', value: 3, score: 'Competent' },
-		{ name: 'Jira / Confluence', value: 3, score: 'Competent' },
+		{ name: 'Azure Data Factory', value: 3, score: 'Competent' },
+		{ name: 'Jira / Confluence', value: 4, score: 'Advanced' },
 		{ name: 'Visual Studio', value: 4, score: 'Advanced' },
-		{ name: 'Excel', value: 3, score: 'Competent' },
-		{ name: 'Scrum / Agile', value: 4, score: 'Advanced' }
+		{ name: 'Google Analytics', value: 3, score: 'Competent' },
+		{ name: 'Excel', value: 4, score: 'Advanced' },
+
 	];
 
 	$: languages = [
