@@ -1,5 +1,7 @@
 <script lang="ts">
+import handleAnchorClick from "../Blog/utils/handleAnchorClick";
 import QuotationMarks from "../Icons/QuotationMarks.svelte";
+
 export let screenwidth;
 	$: testimonials = [
 		{
@@ -30,13 +32,13 @@ export let screenwidth;
 	];
 </script>
 <div class="mx-6 md:mt-8 w-16 h-0.5 bg-gray-300 md:mx-auto md:relative md:-left-24" />
-<section class="flex flex-col">
+<section id='testimonials' class="flex flex-col">
     <div class="md:container grid md:grid-cols-6 gap-8 pt-5 md:pt-10">
     <div class="md:col-start-3 md:col-span-2">
         <h2
             class="inline-block bg-yellow-400 dark:text-gray-900 py-2 px-4 md:-ml-4 mb-2 rounded-sm text-lg font-bold font-customHeading uppercase"
         >
-            Testimonials
+        <a href="testimonials" on:click={handleAnchorClick}>Testimonials</a>
         </h2>
     </div>
     <div class="md:col-start-2 md:col-span-4">
