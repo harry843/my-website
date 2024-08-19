@@ -77,7 +77,7 @@
 	<meta property="og:image" content="https://ibb.co/B6d632h" />
 	<meta
 		property="og:description"
-		content="I create data products to help grow your business."
+		content="I create data dashboards to help grow your business."
 	/>
 	<meta property="og:url" content={$page.url.href} />
 	<meta property="og:locale" content="en_GB" />
