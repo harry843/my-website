@@ -6,7 +6,7 @@
     import CustomUrl from '../../../component/Blog/PortableText/CustomURL.svelte';
     import CustomBullet from '../../../component/Blog/PortableText/CustomBullet.svelte';
     import BlockQuote from '../../../component/Blog/PortableText/BlockQuote.svelte';
-    import CustomListItem from '../../../component/Blog/PortableText/CustomListItem.svelte';
+    import CustomListItem from '../../../component/Blog/PortableText/CustomOrderedListItem.svelte';
     import CustomQuote from '../../../component/Blog/PortableText/CustomQuote.svelte';
     import CustomImage from '../../../component/Blog/PortableText/CustomImage.svelte';
     import CustomIFrame from '../../../component/Blog/PortableText/CustomIFrame.svelte';
@@ -22,6 +22,8 @@
     import { slugData } from '../../../stores/stores';
     import genImageUrl from '../../../component/Sanity/utils/genImageUrl';
     import BlogMenu from '../../../component/Blog/Menu/BlogMenu.svelte';
+	import CustomOrderedList from '../../../component/Blog/PortableText/CustomOrderedList.svelte';
+	import CustomOrderedListItem from '../../../component/Blog/PortableText/CustomOrderedListItem.svelte';
 	// import Comments from '../../../component/Blog/Comments/Comments.svelte';
 
 
@@ -182,10 +184,12 @@
                             link: CustomUrl
                         },
                         listItem: {
-                            bullet: CustomListItem
+                            bullet: CustomListItem,
+                            number: CustomOrderedListItem
                         },
                         list: {
-                            bullet: CustomBullet
+                            bullet: CustomBullet,
+                            number: CustomOrderedList
                         }
                     }}
                     value={data.blog[0].content}

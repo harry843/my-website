@@ -33,7 +33,6 @@
 
 </script>
 
-<br />
 <div
 	class="border dark:border-slate-600 shadow-lg dark:shadow-none bg-gray-50 dark:bg-slate-900 dark:bg-accent-5/25 px-3 pb-3 pt-1 rounded-xl my-6"
 >
