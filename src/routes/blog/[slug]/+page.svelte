@@ -22,6 +22,7 @@
     import { slugData } from '../../../stores/stores';
     import genImageUrl from '../../../component/Sanity/utils/genImageUrl';
     import BlogMenu from '../../../component/Blog/Menu/BlogMenu.svelte';
+	import CustomOrderedList from '../../../component/Blog/PortableText/CustomOrderedList.svelte';
 	// import Comments from '../../../component/Blog/Comments/Comments.svelte';
 
 
@@ -185,7 +186,8 @@
                             bullet: CustomListItem
                         },
                         list: {
-                            bullet: CustomBullet
+                            bullet: CustomBullet,
+                            number: CustomOrderedList
                         }
                     }}
                     value={data.blog[0].content}
