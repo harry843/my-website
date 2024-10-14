@@ -26,7 +26,7 @@
 					it's my mission to learn and grow every day."</BlockQuote
 				>
 			</div>
-			<p class="ml-px py-1">Hi, I'm Harry. I'm a Data Visualisation Developer from the U.K.</p>
+			<p class="ml-px py-1">Hi, I'm Harry. I'm a Data Developer from the U.K.</p>
 			<p class="ml-px py-1">
 				I have a background in <b>Tableau,</b>
 				<b>Python</b>

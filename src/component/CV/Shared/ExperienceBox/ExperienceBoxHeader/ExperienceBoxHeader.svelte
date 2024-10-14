@@ -11,7 +11,7 @@
 <div class="flex justify-between">
 	<div class="flex items-center gap-x-2">
 		<div class={classNames('flex items-center w-8 h-8 p-0.5 rounded-full', imageColorClass)}>
-			<img src={image} alt="flow" />
+			<img src={image} alt="flow" class={image.endsWith('.png') ? "rounded-full" : ""} />
 		</div>
 		<div>
 			<h1 class="font-medium text-gray-800 text-sm">{title}</h1>

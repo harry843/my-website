@@ -4,6 +4,14 @@ import QuotationMarks from "../Icons/QuotationMarks.svelte";
 
 export let screenwidth;
 	$: testimonials = [
+        // {
+        //     name: 'Dr Gareth Whiteley',
+        //     src: 'gareth-whiteley.jpeg',
+        //     role: 'Head of Data Services',
+        //     organisation: 'Answer Digital',
+        //     recommendation: 
+        //     "Harry's work ethic is exemplary. He made a tremendous impact in a short time, building pipelines and shaping architecture on a key contract. I feel fortunate to have worked with such a driven talent."
+        // },
 		{
 			name: 'Rupert Chaplin',
 			src: 'rupert-chaplin.jpeg',

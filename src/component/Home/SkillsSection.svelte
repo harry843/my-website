@@ -18,7 +18,7 @@
 		{ name: 'People management', value: 4, score: 'Advanced' },
 		{ name: 'Upskilling capability', value: 4, score: 'Advanced' },
 		{ name: 'Technical consulting', value: 4, score: 'Advanced' },
-		{ name: 'Project management', value: 3, score: 'Competent' }
+		{ name: 'Project management', value: 4, score: 'Advanced' }
 	];
 
 	$: software = [
