@@ -5,8 +5,8 @@ export const jobs: Jobs = [
 		title: 'Senior Data Engineer',
 		employer: 'Answer Digital',
 		employer_url: 'https://answerdigital.com/',
-		image: 'AD_logo.svg',
-		imageColorClass: 'bg-yellow-300',
+		image: 'AD_logo.png',
+		imageColorClass: 'bg-zinc-700',
 		bullets: [
 			'Designed and implemented robust processing to parse and transform nested JSON into relational tables for  SNOMED clinical mapping of all patient electronic health records in London',
 			'Developed and maintained complex data pipelines in Azure Synapse, streamlining data for ingestion and  transformation across multiple sources with enhanced logging for error resolution',
