@@ -82,24 +82,32 @@ export let screenwidth;
 <div class="pt-8 pb-10">
 <Carousel
 autoplay
-autoplayDuration={4000}
+autoplayDuration={213224700}
 pauseOnFocus
 >
     {#each testimonials as testimonial}
     <div class="border-2 border-gray-200 rounded-md relative">
-        {#if screenwidth >= 768 }
-       <div class="absolute top-0 right-0 md:mx-1 md:my-2 lg:m-2"> <QuotationMarks /> </div>
-       {/if}
+        <!-- {#if screenwidth >= 768 } -->
+       <div class="absolute top-3 right-1 md:top-0 md:right-0 md:mx-1 md:my-2 lg:m-2"> <QuotationMarks /> </div>
+       <!-- {/if} -->
         <div class="mx-[7.5%] xs:mx-[12%] flex flex-col items-center justify-between h-full">
             <div class="py-3">
                 <img class="w-28 h-28 rounded-full border-4" src={testimonial.src} alt={testimonial.name} />
             </div>
             <div class="pb-2.5 text-center flex flex-col justify-center items-center flex-grow">
-                {#if screenwidth < 768}
+                <!-- {#if screenwidth < 768}
                 <div class="py-3"> <QuotationMarks /> </div>
-                {/if}
-                <p class="italic px-1 py-1.5 pb-7 lg:text-[1.15rem] xl:text-[1.2rem] xl:leading-relaxed 2xl:text-[1.25rem]">{testimonial.recommendation}</p>
-                <p class="p-1 py-1.5 font-customHeading">{testimonial.name}</p>
+                {/if} -->
+                <div class="relative">
+                    <div class="before:absolute before:top-0 before:left-0 before:border-t-2 before:border-l-2 before:border-slate-400 before:w-6 before:h-5 after:absolute after:bottom-0 after:right-0 after:border-b-2 after:border-r-2 after:border-slate-400 after:w-6 after:h-5">
+                        <!-- <div class="py-3 relative -top-3 bottom-0 left-8 right-0"> <QuotationMarks /> </div> -->
+                        <p class="italic px-1.5 mx-1 md:mx-2 lg:mx-3 py-4 text-[1.1rem] lg:text-[1.15rem] xl:text-[1.2rem] xl:leading-relaxed 2xl:text-[1.25rem]">
+                        {testimonial.recommendation}
+                      </p>
+                    </div>
+                  </div>
+                  
+                <p class="p-1 py-1.5 pt-7 font-customHeading">{testimonial.name}</p>
                 {#if screenwidth >= 768}
                 <p class="text-sm xs:text-base text-center font-customHeading font-light dark:text-slate-300 py-2.5 px-2">{testimonial.role} | {testimonial.organisation}</p>
                 {/if}
