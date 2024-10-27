@@ -5,4 +5,7 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	resolve: {
     },
+	optimizeDeps: {
+		include: ['lodash.get', 'lodash.isequal', 'lodash.clonedeep']
+	  }
 });
