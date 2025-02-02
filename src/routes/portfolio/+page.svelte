@@ -5,6 +5,16 @@
 
 	$: projects = [
 		{
+			title: 'Invoice-r',
+			description:
+				"Free invoice generator I built for freelancers. Transforms simple user inputs into a beautifully formatted pdf invoice.",
+			image: 'invoice-r.png',
+			url: 'https://www.invoice-r.co.uk/',
+			isExternal: true,
+			skills: ['Svelte', 'tailwindcss'],
+			loaded: false
+		},
+		{
 			title: 'Habit Tracker',
 			description:
 				"Weekly tracker of eight habits I've commited to in 2023, each connected to a broader goal I want to achieve.",
