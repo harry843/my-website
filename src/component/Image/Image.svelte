@@ -12,7 +12,7 @@
 	// Function to build the srcset string
 	function buildSrcset() {
 		// if (dev) return;
-		let srcset = '';
+		let srcset = ''; 
 
 		// Cycle through formats and add them to the srcset
 		for (let i = 0; i < formats.length; i++) {
@@ -44,8 +44,11 @@
 		};
 	});
 </script>
+<!-- Add temp hack for invoice png image -->
+{#if fileName == 'invoice-r'}
+	<img src='invoice-r.png' alt="free invoice generator"/>
 
-{#if loaded}
+{:else if loaded}
 	<img
 		srcset={buildSrcset()}
 		sizes="(max-width: 979px) 500px, 1000px"
