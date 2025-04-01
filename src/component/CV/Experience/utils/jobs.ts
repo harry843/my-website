@@ -2,6 +2,23 @@ import type { Jobs } from '../../../../types/cv';
 
 export const jobs: Jobs = [
 	{
+		title: 'Data Analytics Course Facilitator',
+		employer: 'LSE Data Analytics Career Accelerator (FourthRev)',
+		employer_url: 'https://fourthrev.com/career-accelerators/lse/data-analytics-career-accelerator/',
+		image: 'fourthrev.svg',
+		imageColorClass: 'bg-white',
+		bullets: [
+			'Lead online training sessions to a cohort of 150 students on Python-based (pandas) data analysis, including data visualisation best practices using matplotlib and seaborn',
+			'Deliver regular 1:1 sessions to help students stay motivated and support their analytical development',
+			'Facilitate community forums by posting, responding to learner comments and driving engagement with the course material',
+			'Review, grade and provide actionable feedback on student assignments',
+			'Use industry knowledge to provide learners with real-world examples to bring course content to life'
+		],
+		timeframe: { start: '2024-11' },
+		contractType: ['Contract', 'Part-time'],
+		locations: ['Remote']
+	},
+	{
 		title: 'Senior Data Engineer',
 		employer: 'Answer Digital',
 		employer_url: 'https://answerdigital.com/',
@@ -10,8 +27,8 @@ export const jobs: Jobs = [
 		bullets: [
 			'Designed and implemented robust processing to parse and transform nested JSON into relational tables for  SNOMED clinical mapping of all patient electronic health records in London',
 			'Developed and maintained complex data pipelines in Azure Synapse, streamlining data for ingestion and  transformation across multiple sources with enhanced logging for error resolution',
-			'Built comprehensive data mapping between target and source data models, ensuring alignment to business  rules whilst maintaining data integrity to deliver business continuity for end users', 
-			'Trained junior data engineers in the Data Academy, leading to 100% pass rate on end-of-scheme  assessments and secured onward billable projects' 
+			'Built comprehensive data mapping between target and source data models, ensuring alignment to business  rules whilst maintaining data integrity to deliver business continuity for end users',
+			'Trained junior data engineers in the Data Academy, leading to 100% pass rate on end-of-scheme  assessments and secured onward billable projects'
 		],
 		timeframe: { start: '2024-06', end: '2024-09' },
 		contractType: ['Contract', 'Full-time'],
@@ -24,13 +41,13 @@ export const jobs: Jobs = [
 		image: 'nhs.svg',
 		imageColorClass: 'bg-nhs_blue',
 		bullets: [
-		'Led the technical migration of the NHS Tableau Estate saving £400K per year for the NHS • Responsible for end-to-end technical delivery of 25 Tableau products serving 350K users across the NHS',
-		'Subject Matter Expert in Tableau and NHS Data Viz Community Leader – hosted monthly community of  practice events and championed inter-org collaboration leading to 200% community growth in 18 months',
-		'Manager of 5 developers and 2 data engineers; responsible for their technical development, quality of work,  and prioritising workload in line with organisational priorities',
-		'Reduced live service incidents by 50% implementing technical standards and quality assurance processes',
-		'Co-developed bespoke pipeline system in Python to transform and load files between AWS S3 locations',
-		'Developed monitoring scripts to alert team to datasource failures in production using Tableau API, and auto trigger refreshes to ensure latest data is always available for end-users – preventing 3 live service incidents',
-		'Led client engagement for new commissions, including selling, scoping, sizing, identifying risks to delivery  and recommending mitigating actions'
+			'Led the technical migration of the NHS Tableau Estate saving £400K per year for the NHS • Responsible for end-to-end technical delivery of 25 Tableau products serving 350K users across the NHS',
+			'Subject Matter Expert in Tableau and NHS Data Viz Community Leader – hosted monthly community of  practice events and championed inter-org collaboration leading to 200% community growth in 18 months',
+			'Manager of 5 developers and 2 data engineers; responsible for their technical development, quality of work,  and prioritising workload in line with organisational priorities',
+			'Reduced live service incidents by 50% implementing technical standards and quality assurance processes',
+			'Co-developed bespoke pipeline system in Python to transform and load files between AWS S3 locations',
+			'Developed monitoring scripts to alert team to datasource failures in production using Tableau API, and auto trigger refreshes to ensure latest data is always available for end-users – preventing 3 live service incidents',
+			'Led client engagement for new commissions, including selling, scoping, sizing, identifying risks to delivery  and recommending mitigating actions'
 		],
 		timeframe: { start: '2022-03', end: '2024-05' },
 		contractType: ['Contract', 'Full-time'],
