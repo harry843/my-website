@@ -24,6 +24,7 @@
     import BlogMenu from '../../../component/Blog/Menu/BlogMenu.svelte';
 	import CustomOrderedList from '../../../component/Blog/PortableText/CustomOrderedList.svelte';
 	import CustomOrderedListItem from '../../../component/Blog/PortableText/CustomOrderedListItem.svelte';
+	import CustomJupyterCell from '../../../component/Blog/PortableText/CustomJupyterCell.svelte';
 	// import Comments from '../../../component/Blog/Comments/Comments.svelte';
 
 
@@ -169,7 +170,8 @@
                             quote: CustomQuote,
                             imageWithAlt: CustomImage,
                             iframe: CustomIFrame,
-                            code: CustomCodeBlock
+                            code: CustomCodeBlock,
+                            jupyterCell: CustomJupyterCell
                         },
                         block: {
                             normal: CustomParagraph,
