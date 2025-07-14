@@ -45,7 +45,7 @@
 <div class="my-6">
 	<div class="border border-gray-200 dark:border-slate-700 rounded-md bg-gray-100">
 		<div class="overflow-auto p-2">
-<pre class="text-[0.9rem] font-mono">{@html `<code class="language-python">${highlightedCode}</code>`}</pre>
+<pre class="text-[0.9rem] font-mono">{@html `<code>${highlightedCode}</code>`}</pre>
 		</div>
 
 		{#if portableText.value.outputText && !portableText.value.outputTable}
