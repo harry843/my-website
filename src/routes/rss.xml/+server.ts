@@ -1,9 +1,6 @@
 import { env } from '$env/dynamic/private';
 import generateRSS from '../../component/Sanity/utils/generateRSS';
 
-const SANITY_PROJECT_ID = env.SANITY_PROJECT_ID;
-const SANITY_API_VERSION = env.SANITY_API_VERSION;
-
 export const GET = async ({ url }) => {
 	const isLocalOrStaging =
 		url.href.includes('localhost') || url.href.includes('staging.harrykelleher.com');
@@ -17,6 +14,11 @@ export const GET = async ({ url }) => {
 	  }
   `);
 
+	const SANITY_PROJECT_ID = env.SANITY_PROJECT_ID;
+	const SANITY_API_VERSION = env.SANITY_API_VERSION;
+
+	console.log('SANITY_PROJECT_ID:', SANITY_PROJECT_ID);
+	console.log('SANITY_API_VERSION:', SANITY_API_VERSION);
 	console.log('[RSS] Using dataset:', dataset);
 
 	const sanityUrl = `https://${SANITY_PROJECT_ID}.api.sanity.io/${SANITY_API_VERSION}/data/query/${dataset}?query=${query}`;
