@@ -4,11 +4,12 @@
 	import { routes } from '../utils/utils';
 	import Sun from '../../Icons/Sun.svelte';
 	import Moon from '../../Icons/Moon.svelte';
-	
+	import Rss from '../../Icons/RSS.svelte';
+
 	export let darkMode;
 	export let handleSwitchDarkMode;
-
 </script>
+
 <div
 	class="items-right justify-between hidden w-full md:flex md:w-auto md:order-2"
 	id="navbar-sticky"
@@ -32,6 +33,9 @@
 				>
 			</li>
 		{/each}
+		<div class="relative inline-flex items-center justify-center">
+			<Rss />
+		</div>
 		<label class="relative inline-flex items-center justify-center cursor-pointer">
 			<input
 				type="checkbox"

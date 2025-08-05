@@ -76,7 +76,7 @@
 	>
 		<a href="/" class="flex items-center">
 			<Logo />
-			{#if width != 0 && width >= 375}
+			{#if width != 0 && width >= 400}
 				<span
 					class="px-3 self-center text-2xl font-semibold whitespace-nowrap font-customHeading dark:text-white hover:underline"
 					>Harry Kelleher</span

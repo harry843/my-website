@@ -4,6 +4,7 @@
     import { routes} from '../utils/utils';
 	import Moon from '../../Icons/Moon.svelte';
 	import Sun from '../../Icons/Sun.svelte';
+	import Rss from '../../Icons/RSS.svelte';
 	export let open: boolean;
 	export let handleClose: () => void;
 	export let darkMode;
@@ -38,6 +39,10 @@
 			</li>
 		{/each}
 	</ul>
+</div>
+
+<div class="translate-x-1">
+<Rss />
 </div>
 
 <label class="relative flex items-center justify-center cursor-pointer">
