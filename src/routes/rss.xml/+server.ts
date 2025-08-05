@@ -1,5 +1,4 @@
 import { SANITY_PROJECT_ID, SANITY_API_VERSION } from '$env/static/private';
-// import { createClient } from '@sanity/client';
 import { env } from '$env/dynamic/private';
 import generateRSS from '../../component/Sanity/utils/generateRSS';
 
@@ -19,7 +18,6 @@ export const GET = async ({ url }) => {
 	  }
   `);
 
-  //const sanityUrl = `https://g2pdrwyj.api.sanity.io/v2022-03-07/data/query/${dataset}?query=${query}`;
   const sanityUrl = `https://${SANITY_PROJECT_ID}.api.sanity.io/${SANITY_API_VERSION}/data/query/${dataset}?query=${query}`;
   const res = await fetch(sanityUrl);
   const { result: posts } = await res.json();

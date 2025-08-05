@@ -8,7 +8,6 @@
 	import { page } from '$app/stores';
 	import { afterUpdate } from 'svelte';
 
-	// Find whether the current URL is local host or staging
 	let isLocalOrStaging = $page.url.href.includes('localhost') || $page.url.href.includes('staging.harrykelleher.com');
 
 	const dataset = process.env.NODE_ENV === 'development' || isLocalOrStaging ? 'development' : 'production';
@@ -20,7 +19,6 @@
 	  }
 	`;
 
-	// Function to receive data from DataFetcher component
 	function handleData(data) {
 		$blogData = data;
 	}
