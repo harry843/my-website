@@ -43,6 +43,11 @@ const safeList = [
 	'border-teal-600',
 	'border-yellow-600',
 	'border-sky-600',
+	'bg-yellow-50', 'border-yellow-500', 'text-yellow-800',
+    'bg-indigo-50', 'border-indigo-500', 'text-indigo-800',
+    'bg-emerald-50', 'border-emerald-500', 'text-emerald-800',
+    'bg-rose-50', 'border-rose-500', 'text-rose-800',
+    'bg-teal-100', 'border-teal-500', 'text-teal-800'
 ];
 
 module.exports = {

@@ -25,6 +25,8 @@
 	import CustomOrderedList from '../../../component/Blog/PortableText/CustomOrderedList.svelte';
 	import CustomOrderedListItem from '../../../component/Blog/PortableText/CustomOrderedListItem.svelte';
 	import CustomJupyterCell from '../../../component/Blog/PortableText/CustomJupyterCell.svelte';
+	import CustomAdmonitionBox from '../../../component/Blog/PortableText/CustomAdmonitionBox.svelte';
+	import CustomInstagramStory from '../../../component/Blog/PortableText/CustomInstagramStory.svelte';
 	// import Comments from '../../../component/Blog/Comments/Comments.svelte';
 
 
@@ -171,7 +173,9 @@
                             imageWithAlt: CustomImage,
                             iframe: CustomIFrame,
                             code: CustomCodeBlock,
-                            jupyterCell: CustomJupyterCell
+                            jupyterCell: CustomJupyterCell,
+                            admonitionBox: CustomAdmonitionBox,
+                            instagramStory: CustomInstagramStory
                         },
                         block: {
                             normal: CustomParagraph,
