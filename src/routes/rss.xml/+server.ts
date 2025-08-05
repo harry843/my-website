@@ -17,8 +17,17 @@ export const GET = async ({ url }) => {
 	  }
   `);
 
+	console.log('[RSS] Using dataset:', dataset);
+
 	const sanityUrl = `https://${SANITY_PROJECT_ID}.api.sanity.io/${SANITY_API_VERSION}/data/query/${dataset}?query=${query}`;
+	console.log('[RSS] Sanity URL:', sanityUrl);
+
 	const res = await fetch(sanityUrl);
+	if (!res.ok) {
+		const errorBody = await res.text();
+		console.error('Sanity API error:', res.status, errorBody);
+		return new Response('Sanity API error: ' + res.status, { status: 500 });
+	}
 	const json = await res.json();
 
 	console.log('[RSS] Sanity raw response:', JSON.stringify(json, null, 2));
