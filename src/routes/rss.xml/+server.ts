@@ -1,6 +1,8 @@
-import { SANITY_PROJECT_ID, SANITY_API_VERSION } from '$env/static/private';
 import { env } from '$env/dynamic/private';
 import generateRSS from '../../component/Sanity/utils/generateRSS';
+
+const SANITY_PROJECT_ID = env.SANITY_PROJECT_ID;
+const SANITY_API_VERSION = env.SANITY_API_VERSION;
 
 export const GET = async ({ url }) => {
   const isLocalOrStaging =
