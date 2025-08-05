@@ -32,7 +32,7 @@ export default function generateRSS(posts, dataset) {
     <channel>
       <title>Harry Kelleher's Blog</title>
       <link>${baseUrl}/blog</link>
-      <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml" />s
+      <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml" />
       <description>Latest Posts from Harry Kelleher</description>
       <language>en-us</language>
       ${items}
